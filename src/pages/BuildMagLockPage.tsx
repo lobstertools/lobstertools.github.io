@@ -11,7 +11,7 @@ export const BuildMagLockPage = () => (
             </p>
 
             <img 
-                src="/maglock/finished_maglock.jpg" 
+                src="/images/maglock/finished_maglock.jpg" 
                 alt="Finished Lobster MagLock" 
                 className="w-full max-w-4xl mx-auto h-auto rounded-lg mb-12 shadow-lg bg-gray-700"
                 onError={(e) => (e.currentTarget.src = 'https://placehold.co/896x504/2D3748/E2E8F0?text=Image+Missing')}
@@ -196,7 +196,7 @@ export const BuildMagLockPage = () => (
                             </h4>
                             <p className="text-gray-300 mb-4">The electromagnet will arrive in a metal factory housing. Disassemble this first. It is usually secured with a few simple screws. Remove them to take out the bare 50mm round electromagnet, the only part needed for this build.</p>
                             <p className="text-gray-300 mb-4">Once you have the bare magnet, check its center. You may find a small, spring-loaded pusher pin. Unscrew the central hex screw to remove the pin and spring. This gives you a longer internal thread, allowing a deeper, more secure eye bolt connection.</p>
-                            <img src="/maglock/disassembled_magnet.jpg" alt="Disassembled magnet" className="w-full h-auto rounded-md my-3 bg-gray-700" />
+                            <img src="/images/maglock/disassembled_magnet.jpg" alt="Disassembled magnet" className="w-full h-auto rounded-md my-3 bg-gray-700" />
                         </div>
 
                         {/* Step 2 */}
@@ -228,21 +228,21 @@ export const BuildMagLockPage = () => (
                                 <div className="bg-blue-900/20 border border-blue-700/50 rounded p-3 mb-3">
                                     <p className="text-blue-200 text-sm"><strong>Alternative (Path 2):</strong> Use your saw to cut a ~27mm long piece from the 50mm PVC pipe. Clean and deburr the cut edge using sandpaper or a file.</p>
                                 </div>
-                                <img src="/maglock/conversion_ring_inside_pcv_sleeve.jpg" alt="Installing conversion ring" className="w-full h-auto rounded-md bg-gray-700" />
+                                <img src="/images/maglock/conversion_ring_inside_pcv_sleeve.jpg" alt="Installing conversion ring" className="w-full h-auto rounded-md bg-gray-700" />
                                 
                                 <div className="mt-4 grid grid-cols-3 gap-4">
                                     <img 
-                                        src="maglock/two_sizes_of_pvc_sleeves.jpg" 
+                                        src="/images/maglock/two_sizes_of_pvc_sleeves.jpg" 
                                         alt="Two sizes of PVC sleeves" 
                                         className="w-full h-auto rounded-md bg-gray-700" 
                                     />
                                     <img 
-                                        src="maglock/ring_does_not_fit_correctly.jpg" 
+                                        src="/images/maglock/ring_does_not_fit_correctly.jpg" 
                                         alt="The ring does not fit correctly" 
                                         className="w-full h-auto rounded-md bg-gray-700" 
                                     />
                                     <img 
-                                        src="maglock/custom_and_off-the-shelve_spacer.jpg" 
+                                        src="/images/maglock/custom_and_off-the-shelve_spacer.jpg" 
                                         alt="Both custom-cut and off-the-shelf spacers" 
                                         className="w-full h-auto rounded-md bg-gray-700" 
                                     />
@@ -331,21 +331,21 @@ export const BuildMagLockPage = () => (
                                     Step 2: Drill Hole
                                 </h4>
                                 <p className="text-gray-300 mb-4">Drill a 6mm hole through the center mark by stepping up your drill bit sizes. Start with a 2mm drill bit, move to a 4mm bit, and finish with the 6mm bit.</p>
-                                <img src="maglock/drilled_countersunk_hole.jpg" alt="Drilling center hole" className="w-full h-auto rounded-md bg-gray-700" />
+                                <img src="/images/maglock/drilled_countersunk_hole.jpg" alt="Drilling center hole" className="w-full h-auto rounded-md bg-gray-700" />
                                 
                                 <div className="mt-4 grid grid-cols-3 gap-4">
                                     <img 
-                                        src="maglock/armature_screw.jpg" 
+                                        src="/images/maglock/armature_screw.jpg" 
                                         alt="Two sizes of PVC sleeves" 
                                         className="w-full h-auto rounded-md bg-gray-700" 
                                     />
                                     <img 
-                                        src="maglock/drilled_hole.jpg" 
+                                        src="/images/maglock/drilled_hole.jpg" 
                                         alt="The ring does not fit correctly" 
                                         className="w-full h-auto rounded-md bg-gray-700" 
                                     />
                                     <img 
-                                        src="maglock/armature_with_eye_1.jpg" 
+                                        src="/images/maglock/armature_with_eye_1.jpg" 
                                         alt="Both custom-cut and off-the-shelf spacers" 
                                         className="w-full h-auto rounded-md bg-gray-700" 
                                     />
@@ -368,7 +368,7 @@ export const BuildMagLockPage = () => (
                                     Step 4: Assemble Plate
                                 </h4>
                                 <p className="text-gray-300 mb-4">Insert the conical screw through the countersunk side of the disc. Apply a drop of thread lock, then screw the eye bolt onto the threads until it is tight against the disc.</p>
-                                <img src="maglock/armature_with_eye_2.jpg" alt="Assembled Armature" className="w-full h-auto rounded-md bg-gray-700" />
+                                <img src="/images/maglock/armature_with_eye_2.jpg" alt="Assembled Armature" className="w-full h-auto rounded-md bg-gray-700" />
                             </div>
                         </div>
                     </div>
@@ -392,7 +392,7 @@ export const BuildMagLockPage = () => (
                                     Step 2: Secure Washers
                                 </h4>
                                 <p className="text-gray-300 mb-4">Apply a drop of thread lock to the threads and screw on the M8 nut. Ensure the washers are properly aligned and do not skew as you tighten the nut firmly.</p>
-                                <img src="maglock/assembled_rear_eye_bolt.jpg" alt="Rear eye bolt assembly" className="w-full h-auto rounded-md bg-gray-700" />
+                                <img src="/images/maglock/assembled_rear_eye_bolt.jpg" alt="Rear eye bolt assembly" className="w-full h-auto rounded-md bg-gray-700" />
                             </div>
 
                             {/* Final Step 3 */}
@@ -401,24 +401,24 @@ export const BuildMagLockPage = () => (
                                     Step 3: Final Assembly
                                 </h4>
                                 <p className="text-gray-300 mb-4">Apply a few drops of thread lock to the threads of your rear eye bolt assembly. Screw it firmly into the back of the electromagnet, which is now seated inside its PVC housing.</p>
-                                <img src="maglock/finished_maglock.jpg" alt="Final assembly" className="w-full h-auto rounded-md mb-4 bg-gray-700" />
+                                <img src="/images/maglock/finished_maglock.jpg" alt="Final assembly" className="w-full h-auto rounded-md mb-4 bg-gray-700" />
                                 <div className="bg-orange-900/20 border border-orange-700/50 rounded p-4">
                                     <p className="text-orange-100"><strong>Important:</strong> Tightening the rear eye bolt is critical to lock the electromagnet and prevent wires from twisting. However, do not over tighten as this can warp the PVC sleeve and jam the armature plate. As you tighten, test-fit the armature plate a few times. Find the balance where the magnet is secure, and the armature still slides smoothly.</p>
                                 </div>
 
                                 <div className="mt-4 grid grid-cols-3 gap-4">
                                     <img 
-                                        src="maglock/final_assembly_top.jpg" 
+                                        src="/images/maglock/final_assembly_top.jpg" 
                                         alt="Final assembly top view" 
                                         className="w-full h-auto rounded-md bg-gray-700" 
                                     />
                                     <img 
-                                        src="maglock/final_assembly_single.jpg" 
+                                        src="/images/maglock/final_assembly_single.jpg" 
                                         alt="Final assembly single view" 
                                         className="w-full h-auto rounded-md bg-gray-700" 
                                     />
                                     <img 
-                                        src="maglock/final_assembly_with_place.jpg" 
+                                        src="/images/maglock/final_assembly_with_place.jpg" 
                                         alt="Final assembly with armature plate" 
                                         className="w-full h-auto rounded-md bg-gray-700" 
                                     />

@@ -1,6 +1,4 @@
-// --- DOWNLOADS PAGE ---
-
-import { SafetyWarning } from "./SafetyWarning";
+import { SafetyWarning } from "../components/SafetyWarning";
 
 // --- OS ICONS ---
 
@@ -22,6 +20,8 @@ const LinuxIcon = () => (
     </svg>
 );
 
+// Read the version from the environment variable
+const appVersion = (import.meta as any).env?.VITE_APP_VERSION || 'latest';
 
 export const DownloadsPage = () => (
     <>
@@ -37,7 +37,7 @@ export const DownloadsPage = () => (
                 <div className="bg-gray-800 p-4 rounded-lg shadow-lg max-w-5xl mx-auto">
                     <img 
                         src="https://placehold.co/1200x800/2D3748/E2E8F0?text=Session+Manager+Screenshot" 
-                        alt="Screenshot of the Lobster Session Manager Application" 
+
                         className="w-full h-auto rounded-md bg-gray-700"
                     />
                 </div>
@@ -53,20 +53,31 @@ export const DownloadsPage = () => (
                         The Session Manager is your control center. Use it to configure timers, manage locks, and monitor your sessions. Available for multiple platforms.
                     </p>
                     <div className="grid md:grid-cols-3 gap-4">
-                        <a href="#" className="block bg-gray-700 hover:bg-gray-600 text-white font-bold py-4 px-6 rounded-lg text-center transition-colors">
+                        <a 
+                            href={(import.meta as any).env?.VITE_WIN_DOWNLOAD_URL || '#'} 
+                            className="block bg-gray-700 hover:bg-gray-600 text-white font-bold py-4 px-6 rounded-lg text-center transition-colors"
+                        >
                             <WindowsIcon />
                             <div>Windows</div>
-                            <div className="text-sm text-gray-400 mt-1">v1.0.0</div>
+                            <div className="text-sm text-gray-400 mt-1">{appVersion}</div>
                         </a>
-                        <a href="#" className="block bg-gray-700 hover:bg-gray-600 text-white font-bold py-4 px-6 rounded-lg text-center transition-colors">
+                        
+                        <a 
+                            href={(import.meta as any).env?.VITE_MAC_DOWNLOAD_URL || '#'} 
+                            className="block bg-gray-700 hover:bg-gray-600 text-white font-bold py-4 px-6 rounded-lg text-center transition-colors"
+                        >
                             <AppleIcon />
                             <div>macOS</div>
-                            <div className="text-sm text-gray-400 mt-1">v1.0.0</div>
+                            <div className="text-sm text-gray-400 mt-1">{appVersion}</div>
                         </a>
-                        <a href="#" className="block bg-gray-700 hover:bg-gray-600 text-white font-bold py-4 px-6 rounded-lg text-center transition-colors">
+
+                        <a 
+                            href={(import.meta as any).env?.VITE_LINUX_DOWNLOAD_URL || '#'} 
+                            className="block bg-gray-700 hover:bg-gray-600 text-white font-bold py-4 px-6 rounded-lg text-center transition-colors"
+                        >
                             <LinuxIcon />
                             <div>Linux</div>
-                            <div className="text-sm text-gray-400 mt-1">v1.0.0</div>
+                            <div className="text-sm text-gray-400 mt-1">{appVersion}</div>
                         </a>
                     </div>
                 </div>

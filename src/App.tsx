@@ -1,6 +1,4 @@
-// src/App.tsx
 import React, { useState } from 'react';
-// --- Import react-router-dom components ---
 import {
     Routes,
     Route,
@@ -11,12 +9,12 @@ import {
 
 import { SafetyWarning } from './components/SafetyWarning';
 import { BuildMagLockPage } from './pages/BuildMagLockPage';
-import { DownloadsPage } from './components/DownloadPage';
+import { DownloadsPage } from './pages/DownloadPage';
 import { FeaturesSection } from './components/Features';
 import { FaqSection } from './components/FAQ';
 import { BuildControllerPage } from './pages/BuildControllerPage';
 
-// --- ICONS (No changes) ---
+// --- ICONS ---
 
 const MenuIcon = () => (
     <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24" stroke="currentColor" aria-hidden="true">
@@ -30,12 +28,10 @@ const CloseIcon = () => (
     </svg>
 );
 
-// --- Navbar (Updated) ---
-// We no longer need 'currentPage' or 'setPage' props
+// --- Navbar ---
 const Navbar: React.FC = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     
-    // Update navItems to use URL paths
     const navItems = [
         { name: 'Home', path: '/' },
         { name: 'Downloads', path: '/downloads' },
@@ -53,8 +49,7 @@ const Navbar: React.FC = () => {
                     </Link>
                     <div className="hidden md:block">
                         <div className="ml-10 flex items-baseline space-x-4">
-                            {/* Use <NavLink> instead of <button> for navigation */}
-                            {/* 'isActive' is automatically provided by NavLink */}
+
                             {navItems.map((item) => (
                                 <NavLink
                                     key={item.name}
@@ -113,7 +108,7 @@ const Navbar: React.FC = () => {
     );
 };
 
-// --- Footer (No changes) ---
+// --- Footer ---
 const Footer = () => (
     <footer className="border-t border-gray-700/50 mt-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-gray-500">
@@ -123,10 +118,8 @@ const Footer = () => (
     </footer>
 );
 
-// --- HOME PAGE (Updated) ---
-// We remove the 'setPage' prop
+// --- HOME PAGE ---
 const HomePage: React.FC = () => {
-    // Use the 'useNavigate' hook to handle button clicks
     const navigate = useNavigate();
 
     return (
@@ -141,7 +134,7 @@ const HomePage: React.FC = () => {
                     Built by you, controlled by you.
                 </p>
                 <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-                    {/* Update onClick to use navigate */}
+
                     <button
                         onClick={() => navigate('/build-maglock')}
                         className="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-lg text-lg transition-colors"
@@ -161,19 +154,11 @@ const HomePage: React.FC = () => {
             <FeaturesSection />
             <FaqSection />
 
-            {/* ... other sections ... */}
-            <section id="opensource" className="my-20 py-16 text-center">
-                {/* ... */}
-            </section>
-            <section id="contact" className="my-20 py-16 bg-gray-800 rounded-lg text-center">
-                {/* ... */}
-            </section>
         </>
     )
 };
 
-
-// --- MAIN APP COMPONENT (Updated) ---
+// --- MAIN APP COMPONENT ---
 
 export default function App() {
 

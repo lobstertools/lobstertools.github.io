@@ -1,0 +1,119 @@
+# .github/workflows/deploy-website.yml
+
+name: Build and Deploy Website
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+# Set permissions for GitHub Pages deployment
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+    
+    # Configure the environment for GitHub Pages
+    # environment:
+    #   name: github-pages
+    #   url: ${{ steps.deployment.outputs.page_url }}
+
+    env:
+      # Set the owner and name of your *other* repo
+      APP_REPO_OWNER: ${{ github.repository_owner }}
+      APP_REPO_NAME: app
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Fetch Latest Release URLs from 'app'
+        env:
+          # Use the PAT you created as a secret
+          GH_TOKEN: ${{ secrets.PAT_FOR_APP_REPO }}
+        run: |
+          echo "Fetching latest release data from $APP_REPO_OWNER/$APP_REPO_NAME..."
+          
+          # Use GitHub CLI to get latest release data.
+          # We must use 'gh api' as 'gh release view' doesn't fail if no release exists.
+          RELEASE_JSON=$(gh api "repos/$APP_REPO_OWNER/$APP_REPO_NAME/releases/latest")
+          
+          if [ -z "$RELEASE_JSON" ] || [ "$(echo $RELEASE_JSON | jq -r .message)" = "Not Found" ]; then
+            echo "::error::No latest release found in $APP_REPO_OWNER/$APP_REPO_NAME. Cannot proceed."
+            exit 1
+          fi
+          
+          echo "Extracting asset URLs..."
+          
+          # Use jq to parse the JSON and find the download URL for each asset.
+          # The ' // "not-found"' part provides a fallback just in case.
+          MAC_URL=$(echo $RELEASE_JSON | jq -r '.assets[] | select(.name | endswith(".dmg")) | .browser_download_url // "not-found"')
+          WIN_URL=$(echo $RELEASE_JSON | jq -r '.assets[] | select(.name | endswith(".exe")) | .browser_download_url // "not-found"')
+          LINUX_URL=$(echo $RELEASE_JSON | jq -r '.assets[] | select(.name | endswith(".AppImage")) | .browser_download_url // "not-found"')
+          APP_VERSION=$(echo $RELEASE_JSON | jq -r '.tag_name // "0.0.0"')
+
+          # Check if all URLs were found
+          if [ "$MAC_URL" = "not-found" ] || [ "$WIN_URL" = "not-found" ] || [ "$LINUX_URL" = "not-found" ]; then
+            echo "::warning::Could not find all required release assets."
+            echo "MAC_URL: $MAC_URL"
+            echo "WIN_URL: $WIN_URL"
+            echo "LINUX_URL: $LINUX_URL"
+          fi
+          
+          # Export the URLs as VITE_ environment variables.
+          # This makes them available to your 'yarn build' step.
+          echo "VITE_MAC_DOWNLOAD_URL=$MAC_URL" >> $GITHUB_ENV
+          echo "VITE_WIN_DOWNLOAD_URL=$WIN_URL" >> $GITHUB_ENV
+          echo "VITE_LINUX_DOWNLOAD_URL=$LINUX_URL" >> $GITHUB_ENV
+          echo "VITE_APP_VERSION=$APP_VERSION" >> $GITHUB_ENV
+
+      - name: Build Vite Website
+        run: |
+          echo "Starting build with the following environment variables:"
+          echo "VITE_MAC_DOWNLOAD_URL=$VITE_MAC_DOWNLOAD_URL"
+          echo "VITE_WIN_DOWNLOAD_URL=$VITE_WIN_DOWNLOAD_URL"
+          echo "VITE_LINUX_DOWNLOAD_URL=$VITE_LINUX_DOWNLOAD_URL"
+          echo "VITE_APP_VERSION=$VITE_APP_VERSION"
+          
+          # This will build your Vite app. Your React code can now
+          # access these variables via 'import.meta.env.VITE_MAC_DOWNLOAD_URL'
+          yarn build
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'dist' # This is the default build output dir for Vite
+
+  # --- DEPLOY JOB DISABLED ---
+    
+  # deploy:
+  #   name: Deploy to GitHub Pages
+  #   needs: build-and-deploy
+  #   runs-on: ubuntu-latest
+    
+  #   permissions:
+  #     pages: write      # to deploy to Pages
+  #     id-token: write   # to verify the deployment originates from an Actions workflow
+      
+  #   environment:
+  #     name: github-pages
+  #     url: ${{ steps.deployment.outputs.page_url }}
+      
+  #   steps:
+  #     - name: Deploy to GitHub Pages
+  #       id: deployment
+  #       uses: actions/deploy-pages@v4

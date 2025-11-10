@@ -1,7 +1,5 @@
 import { SafetyWarning } from "../components/SafetyWarning";
 
-// --- OS ICONS ---
-
 const WindowsIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8 mx-auto mb-2">
       <path d="M3,3H11V11H3V3M13,3H21V11H13V3M3,13H11V21H3V13M13,13H21V21H13V13Z" />
@@ -10,7 +8,7 @@ const WindowsIcon = () => (
 
 const AppleIcon = () => (
     <svg version="1.1" viewBox="0 0 512 512"  fill="currentColor" className="w-8 h-8 mx-auto mb-2">
-        <path clip-rule="evenodd" d="M368.003,117.456c-44.426,0-68.012,22.217-102.915,21.764 c-34.912,0.453-58.49-21.764-102.922-21.764c-35.364,0-80.257,21.764-100.657,53.511c-37.629,58.048-34.005,121.088-18.135,186.378   C60.603,426.744,121.358,512,169.421,512c39.441,0,57.131-21.325,95.667-21.325c38.526,0,55.756,21.325,94.76,21.325   c44.425,0,97.472-73.023,120.152-137.876c-43.534-17.232-73.01-60.306-73.01-106.113c0-45.346,23.133-80.264,58.498-100.215   C443.729,138.314,402.008,117.456,368.003,117.456L368.003,117.456z M356.209,0c-63.918,6.804-111.521,60.313-107.444,121.081   C312.691,114.731,359.848,60.767,356.209,0L356.209,0z" fill-rule="evenodd"/>
+        <path clipRule="evenodd" d="M368.003,117.456c-44.426,0-68.012,22.217-102.915,21.764 c-34.912,0.453-58.49-21.764-102.922-21.764c-35.364,0-80.257,21.764-100.657,53.511c-37.629,58.048-34.005,121.088-18.135,186.378   C60.603,426.744,121.358,512,169.421,512c39.441,0,57.131-21.325,95.667-21.325c38.526,0,55.756,21.325,94.76,21.325   c44.425,0,97.472-73.023,120.152-137.876c-43.534-17.232-73.01-60.306-73.01-106.113c0-45.346,23.133-80.264,58.498-100.215   C443.729,138.314,402.008,117.456,368.003,117.456L368.003,117.456z M356.209,0c-63.918,6.804-111.521,60.313-107.444,121.081   C312.691,114.731,359.848,60.767,356.209,0L356.209,0z" fillRule="evenodd"/>
     </svg>
 );
 
@@ -20,8 +18,15 @@ const LinuxIcon = () => (
     </svg>
 );
 
+const ChipIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8 mx-auto mb-2">
+        <path fillRule="evenodd" d="M5.25 3A2.25 2.25 0 0 0 3 5.25v13.5A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V5.25A2.25 2.25 0 0 0 18.75 3H5.25ZM6 6.75A.75.75 0 0 1 6.75 6h10.5a.75.75 0 0 1 0 1.5H6.75A.75.75 0 0 1 6 6.75ZM6 9.75A.75.75 0 0 1 6.75 9h10.5a.75.75 0 0 1 0 1.5H6.75A.75.75 0 0 1 6 9.75ZM6 12.75A.75.75 0 0 1 6.75 12h10.5a.75.75 0 0 1 0 1.5H6.75A.75.75 0 0 1 6 12.75ZM6 15.75A.75.75 0 0 1 6.75 15h10.5a.75.75 0 0 1 0 1.5H6.75A.75.75 0 0 1 6 15.75Z" clipRule="evenodd" />
+    </svg>
+);
+
 // Read the version from the environment variable
 const appVersion = (import.meta as any).env?.VITE_APP_VERSION || 'latest';
+const firmwareVersion = (import.meta as any).env?.VITE_FIRMWARE_VERSION || 'latest';
 
 export const DownloadsPage = () => (
     <>
@@ -37,7 +42,7 @@ export const DownloadsPage = () => (
                 <div className="bg-gray-800 p-4 rounded-lg shadow-lg max-w-5xl mx-auto">
                     <img 
                         src="https://placehold.co/1200x800/2D3748/E2E8F0?text=Session+Manager+Screenshot" 
-
+                        alt="Screenshot of the Session Manager Application"
                         className="w-full h-auto rounded-md bg-gray-700"
                     />
                 </div>
@@ -90,11 +95,15 @@ export const DownloadsPage = () => (
                     <p className="text-gray-400 mb-6">
                         Flash this firmware onto your ESP32 controller. See the <strong>Build Controller</strong> page for detailed flashing instructions.
                     </p>
-                    <a href="#" className="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-lg text-lg transition-colors">
-                        Download Firmware (.bin)
-                    </a>
-                    <div className="mt-4 text-sm text-gray-500">
-                        Version 1.0.0 | Compatible with ESP32 Dev Boards
+                    <div className="max-w-md mx-auto"> 
+                        <a 
+                            href={(import.meta as any).env?.VITE_FIRMWARE_DOWNLOAD_URL || '#'} 
+                            className="block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-6 rounded-lg text-center transition-colors"
+                        >
+                            <ChipIcon />
+                            <div>Download Firmware</div>
+                            <div className="text-sm text-indigo-200 mt-1">{firmwareVersion}</div>
+                        </a>
                     </div>
                 </div>
             </section>

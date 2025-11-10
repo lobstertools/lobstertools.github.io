@@ -53,8 +53,8 @@ export const BuildMagLockPage = () => (
                         </div>
                     </div>
                     <p className="text-gray-300 mb-3">The base cost for the MagLock is about 50 Euro, offering considerable savings, as commercially available locks easily cost three times as much.</p>
-                    <p className="text-gray-300 mb-3">The most expensive part by far is the electromagnet, which runs around 40 Euro on Amazon, including shipping. The remaining 10 Euro is for smaller hardware, though you should plan on spending a bit more because it can be difficult to find individual parts.</p>
-                    <p className="text-gray-300">Small parts like screws, washers, and bolts are often sold in packs online rather than individually, which will increase your initial spending. (Your local hardware store might sell them apiece). The upside of buying in packs is that you'll have enough extra parts to build a couple of magnet locks, making your setup more versatile.</p>
+                    <p className="text-gray-300 mb-3">The most expensive part by far is the electromagnet, which runs around 40 Euro on Amazon, including shipping. The remaining 10 Euro is for smaller hardware, though you should plan on spending a bit more because of shipping costs and because parts are typically sold in bulk.</p>
+                    <p className="text-gray-300">Small parts like screws, washers, and bolts are often sold in packs online rather than individually, which will increase your initial spending. (Your local hardware store might sell them apiece). The upside of buying in packs is that you'll have enough extra parts to build a couple of MagLocks, making your setup more versatile.</p>
                 </div>
             </section>
 

@@ -13,6 +13,8 @@ import { DownloadsPage } from './pages/DownloadPage';
 import { FeaturesSection } from './components/Features';
 import { FaqSection } from './components/FAQ';
 import { BuildControllerPage } from './pages/BuildControllerPage';
+import { OpenSource } from './components/OpenSource';
+import { Contact } from './components/Contact';
 
 // --- ICONS ---
 
@@ -153,6 +155,8 @@ const HomePage: React.FC = () => {
             <SafetyWarning />
             <FeaturesSection />
             <FaqSection />
+            <OpenSource />
+            <Contact />
 
         </>
     )

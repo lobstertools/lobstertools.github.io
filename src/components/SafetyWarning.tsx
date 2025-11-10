@@ -1,5 +1,3 @@
-// src/components/SafetyWarning.tsx
-
 export const SafetyWarning = () => (
     <section id="safety" className="my-16">
         <div className="bg-red-900/30 border border-red-700 text-red-200 px-6 py-5 rounded-lg shadow-lg">

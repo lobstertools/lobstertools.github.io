@@ -17,7 +17,7 @@ export const FaqSection: React.FC = () => (
                 
                 <div className="faq-item">
                     <dt className="text-lg font-semibold text-white">Where do I buy the components?</dt>
-                    <dd className="mt-2 text-gray-400">We recommend common electronics hobbyist sites like AliExpress, Amazon, Adafruit, or SparkFun. The components are generic and widely available.</dd>
+                    <dd className="mt-2 text-gray-400">We recommend common electronics hobbyist sites like AliExpress, Amazon, Adafruit, or SparkFun, as well as your local hardware store. The components are generic and widely available.</dd>
                 </div>
 
                 <div className="faq-item">
@@ -32,7 +32,7 @@ export const FaqSection: React.FC = () => (
 
                 <div className="faq-item">
                     <dt className="text-lg font-semibold text-white">Do I need a 3D printer?</dt>
-                    <dd className="mt-2 text-gray-400">No. A 3D printer is only needed if you want to print the custom optional enclosures. You can just as easily use a standard "project box" or PVC fittings.</dd>
+                    <dd className="mt-2 text-gray-400">No. Both the MagLock and the Controller use off-the-shelf enclosures. You use a standard "project box" and a PVC fittings.</dd>
                 </div>
 
                 <div className="faq-item">
@@ -47,12 +47,12 @@ export const FaqSection: React.FC = () => (
                 
                 <div className="faq-item">
                     <dt className="text-lg font-semibold text-white">Can I use a stronger (e.g., 300lb) MagLock?</dt>
-                    <dd className="mt-2 text-gray-400">Yes, but you MUST ensure your 12V power supply and your MOSFET can handle the increased amperage (current draw) of the stronger lock. The 60kg/130lb lock is recommended as it's more than sufficient and has a low power draw.</dd>
+                    <dd className="mt-2 text-gray-400">Yes, but you MUST ensure your 12V power supply and the MOSFET can handle the increased amperage (current draw) of the stronger lock. The 60kg/130lb lock is recommended as it's more than sufficient and has a low power draw.</dd>
                 </div>
                 
                 <div className="faq-item">
                     <dt className="text-lg font-semibold text-white">How many MagLocks can one controller power?</dt>
-                    <dd className="mt-2 text-gray-400">The current design (and firmware) supports one MagLock per controller. This is for simplicity and safety. You can, however, build and run multiple controllers simultaneously from the Session Manager app.</dd>
+                    <dd className="mt-2 text-gray-400">The current design (and firmware) supports up to two MagLocks per controller.</dd>
                 </div>
 
                 <div className="faq-item">
@@ -62,7 +62,7 @@ export const FaqSection: React.FC = () => (
 
                 <div className="faq-item">
                     <dt className="text-lg font-semibold text-white">How long does the build take?</dt>
-                    <dd className="mt-2 text-gray-400">For someone with basic soldering experience, you can probably assemble and test the controller in 1-2 hours. The MagLock assembly is very quick, around 30 minutes (not including 3D printing time).</dd>
+                    <dd className="mt-2 text-gray-400">For someone with basic soldering experience, you can probably assemble and test the controller an hour. The MagLock assembly is very quick, around 30 minutes.</dd>
                 </div>
 
             </dl>

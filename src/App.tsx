@@ -127,7 +127,7 @@ const HomePage: React.FC = () => {
             {/* Hero Section */}
             <section id="hero" className="py-24 sm:py-32 text-center">
                 <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl">
-                    Lobster: The DIY Toolkit
+                    Lobster: The DIY Self-Bondage Toolkit
                 </h1>
                 <p className="mt-6 max-w-2xl mx-auto text-lg sm:text-xl text-gray-400">
                     An open-source, low-cost, and accessible framework for self-bondage.

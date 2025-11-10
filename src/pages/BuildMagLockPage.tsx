@@ -1,6 +1,7 @@
 // src/pages/BuildMagLockPage.tsx
 
 import { SafetyWarning } from "../components/SafetyWarning";
+import { ImageOverlay } from "../components/ImageOverlay";
 
 export const BuildMagLockPage = () => (
     <>
@@ -69,13 +70,14 @@ export const BuildMagLockPage = () => (
                         <p className="text-gray-400 mb-4 italic">Core parts required for every build</p>
                         <ul className="list-disc list-outside pl-5 space-y-2 text-gray-300">
                             <li>1 x Electromagnet (50mm Diameter, 60kg Holder Strength, 12V)</li>
+                            <li>1 x 1N4001 Flyback Diode (or similar, e.g., 1N4007)</li>
                             <li>3 x 50mm Washers with an M8 hole</li>
                             <li>1 x M8 Nut</li>
                             <li>1 x Two-Core Electrical Wire (length as needed, typically 4 meters)</li>
                             <li>1 x Cable or Zip Tie</li>
                             <li>Solder (for joining wires)</li>
                             <li>Electrical Tape or Heat Shrink Tubing (for insulating soldered wires)</li>
-                            <li><i>Alternative to Solder/Tape: 1 x Terminal Block (for a no-solder connection)</i></li>
+                            <li>Thread Locker - Recommended to create a strong connection for the nuts and bolts</li>
                         </ul>
                     </div>
 
@@ -104,13 +106,13 @@ export const BuildMagLockPage = () => (
                     {/* Housing Parts */}
                     <div className="mb-8">
                         <h3 className="text-2xl font-bold text-white mb-4">Housing Parts</h3>
-                        <p className="text-gray-400 mb-6 italic">Your parts will depend on the PVC sleeve you can source. The goal is to have the magnet + spacer fit snugly. The ~72mm "simple build" sleeve is designed to fit the `50-to-44mm conversion ring` perfectly. If your sleeve is shorter (e.g., ~65mm), you will need to cut your own spacer from `50mm PVC pipe`.</p>
+                        <p className="text-gray-400 mb-6 italic">Your parts will depend on the PVC sleeve you can source. The goal is to have the magnet + spacer fit snugly. The ~72mm "simple build" sleeve is designed to fit an off-the-shelf `50-to-40mm conversion ring` perfectly. If your sleeve is shorter (e.g., ~65mm), you will need to cut your own spacer from 50mm PVC pipe.</p>
 
                         <div className="mb-6">
                             <h4 className="text-lg font-semibold text-white mb-3">Path 1: The "Simple Build" (using a ~72mm sleeve):</h4>
                             <ul className="list-disc list-outside pl-5 space-y-2 text-gray-300">
                                 <li>1 x 50mm PVC Connector Sleeve (approx. 72mm long)</li>
-                                <li>1 x 50-to-44mm conversion ring</li>
+                                <li>1 x 50-to-40-mm conversion ring</li>
                                 <li>1 x Stainless Steel Eye Bolt, 45 to 50mm M8 Thread</li>
                             </ul>
                         </div>
@@ -124,14 +126,6 @@ export const BuildMagLockPage = () => (
                             </ul>
                         </div>
                     </div>
-
-                    {/* Recommended Materials */}
-                    <div>
-                        <h3 className="text-2xl font-bold text-white mb-4">Recommended Materials</h3>
-                        <ul className="list-disc list-outside pl-5 space-y-2 text-gray-300">
-                            <li>Thread Locker - Recommended to create a strong connection for the nuts and bolts</li>
-                        </ul>
-                    </div>
                 </div>
             </section>
 
@@ -143,14 +137,13 @@ export const BuildMagLockPage = () => (
 
                     {/* Base Tools */}
                     <div className="mb-8">
-                        <h3 className="text-2xl font-bold text-white mb-4">Base Tools (Required for All Builds)</h3>
+                        <h3 className="text-2xl font-bold text-white mb-4">Base Tools</h3>
                         <ul className="list-disc list-outside pl-5 space-y-2 text-gray-300">
                             <li>Power Drill with a 6 or 8mm drill bit (for making a hole in the PVC housing)</li>
-                            <li>Soldering Iron (if you are soldering your connections)</li>
-                            <li>Small Screwdriver (if you are using a terminal block)</li>
-                            <li>Wire Stripper (Alternative: Sharp knife)</li>
+                            <li>Soldering Iron</li>
+                            <li>Wire Stripper and Cutting pliers</li>
                             <li>Sandpaper or File (for cleaning PVC cuts and smoothing edges)</li>
-                            <li>Philips screwdrivers, Allen keys, and spanners</li>
+                            <li>Philips screwdrivers, Allen keys, and spanners (for tightening the nut)</li>
                         </ul>
                     </div>
 
@@ -159,11 +152,11 @@ export const BuildMagLockPage = () => (
                         <h3 className="text-2xl font-bold text-white mb-4">Additional Tools for Armature</h3>
                         <p className="text-gray-400 mb-4 italic">Only required if your magnet did not come with a 50mm armature plate and you need to drill your own.</p>
                         <ul className="list-disc list-outside pl-5 space-y-2 text-gray-300">
-                            <li>Drill Press (Highly recommended for a straight hole) or a Hand Drill</li>
+                            <li>Drill Press or a Hand Drill with a Vertical Hole Drilling Jig</li>
                             <li>Center Finder</li>
                             <li>Center Punch & Hammer</li>
-                            <li>Drill Bits for Metal (2mm, 4mm, 6mm and 8mm to step up the hole size)</li>
-                            <li>Countersink Drill Bit (Metal), sized for your M8 countersunk screw (typically a 90° angle)</li>
+                            <li>Drill Bits for Metal (2mm, 4mm, and 6mm to step up the hole size)</li>
+                            <li>Countersink Drill Bit (Metal), sized for your M6 countersunk screw (typically a 90° angle)</li>
                         </ul>
                     </div>
 
@@ -196,7 +189,12 @@ export const BuildMagLockPage = () => (
                             </h4>
                             <p className="text-gray-300 mb-4">The electromagnet will arrive in a metal factory housing. Disassemble this first. It is usually secured with a few simple screws. Remove them to take out the bare 50mm round electromagnet, the only part needed for this build.</p>
                             <p className="text-gray-300 mb-4">Once you have the bare magnet, check its center. You may find a small, spring-loaded pusher pin. Unscrew the central hex screw to remove the pin and spring. This gives you a longer internal thread, allowing a deeper, more secure eye bolt connection.</p>
-                            <img src="/images/maglock/disassembled_magnet.jpg" alt="Disassembled magnet" className="w-full h-auto rounded-md my-3 bg-gray-700" />
+                            <img 
+                                src="/images/maglock/disassembled_magnet.jpg" 
+                                alt="Disassembled magnet" 
+                                className="w-full h-auto rounded-md my-3 bg-gray-700" 
+                                onError={(e) => (e.currentTarget.src = 'https://placehold.co/600x300/2D3748/E2E8F0?text=Image+Missing')}
+                            />
                         </div>
 
                         {/* Step 2 */}
@@ -210,7 +208,11 @@ export const BuildMagLockPage = () => (
 
                             <p className="text-gray-300 mb-4">The 50mm armature metal discs are the same size as the inner diameter of the PVC connector sleeve. This can make them a very tight fit, and it's easy for the disc to become "stuck" or jammed sideways if it doesn't enter exactly perpendicular to the connector sleeve.</p>
                             <p className="text-gray-300 mb-4">To solve this issue, the discs need to be shaped first. Using a light piece of sandpaper, take a bit of the edge off (chamfer or round the edge slightly). Give it a couple of test fits in the PVC sleeve to make sure the disc enters and exits smoothly.</p>
-                            <img src="https://placehold.co/600x300/2D3748/E2E8F0?text=2.+Sanding+Armature+Disc+Edge" alt="Sanding armature disc" className="w-full h-auto rounded-md my-3 bg-gray-700" />
+                            <img 
+                                src="https://placehold.co/600x300/2D3748/E2E8F0?text=2.+Sanding+Armature+Disc+Edge" 
+                                alt="Sanding armature disc" 
+                                className="w-full h-auto rounded-md my-3 bg-gray-700" 
+                            />
                         </div>
                     </div>
 
@@ -228,23 +230,28 @@ export const BuildMagLockPage = () => (
                                 <div className="bg-blue-900/20 border border-blue-700/50 rounded p-3 mb-3">
                                     <p className="text-blue-200 text-sm"><strong>Alternative (Path 2):</strong> Use your saw to cut a ~27mm long piece from the 50mm PVC pipe. Clean and deburr the cut edge using sandpaper or a file.</p>
                                 </div>
-                                <img src="/images/maglock/conversion_ring_inside_pcv_sleeve.jpg" alt="Installing conversion ring" className="w-full h-auto rounded-md bg-gray-700" />
+                                <img 
+                                    src="/images/maglock/conversion_ring_inside_pcv_sleeve.jpg" 
+                                    alt="Installing conversion ring" 
+                                    className="w-full h-auto rounded-md bg-gray-700" 
+                                    onError={(e) => (e.currentTarget.src = 'https://placehold.co/600x300/2D3748/E2E8F0?text=Image+Missing')}
+                                />
                                 
                                 <div className="mt-4 grid grid-cols-3 gap-4">
-                                    <img 
+                                    <ImageOverlay 
                                         src="/images/maglock/two_sizes_of_pvc_sleeves.jpg" 
                                         alt="Two sizes of PVC sleeves" 
-                                        className="w-full h-auto rounded-md bg-gray-700" 
+                                        className="w-full h-auto rounded-md" 
                                     />
-                                    <img 
+                                    <ImageOverlay 
                                         src="/images/maglock/ring_does_not_fit_correctly.jpg" 
                                         alt="The ring does not fit correctly" 
-                                        className="w-full h-auto rounded-md bg-gray-700" 
+                                        className="w-full h-auto rounded-md" 
                                     />
-                                    <img 
-                                        src="/images/maglock/custom_and_off-the-shelve_spacer.jpg" 
+                                    <ImageOverlay 
+                                        src="/images/maglock/custom_and_off-the_shelve_spacer.jpg" 
                                         alt="Both custom-cut and off-the-shelf spacers" 
-                                        className="w-full h-auto rounded-md bg-gray-700" 
+                                        className="w-full h-auto rounded-md" 
                                     />
                                 </div>
 
@@ -269,25 +276,74 @@ export const BuildMagLockPage = () => (
                             {/* Housing Step 4 */}
                             <div className="bg-gray-800/50 rounded-lg p-6">
                                 <h4 className="text-xl font-bold text-white mb-4">
-                                    Step 4: Solder the Magnet
+                                    Step 4: Install Flyback Diode & Solder Wires
                                 </h4>
-                                <p className="text-gray-300 mb-4">Strip about 1cm of insulation from the two wires. Solder these wires to the leads on the 12V electromagnet.</p>
+
+                                <p className="text-gray-300 mb-4">This step is critical for protecting your electronics. We will first install a flyback diode directly onto the magnet's terminals before attaching the main power wires.</p>
+
+                                <h5 className="text-lg font-semibold text-white mb-3">Step 4a: Install the Flyback Diode</h5>
+                                <p className="text-gray-300 mb-4">
+                                    A diode has polarity. Look for a **silver or white band** on one end of the diode; this is the **cathode (-)**. The other end is the **anode (+)**.
+                                </p>
+                                <p className="text-gray-300 mb-4">
+                                    You must install this diode in **reverse bias**. This means the diode's band (cathode) connects to the magnet's **POSITIVE (+)** terminal, and the non-banded side (anode) connects to the magnet's **NEGATIVE (-)** terminal.
+                                </p>
+                                <p className="text-gray-300 mb-4">
+                                    Solder the diode's legs directly across the magnet's two terminals, ensuring the polarity is correct as described. Trim any excess wire from the diode's legs after soldering.
+                                </p>
+                                <div className="my-4 grid grid-cols-3 gap-4">
+                                    <ImageOverlay 
+                                        src="https://placehold.co/300x200/2D3748/E2E8F0?text=Placing+diode+(band-to-positive)" 
+                                        alt="Placing diode with band on positive terminal" 
+                                        className="w-full h-auto rounded-md" 
+                                    />
+                                    <ImageOverlay 
+                                        src="https://placehold.co/300x200/2D3748/E2E8F0?text=Soldering+diode+to+terminals" 
+                                        alt="Soldering diode to magnet terminals" 
+                                        className="w-full h-auto rounded-md" 
+                                    />
+                                    <ImageOverlay 
+                                        src="https://placehold.co/300x200/2D3748/E2E8F0?text=Insulating+diode+legs" 
+                                        alt="Insulating soldered diode legs with heat shrink" 
+                                        className="w-full h-auto rounded-md" 
+                                    />
+                                </div>
+                                
+                                <div className="bg-blue-900/20 border border-blue-700/50 rounded p-4 my-6">
+                                    <h4 className="text-blue-100 font-bold mb-3">What is a Flyback Diode and Why is it Essential?</h4>
+                                    <p className="text-blue-200 text-sm mb-3">
+                                        An electromagnet is an **inductor**. When you cut the power, its collapsing magnetic field creates a massive, instantaneous **reverse-voltage spike** (also called "inductive kickback"). This spike can be hundreds of volts and will instantly destroy sensitive electronics like timers, relays, or microcontrollers.
+                                    </p>
+                                    <p className="text-blue-200 text-sm mb-3">
+                                        The flyback diode is connected "backwards" (in reverse bias) across the magnet. When the power is on, no current flows through it. But when you cut the power, the reverse-voltage spike is exactly the right polarity to flow *forward* through the diode. This gives the spike a safe, short-circuit path to loop back through the magnet coil, where it harmlessly dissipates as a tiny amount of heat.
+                                    </p>
+                                    
+                                    <p className="text-blue-200 text-sm mt-3">
+                                        **Never operate an electromagnet with electronic controls without one.**
+                                    </p>
+                                </div>
+                                
+                                <h5 className="text-lg font-semibold text-white mb-3">Step 4b: Solder the Power Wires</h5>
+                                <p className="text-gray-300 mb-4">Strip about 1cm of insulation from your two main power wires. Solder them to the same terminals where you just attached the diode, matching the polarity.</p>
+                                
                                 <div className="bg-red-900/20 border border-red-700/50 rounded p-4 mb-4">
-                                    <p className="text-red-100 mb-2">In the electromagnet shown in the sourced materials the 12v wiring is as follows: red + yellow connect to the positive (+) terminal, black and orange connect to the negative (-) terminal. Otherwise, follow the wiring instructions that came with the electromagnet.</p>
-                                    <p className="text-red-100 font-bold">⚠️ Test the wiring of your magnet using the 12v power supply before assembling the lock to ensure it functions correctly.</p>
+                                    <p className="text-red-100 mb-2">In the electromagnet shown in the sourced materials the 12v wiring is as follows: red + yellow connect to the **positive (+)** terminal (this is where the diode's band should be). Black and orange connect to the **negative (-)** terminal. Otherwise, follow the wiring instructions that came with the electromagnet.</p>
+                                    <p className="text-red-100 font-bold">⚠️ Test the wiring of your magnet using the 12v power supply *after* installing the diode to ensure it functions correctly.</p>
                                 </div>
-                                <img src="/maglock/soldering_wires.jpg" alt="Soldering wires" className="w-full h-auto rounded-md mb-3 bg-gray-700" />
-                                <div className="bg-blue-900/20 border border-blue-700/50 rounded p-3">
-                                    <p className="text-blue-200 text-sm"><strong>No-Solder Alternative:</strong> You can use a terminal block. Securely fasten the two magnet wires into two ports on one side of the block, and fasten your main power wires into the corresponding ports on the other side.</p>
-                                </div>
+                                <img 
+                                    src="/maglock/soldering_wires.jpg" 
+                                    alt="Soldering wires" 
+                                    className="w-full h-auto rounded-md mb-3 bg-gray-700" 
+                                    onError={(e) => (e.currentTarget.src = 'https://placehold.co/600x300/2D3748/E2E8F0?text=Image+Missing')}
+                                />
                             </div>
 
                             {/* Housing Step 5 */}
                             <div className="bg-gray-800/50 rounded-lg p-6">
                                 <h4 className="text-xl font-bold text-white mb-4">
-                                    Step 5: Insulate Connections (If Soldered)
+                                    Step 5: Insulate Connections
                                 </h4>
-                                <p className="text-gray-300">If you soldered your wires, cover the bare connections individually with electrical tape or heat shrink tubing to prevent any short circuits. (This step is not needed if you used a terminal block).</p>
+                                <p className="text-gray-300">Cover all bare connections (the power wire joints **and** the flyback diode's legs) individually with electrical tape or heat shrink tubing to prevent any short circuits.</p>
                             </div>
 
                             {/* Housing Step 6 */}
@@ -304,7 +360,12 @@ export const BuildMagLockPage = () => (
                                     Step 7: Add Strain Relief
                                 </h4>
                                 <p className="text-gray-300 mb-4">On the inside of the housing, place a cable tie tightly around the electrical wire. Cut the long end off, leaving the small square tab in place. This tab will act as a "stop," preventing the wire from being pulled directly from the solder joints if the cord is tugged.</p>
-                                <img src="/maglock/zip_tie_strain_relief.jpg" alt="Strain relief" className="w-full h-auto rounded-md bg-gray-700" />
+                                <img 
+                                    src="/maglock/zip_tie_strain_relief.jpg" 
+                                    alt="Strain relief" 
+                                    className="w-full h-auto rounded-md bg-gray-700" 
+                                    onError={(e) => (e.currentTarget.src = 'https://placehold.co/600x300/2D3748/E2E8F0?text=Image+Missing')}
+                                />
                             </div>
                         </div>
                     </div>
@@ -331,23 +392,28 @@ export const BuildMagLockPage = () => (
                                     Step 2: Drill Hole
                                 </h4>
                                 <p className="text-gray-300 mb-4">Drill a 6mm hole through the center mark by stepping up your drill bit sizes. Start with a 2mm drill bit, move to a 4mm bit, and finish with the 6mm bit.</p>
-                                <img src="/images/maglock/drilled_countersunk_hole.jpg" alt="Drilling center hole" className="w-full h-auto rounded-md bg-gray-700" />
+                                <img 
+                                    src="/images/maglock/drilled_countersunk_hole.jpg" 
+                                    alt="Drilling center hole" 
+                                    className="w-full h-auto rounded-md bg-gray-700" 
+                                    onError={(e) => (e.currentTarget.src = 'https://placehold.co/600x300/2D3748/E2E8F0?text=Image+Missing')}
+                                />
                                 
                                 <div className="mt-4 grid grid-cols-3 gap-4">
-                                    <img 
+                                    <ImageOverlay 
                                         src="/images/maglock/armature_screw.jpg" 
-                                        alt="Two sizes of PVC sleeves" 
-                                        className="w-full h-auto rounded-md bg-gray-700" 
+                                        alt="Armature screw" 
+                                        className="w-full h-auto rounded-md" 
                                     />
-                                    <img 
+                                    <ImageOverlay 
                                         src="/images/maglock/drilled_hole.jpg" 
-                                        alt="The ring does not fit correctly" 
-                                        className="w-full h-auto rounded-md bg-gray-700" 
+                                        alt="Drilled hole" 
+                                        className="w-full h-auto rounded-md" 
                                     />
-                                    <img 
+                                    <ImageOverlay 
                                         src="/images/maglock/armature_with_eye_1.jpg" 
-                                        alt="Both custom-cut and off-the-shelf spacers" 
-                                        className="w-full h-auto rounded-md bg-gray-700" 
+                                        alt="Armature with eye bolt" 
+                                        className="w-full h-auto rounded-md" 
                                     />
                                 </div>
 
@@ -368,7 +434,12 @@ export const BuildMagLockPage = () => (
                                     Step 4: Assemble Plate
                                 </h4>
                                 <p className="text-gray-300 mb-4">Insert the conical screw through the countersunk side of the disc. Apply a drop of thread lock, then screw the eye bolt onto the threads until it is tight against the disc.</p>
-                                <img src="/images/maglock/armature_with_eye_2.jpg" alt="Assembled Armature" className="w-full h-auto rounded-md bg-gray-700" />
+                                <img 
+                                    src="/images/maglock/armature_with_eye_2.jpg" 
+                                    alt="Assembled Armature" 
+                                    className="w-full h-auto rounded-md bg-gray-700" 
+                                    onError={(e) => (e.currentTarget.src = 'https://placehold.co/600x300/2D3748/E2E8F0?text=Image+Missing')}
+                                />
                             </div>
                         </div>
                     </div>
@@ -392,7 +463,12 @@ export const BuildMagLockPage = () => (
                                     Step 2: Secure Washers
                                 </h4>
                                 <p className="text-gray-300 mb-4">Apply a drop of thread lock to the threads and screw on the M8 nut. Ensure the washers are properly aligned and do not skew as you tighten the nut firmly.</p>
-                                <img src="/images/maglock/assembled_rear_eye_bolt.jpg" alt="Rear eye bolt assembly" className="w-full h-auto rounded-md bg-gray-700" />
+                                <img 
+                                    src="/images/maglock/assembled_rear_eye_bolt.jpg" 
+                                    alt="Rear eye bolt assembly" 
+                                    className="w-full h-auto rounded-md bg-gray-700" 
+                                    onError={(e) => (e.currentTarget.src = 'https://placehold.co/600x300/2D3748/E2E8F0?text=Image+Missing')}
+                                />
                             </div>
 
                             {/* Final Step 3 */}
@@ -401,26 +477,31 @@ export const BuildMagLockPage = () => (
                                     Step 3: Final Assembly
                                 </h4>
                                 <p className="text-gray-300 mb-4">Apply a few drops of thread lock to the threads of your rear eye bolt assembly. Screw it firmly into the back of the electromagnet, which is now seated inside its PVC housing.</p>
-                                <img src="/images/maglock/finished_maglock.jpg" alt="Final assembly" className="w-full h-auto rounded-md mb-4 bg-gray-700" />
+                                <img 
+                                    src="/images/maglock/finished_maglock.jpg" 
+                                    alt="Final assembly" 
+                                    className="w-full h-auto rounded-md mb-4 bg-gray-700" 
+                                    onError={(e) => (e.currentTarget.src = 'https://placehold.co/600x300/2D3748/E2E8F0?text=Image+Missing')}
+                                />
                                 <div className="bg-orange-900/20 border border-orange-700/50 rounded p-4">
-                                    <p className="text-orange-100"><strong>Important:</strong> Tightening the rear eye bolt is critical to lock the electromagnet and prevent wires from twisting. However, do not over tighten as this can warp the PVC sleeve and jam the armature plate. As you tighten, test-fit the armature plate a few times. Find the balance where the magnet is secure, and the armature still slides smoothly.</p>
+                                    <p className="text-orange-100"><strong>Important:</strong> Tightening the rear eye bolt is critical to lock the electromagnet and prevent wires from twisting. However, do not over tighten as this can warp the PVD sleeve and jam the armature plate. As you tighten, test-fit the armature plate a few times. Find the balance where the magnet is secure, and the armature still slides smoothly.</p>
                                 </div>
 
                                 <div className="mt-4 grid grid-cols-3 gap-4">
-                                    <img 
+                                    <ImageOverlay 
                                         src="/images/maglock/final_assembly_top.jpg" 
                                         alt="Final assembly top view" 
-                                        className="w-full h-auto rounded-md bg-gray-700" 
+                                        className="w-full h-auto rounded-md" 
                                     />
-                                    <img 
+                                    <ImageOverlay 
                                         src="/images/maglock/final_assembly_single.jpg" 
                                         alt="Final assembly single view" 
-                                        className="w-full h-auto rounded-md bg-gray-700" 
+                                        className="w-full h-auto rounded-md" 
                                     />
-                                    <img 
+                                    <ImageOverlay 
                                         src="/images/maglock/final_assembly_with_place.jpg" 
                                         alt="Final assembly with armature plate" 
-                                        className="w-full h-auto rounded-md bg-gray-700" 
+                                        className="w-full h-auto rounded-md" 
                                     />
                                 </div>
 
@@ -437,7 +518,7 @@ export const BuildMagLockPage = () => (
                         Using Your MagLock
                     </h2>
                     <p className="text-gray-300 mb-4">Congratulations! You have now fully assembled your own custom electromagnet lock, securely encased in a durable PVC housing. You have a solid attachment eye on the magnet body and a matching armature plate, also with its own eye, ready to be integrated into your self-bondage setup.</p> 
-                    <p className="text-gray-300 mb-4">To make it functional, attach an appropriate electrical connector (such as a barrel jack, aviation plug, or terminal block) to the other end of the cable. This will allow you to easily connect it to your 12v power supply and a control system, such as a simple timer, a remote switch, or control software.</p>
+                    <p className="text-gray-300 mb-4">To make it functional, attach an appropriate electrical connector (such as a barrel jack or aviation plug) to the other end of the cable. This will allow you to easily connect it to your 12v power supply and a control system, such as a simple timer, a remote switch, or control software.</p>
                     
                     <div className="bg-green-900/30 border border-green-600/50 rounded-lg p-4 mb-6">
                         <p className="text-green-100 font-semibold">⚠️ Before putting it to its final use, thoroughly test the lock with your power source and control system to ensure it engages and disengages reliably. Play safe and have fun.</p>
@@ -472,12 +553,12 @@ export const BuildMagLockPage = () => (
                             <p className="text-gray-300 text-sm">Forgefix FORFPWAS850 Flat Mudguard Washers ZP M8 x 50mm Pack 6</p>
                         </div>
                         
-                        <div className="bg-gray-700/50 rounded-lg p-4">
+                        <div className="bg-gray-800/50 rounded-lg p-4">
                             <h3 className="text-lg font-semibold text-white mb-2">PVC Sleeve</h3>
                             <p className="text-gray-300 text-sm">PVC fitting adhesive sleeve 50 mm</p>
                         </div>
                         
-                        <div className="bg-gray-700/50 rounded-lg p-4">
+                        <div className="bg-gray-800/50 rounded-lg p-4">
                             <h3 className="text-lg font-semibold text-white mb-2">Other Hardware</h3>
                             <p className="text-gray-300 text-sm">Eye bolt flat, conical screw counter sunken, eye bolt screw hole nut</p>
                         </div>

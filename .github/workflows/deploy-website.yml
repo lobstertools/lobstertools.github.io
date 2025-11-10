@@ -83,8 +83,6 @@ jobs:
           fi
           
           echo "Extracting 'firmware' asset URLs..."
-          # --- IMPORTANT ---
-          # Adjust the 'endswith(".bin")' to match your firmware asset file type
           FIRMWARE_URL=$(echo $RELEASE_JSON | jq -r '.assets[] | select(.name | endswith(".bin")) | .browser_download_url // "not-found"')
           FIRMWARE_VERSION=$(echo $RELEASE_JSON | jq -r '.tag_name // "0.0.0"')
 

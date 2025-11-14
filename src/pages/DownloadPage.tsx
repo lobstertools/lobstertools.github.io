@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import { SafetyWarning } from "../components/SafetyWarning";
 
 const WindowsIcon = () => (
@@ -93,7 +94,7 @@ export const DownloadsPage = () => (
                 <h2 className="text-3xl font-bold text-white mb-6">Controller Firmware</h2>
                 <div className="bg-gray-800 p-8 rounded-lg">
                     <p className="text-gray-400 mb-6">
-                        Flash this firmware onto your ESP32 controller. See the <strong>Build Controller</strong> page for detailed flashing instructions.
+                        Flash this firmware onto your ESP32 controller. For detailed build and flashing instructions, see the <NavLink to="/build-controller" className="underline">Build Controller</NavLink> page.
                     </p>
                     <div className="max-w-md mx-auto"> 
                         <a 

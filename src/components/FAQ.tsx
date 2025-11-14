@@ -12,7 +12,7 @@ export const FaqSection: React.FC = () => (
 
                 <div className="faq-item">
                     <dt className="text-lg font-semibold text-white">How much does this cost to build?</dt>
-                    <dd className="mt-2 text-gray-400">The MagLock costs about 50 Euro. The controller costs about 20. The total cost for a full setup with two MagLocks is typically under 150 EUR.</dd>
+                    <dd className="mt-2 text-gray-400">The MagLock costs about 50 EUR. The controller costs about 30 EUR. The total cost for a full setup with two MagLocks is typically under 150 EUR.</dd>
                 </div>
                 
                 <div className="faq-item">
@@ -22,7 +22,7 @@ export const FaqSection: React.FC = () => (
 
                 <div className="faq-item">
                     <dt className="text-lg font-semibold text-white">What is the "Session Manager"?</dt>
-                    <dd className="mt-2 text-gray-400">The Session Manager is the application (for web, desktop, or mobile) that you use to communicate with the MagLock Controller. It lets you set timers, sequences, and manually lock/unlock the device.</dd>
+                    <dd className="mt-2 text-gray-400">The Session Manager is the application (for desktop) that you use to communicate with the MagLock Controller. It lets you set your session timer, manage the controller, test hardware, and shows the reward codes.</dd>
                 </div>
 
                 <div className="faq-item">

@@ -15,6 +15,7 @@ import { FaqSection } from './components/FAQ';
 import { BuildControllerPage } from './pages/BuildControllerPage';
 import { OpenSource } from './components/OpenSource';
 import { Contact } from './components/Contact';
+import { PageTitle } from './components/PageTitle';
 
 // --- ICONS ---
 
@@ -162,6 +163,7 @@ const HomePage: React.FC = () => {
     )
 };
 
+
 // --- MAIN APP COMPONENT ---
 
 export default function App() {
@@ -172,13 +174,48 @@ export default function App() {
             
             <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <Routes>
-                    <Route path="/" element={<HomePage />} />
-                    <Route path="/downloads" element={<DownloadsPage />} />
-                    <Route path="/build-maglock" element={<BuildMagLockPage />} />
-                    <Route path="/build-controller" element={<BuildControllerPage />} />
+                    <Route 
+                        path="/" 
+                        element={
+                            <PageTitle title="Lobster - DIY Self-Bondage Toolkit">
+                                <HomePage />
+                            </PageTitle>
+                        } 
+                    />
+                    <Route 
+                        path="/downloads" 
+                        element={
+                            <PageTitle title="Lobster - Downloads">
+                                <DownloadsPage />
+                            </PageTitle>
+                        } 
+                    />
+                    <Route 
+                        path="/build-maglock" 
+                        element={
+                            <PageTitle title="Lobster - Build MagLock">
+                                <BuildMagLockPage />
+                            </PageTitle>
+                        } 
+                    />
+                    <Route 
+                        path="/build-controller" 
+                        element={
+                            <PageTitle title="Lobster - Build Controller">
+                                <BuildControllerPage />
+                            </PageTitle>
+                        } 
+                    />
                     
                     {/* A "catch-all" route that redirects to home if no match is found */}
-                    <Route path="*" element={<HomePage />} /> 
+                    <Route 
+                        path="*" 
+                        element={
+                            <PageTitle title="Lobster - DIY Self-Bondage Toolkit">
+                                <HomePage />
+                            </PageTitle>
+                        } 
+                    /> 
                 </Routes>
             </main>
 

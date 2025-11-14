@@ -45,9 +45,9 @@ const Navbar: React.FC = () => {
         <header className="sticky top-0 z-50 bg-gray-900/90 backdrop-blur-md border-b border-gray-700/50">
             <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16">
-                    {/* Use <Link> for the logo to navigate to home */}
                     <Link to="/" className="flex-shrink-0 flex items-center" onClick={() => setMobileMenuOpen(false)}>
-                        <span className="text-2xl font-bold text-indigo-400">Lobster</span>
+                       <img src="/images/lobster-logo.png" alt="Lobster Logo" className="h-12 w-auto" />
+                       <span className="ml-2 text-xl font-bold text-white">Lobster</span>
                     </Link>
                     <div className="hidden md:block">
                         <div className="ml-10 flex items-baseline space-x-4">

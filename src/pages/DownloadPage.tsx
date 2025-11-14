@@ -40,11 +40,12 @@ export const DownloadsPage = () => (
             {/* Application Screenshot */}
             <section className="my-16">
                 <h2 className="text-3xl font-bold text-white text-center mb-8">See the Session Manager in Action</h2>
-                <div className="bg-gray-800 p-4 rounded-lg shadow-lg max-w-5xl mx-auto">
+                <div className="p-4 rounded-lg shadow-lg max-w-5xl mx-auto">
                     <img 
-                        src="https://placehold.co/1200x800/2D3748/E2E8F0?text=Session+Manager+Screenshot" 
+                        src="/images/session-manager/main-screen.png" 
                         alt="Screenshot of the Session Manager Application"
-                        className="w-full h-auto rounded-md bg-gray-700"
+                        className="w-full h-auto rounded-md"
+                        onError={(e) => (e.currentTarget.src = `https://placehold.co/600x400/2D3748/E2E8F0?text=Session%20Manager`)}
                     />
                 </div>
             </section>

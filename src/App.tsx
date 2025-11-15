@@ -16,6 +16,7 @@ import { BuildControllerPage } from './pages/BuildControllerPage';
 import { OpenSource } from './components/OpenSource';
 import { Contact } from './components/Contact';
 import { PageTitle } from './components/PageTitle';
+import { SafetyPage } from './pages/SafetyPage';
 
 // --- ICONS ---
 
@@ -40,6 +41,7 @@ const Navbar: React.FC = () => {
         { name: 'Downloads', path: '/downloads' },
         { name: 'Build MagLock', path: '/build-maglock' },
         { name: 'Build Controller', path: '/build-controller' },
+        { name: 'Safety Features', path: '/safety-features' },
     ];
     
     return (
@@ -179,6 +181,14 @@ export default function App() {
                         element={
                             <PageTitle title="Lobster - DIY Self-Bondage Toolkit">
                                 <HomePage />
+                            </PageTitle>
+                        } 
+                    />
+                    <Route 
+                        path="/safety-features" 
+                        element={
+                            <PageTitle title="Lobster - Safety Features">
+                                <SafetyPage />
                             </PageTitle>
                         } 
                     />

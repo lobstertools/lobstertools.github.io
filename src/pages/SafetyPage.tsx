@@ -1,5 +1,6 @@
 import { SafetyWarning } from '../components/SafetyWarning';
-import { useState } from 'react'; // <-- Import useState for tabs
+import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 // Helper component for icons (or you can use a real icon library like react-icons)
 // Using emoji for simplicity here
@@ -12,8 +13,19 @@ const FeatureIcon = ({ emoji, label }: { emoji: string; label: string }) => (
   </div>
 );
 
+// --- Define a type for our features ---
+interface Feature {
+  emoji: string;
+  title: string;
+  description: string | React.ReactNode;
+}
+
 // We'll define our features as data to make the layout cleaner
-const features = {
+const features: {
+  physical: Feature[];
+  firmware: Feature[];
+  transparency: Feature[];
+} = {
   physical: [
     {
       emoji: '🔒',
@@ -44,6 +56,25 @@ const features = {
       title: 'Secure (Non-Power) Connectors',
       description:
         'The MagLock and Abort Switch plugs use secure-locking aviation connectors. This prevents an *accidental* disconnection of a critical component, while preserving the *intentional* quick-release for the main power.',
+    },
+    {
+      emoji: '💡',
+      title: 'Clear Visual Status',
+      description: (
+        <>
+          A single-color LED provides distinct, unambiguous patterns for every
+          device state (e.g., solid on for Locked, fast-blinking for Countdown, or
+          a slow pulse for Ready). This allows you to know the controller's
+          status at a glance. See the{' '}
+          <NavLink
+            to="/build-controller"
+            className="text-indigo-400 hover:text-indigo-300 underline"
+          >
+            Build Controller page
+          </NavLink>{' '}
+          for a full list of patterns.
+        </>
+      ),
     },
   ],
   firmware: [
@@ -98,12 +129,6 @@ const features = {
         'The system runs 100% locally and does not require an internet connection, an account, or any personal information. No tracking, no analytics. Nothing ever leaves your local network.',
     },
     {
-      emoji: '💡',
-      title: 'Clear Visual Status',
-      description:
-        'A multi-color (RGB) LED provides distinct, unambiguous patterns for every device state (e.g., Pulsing Blue for Ready, Solid Red for Locked, Flashing Yellow for Aborted).',
-    },
-    {
       emoji: '📖',
       title: 'Open-Source Firmware',
       description:
@@ -131,13 +156,43 @@ export const SafetyPage = () => {
         focus:outline-none focus:ring-2 focus:ring-indigo-500
         ${
           activeTab === category
-            ? 'bg-gray-800 text-white'
+            ? 'bg-gray-800 text-white' 
             : 'bg-gray-900 text-gray-400 hover:bg-gray-700 hover:text-gray-200'
         }
       `}
     >
       {label}
     </button>
+  );
+
+  // --- Helper function to render a feature list ---
+  const renderFeatureList = (list: Feature[]) => (
+    <div className="space-y-8">
+      {list.map((feature) => (
+        <div key={feature.title} className="flex items-start p-4">
+          <FeatureIcon emoji={feature.emoji} label={feature.title} />
+          <div>
+            <h3 className="text-xl font-bold text-white mb-2">
+              {feature.title}
+            </h3>
+            {/* Conditionally render:
+              - If it's a string, use dangerouslySetInnerHTML for HTML tags
+              - If it's JSX (like our NavLink), render it directly
+            */}
+            {typeof feature.description === 'string' ? (
+              <p
+                className="text-gray-300"
+                dangerouslySetInnerHTML={{
+                  __html: feature.description,
+                }}
+              />
+            ) : (
+              <p className="text-gray-300">{feature.description}</p>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
   );
 
   return (
@@ -151,7 +206,7 @@ export const SafetyPage = () => {
           into the Lobster toolkit.
         </p>
 
-        {/* Intro Section (Unchanged) */}
+        {/* Intro Section */}
         <section className="my-16 max-w-5xl mx-auto">
           <div className="bg-gray-800 p-8 rounded-lg shadow-xl">
             <h2 className="text-3xl font-bold text-white mb-6">
@@ -172,7 +227,6 @@ export const SafetyPage = () => {
 
         <SafetyWarning />
 
-        {/* --- NEW TABBED LAYOUT --- */}
         <section className="my-16 max-w-5xl mx-auto">
           {/* Tab Navigation */}
           <div className="flex space-x-1 border-b border-gray-700">
@@ -183,80 +237,10 @@ export const SafetyPage = () => {
 
           {/* Tab Content */}
           <div className="bg-gray-800 p-8 rounded-b-lg shadow-xl">
-            {/* Physical Tab Content */}
-            {activeTab === 'physical' && (
-              <div className="space-y-8">
-                {features.physical.map((feature) => (
-                  <div
-                    key={feature.title}
-                    className="flex items-start p-4"
-                  >
-                    <FeatureIcon emoji={feature.emoji} label={feature.title} />
-                    <div>
-                      <h3 className="text-xl font-bold text-white mb-2">
-                        {feature.title}
-                      </h3>
-                      <p
-                        className="text-gray-300"
-                        dangerouslySetInnerHTML={{
-                          __html: feature.description,
-                        }}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {/* Firmware Tab Content */}
-            {activeTab === 'firmware' && (
-              <div className="space-y-8">
-                {features.firmware.map((feature) => (
-                  <div
-                    key={feature.title}
-                    className="flex items-start p-4"
-                  >
-                    <FeatureIcon emoji={feature.emoji} label={feature.title} />
-                    <div>
-                      <h3 className="text-xl font-bold text-white mb-2">
-                        {feature.title}
-                      </h3>
-                      <p
-                        className="text-gray-300"
-                        dangerouslySetInnerHTML={{
-                          __html: feature.description,
-                        }}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {/* Transparency Tab Content */}
-            {activeTab === 'transparency' && (
-              <div className="space-y-8">
-                {features.transparency.map((feature) => (
-                  <div
-                    key={feature.title}
-                    className="flex items-start p-4"
-                  >
-                    <FeatureIcon emoji={feature.emoji} label={feature.title} />
-                    <div>
-                      <h3 className="text-xl font-bold text-white mb-2">
-                        {feature.title}
-                      </h3>
-                      <p
-                        className="text-gray-300"
-                        dangerouslySetInnerHTML={{
-                          __html: feature.description,
-                        }}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
+            {activeTab === 'physical' && renderFeatureList(features.physical)}
+            {activeTab === 'firmware' && renderFeatureList(features.firmware)}
+            {activeTab === 'transparency' &&
+              renderFeatureList(features.transparency)}
           </div>
         </section>
       </div>

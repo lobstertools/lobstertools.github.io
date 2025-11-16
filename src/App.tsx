@@ -165,6 +165,25 @@ const HomePage: React.FC = () => {
     )
 };
 
+// --- Beta warning ---
+const BetaWarningBanner: React.FC = () => {
+    // Read the env variable. Vite embeds this at build time.
+    // We must compare against the string 'true'
+    const isBeta = (import.meta as any).env?.VITE_IS_BETA === 'true';
+
+    if (!isBeta) {
+        return null; 
+    }
+
+    return (
+        <div className="bg-yellow-500 text-yellow-900 font-bold p-3 text-center sticky top-0 z-40">
+            <p>
+                ⚠️ <strong>Beta Version:</strong> This is unfinished software currently in testing and not officially released. 
+                Please use with caution.
+            </p>
+        </div>
+    );
+};
 
 // --- MAIN APP COMPONENT ---
 
@@ -173,6 +192,8 @@ export default function App() {
     return (
         <div className="bg-gray-900 text-gray-300 font-sans min-h-screen">
             <Navbar />
+            
+            <BetaWarningBanner />
             
             <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <Routes>

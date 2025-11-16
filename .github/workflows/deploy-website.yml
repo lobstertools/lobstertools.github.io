@@ -60,6 +60,13 @@ jobs:
           LINUX_URL=$(echo $RELEASE_JSON | jq -r '.assets[] | select(.name | endswith(".AppImage")) | .browser_download_url // "not-found"')
           APP_VERSION=$(echo $RELEASE_JSON | jq -r '.tag_name // "0.0.0"')
 
+          # --- Check for 'beta' in app version ---
+          APP_IS_BETA="false"
+          if [[ "${APP_VERSION,,}" == *beta* ]]; then
+            APP_IS_BETA="true"
+          fi
+          # --- End Check ---
+
           if [ "$MAC_URL" = "not-found" ] || [ "$WIN_URL" = "not-found" ] || [ "$LINUX_URL" = "not-found" ]; then
             echo "::warning::Could not find all required 'app' release assets."
           fi
@@ -68,6 +75,7 @@ jobs:
           echo "VITE_WIN_DOWNLOAD_URL=$WIN_URL" >> $GITHUB_ENV
           echo "VITE_LINUX_DOWNLOAD_URL=$LINUX_URL" >> $GITHUB_ENV
           echo "VITE_APP_VERSION=$APP_VERSION" >> $GITHUB_ENV
+          echo "APP_IS_BETA=$APP_IS_BETA" >> $GITHUB_ENV # Pass to build step
 
       # --- 3. Fetch Latest 'Firmware' Release ---
       - name: "Fetch Latest Release URLs from 'firmware'"
@@ -86,6 +94,13 @@ jobs:
           FIRMWARE_URL=$(echo $RELEASE_JSON | jq -r '.assets[] | select(.name | endswith(".bin")) | .browser_download_url // "not-found"')
           FIRMWARE_VERSION=$(echo $RELEASE_JSON | jq -r '.tag_name // "0.0.0"')
 
+          # --- Check for 'beta' in firmware version ---
+          FIRMWARE_IS_BETA="false"
+          if [[ "${FIRMWARE_VERSION,,}" == *beta* ]]; then
+            FIRMWARE_IS_BETA="true"
+          fi
+          # --- End Check ---
+
           if [ "$FIRMWARE_URL" = "not-found" ]; then
             # Updating warning to match the file type we're looking for
             echo "::warning::Could not find required 'firmware' release asset ending in .bin."
@@ -93,9 +108,14 @@ jobs:
           
           echo "VITE_FIRMWARE_DOWNLOAD_URL=$FIRMWARE_URL" >> $GITHUB_ENV
           echo "VITE_FIRMWARE_VERSION=$FIRMWARE_VERSION" >> $GITHUB_ENV
+          echo "FIRMWARE_IS_BETA=$FIRMWARE_IS_BETA" >> $GITHUB_ENV # Pass to build step
 
       # --- 4. Build Website ---
       - name: "Build Vite Website"
+        # Make beta status from previous steps available
+        env:
+          APP_IS_BETA: ${{ env.APP_IS_BETA }}
+          FIRMWARE_IS_BETA: ${{ env.FIRMWARE_IS_BETA }}
         run: |
           echo "Starting build with the following environment variables:"
           echo "VITE_APP_VERSION=$VITE_APP_VERSION"
@@ -105,15 +125,25 @@ jobs:
           echo "VITE_LINUX_DOWNLOAD_URL=$VITE_LINUX_DOWNLOAD_URL"
           echo "VITE_FIRMWARE_DOWNLOAD_URL=$VITE_FIRMWARE_DOWNLOAD_URL"
           
+          # --- Set final VITE_IS_BETA if *either* is beta ---
+          IS_BETA="false"
+          if [[ "$APP_IS_BETA" == "true" ]] || [[ "$FIRMWARE_IS_BETA" == "true" ]]; then
+            IS_BETA="true"
+            echo "::warning::A beta release was detected (App: $APP_IS_BETA, Firmware: $FIRMWARE_IS_BETA). A warning banner will be shown."
+          fi
+          echo "VITE_IS_BETA=$IS_BETA" >> $GITHUB_ENV
+          # --- End Set ---
+
+          # yarn build will now pick up VITE_IS_BETA
           yarn build
 
-      # --- 5. Upload Website Artifact ---
+      # --- 5. Upload Website Artifact (Commented Out) ---
       # - name: "Upload GitHub Pages artifact"
       #   uses: actions/upload-pages-artifact@v3
       #   with:
       #     path: 'dist' 
 
-  # --- DEPLOY JOB ---
+  # --- DEPLOY JOB (Commented Out) ---
   
   # deploy:
   #   name: "Deploy to GitHub Pages"

@@ -174,12 +174,18 @@ const BetaWarningBanner: React.FC = () => {
     if (!isBeta) {
         return null; 
     }
-
+    
+    // Colors sampled from the Ant Design 'ant-alert-warning' theme:
+    // Background: #2b2111
+    // Border: #ffe58f
+    // Text (and icon): #d46b08 (approx)
+    // Using text-yellow-900 as a close, readable Tailwind equivalent for the text.
     return (
-        <div className="bg-yellow-500 text-yellow-900 font-bold p-3 text-center sticky top-0 z-40">
+        <div className="bg-[#2b2111] text-[rgba(255,255,255,0.85)] font-bold p-3 text-center sticky top-0 z-40">
             <p>
-                ⚠️ <strong>Beta Version:</strong> This is unfinished software currently in testing and not officially released. 
-                Please use with caution.
+                ⚠️ <strong>Beta Version:</strong> This is unfinished software
+                currently in testing and not officially released. Please use
+                with caution.
             </p>
         </div>
     );

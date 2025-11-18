@@ -346,7 +346,7 @@ export const BuildControllerPage = () => (
                             <h4 className="text-xl font-bold text-white mb-4">Step 4: Select Port & Firmware</h4>
                             <p className="text-gray-300 mb-4">In the Device Manager, go to the "Serial Port" tab. Select your programmer from the dropdown list. Then, click "Select Firmware" and choose the `firmware.bin` file you downloaded.</p>
                             <div className="bg-blue-900/20 border border-blue-700/50 rounded p-3 mt-4">
-                                <p className="text-blue-200 text-sm"><strong>Note:</strong> If your programmer doesn't show up, you may need to install drivers for it. If you're stuck, drop a question in our <a href="https://www.reddit.com/r/lobster-tools/" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300">support community</a>.</p>
+                                <p className="text-blue-200 text-sm"><strong>Note:</strong> If your programmer doesn't show up, you may need to install drivers for it. If you're stuck, drop a question in our <a href="https://www.reddit.com/r/lobstertools/" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300">support community</a>.</p>
                             </div>
                         </div>
 

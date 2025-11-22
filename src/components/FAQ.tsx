@@ -26,6 +26,11 @@ export const FaqSection: React.FC = () => (
                 </div>
 
                 <div className="faq-item">
+                    <dt className="text-lg font-semibold text-white">What about privacy? Does it connect to the internet?</dt>
+                    <dd className="mt-2 text-gray-400">The device firmware is designed to be 100% local. It never connects to the internet, never calls home to a cloud server, and transmits no telemetry. Your session data exists only on the device itself within your local WiFi network.</dd>
+                </div>
+
+                <div className="faq-item">
                     <dt className="text-lg font-semibold text-white">How hard is this to build? Do I need to code?</dt>
                     <dd className="mt-2 text-gray-400">No coding is required! You only need to flash the pre-compiled firmware. You will need basic soldering skills and the ability to follow a wiring diagram. It's a "beginner-intermediate" electronics project.</dd>
                 </div>
@@ -37,7 +42,7 @@ export const FaqSection: React.FC = () => (
 
                 <div className="faq-item">
                     <dt className="text-lg font-semibold text-white">Is the wireless connection secure?</dt>
-                    <dd className="mt-2 text-gray-400">The controller connects to your local WiFi network. As long as your WiFi network is secure (e.g., using WPA2/WPA3), the connection is private. The app communicates directly with the controller over your local network.</dd>
+                    <dd className="mt-2 text-gray-400">This device operates entirely on your local network (LAN). It does not connect to the internet or any cloud servers. As long as your home WiFi is secure (e.g., WPA2/WPA3), your connection is private and your data never leaves your home.</dd>
                 </div>
 
                 <div className="faq-item">

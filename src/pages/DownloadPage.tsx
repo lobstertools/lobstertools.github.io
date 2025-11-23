@@ -27,7 +27,10 @@ const ChipIcon = () => (
 
 // Read the version from the environment variable
 const appVersion = (import.meta as any).env?.VITE_APP_VERSION || 'latest';
+const appDate = (import.meta as any).env?.VITE_APP_DATE || ''; // [NEW]
+
 const firmwareVersion = (import.meta as any).env?.VITE_FIRMWARE_VERSION || 'latest';
+const firmwareDate = (import.meta as any).env?.VITE_FIRMWARE_DATE || ''; // [NEW]
 
 export const DownloadsPage = () => (
     <>
@@ -66,7 +69,9 @@ export const DownloadsPage = () => (
                         >
                             <WindowsIcon />
                             <div>Windows</div>
-                            <div className="text-sm text-gray-400 mt-1">{appVersion}</div>
+                            <div className="text-sm text-gray-400 mt-1">
+                                {appVersion} {appDate && <span className="text-gray-500 font-normal"> • {appDate}</span>}
+                            </div>
                         </a>
                         
                         <a 
@@ -75,7 +80,9 @@ export const DownloadsPage = () => (
                         >
                             <AppleIcon />
                             <div>macOS</div>
-                            <div className="text-sm text-gray-400 mt-1">{appVersion}</div>
+                            <div className="text-sm text-gray-400 mt-1">
+                                {appVersion} {appDate && <span className="text-gray-500 font-normal"> • {appDate}</span>}
+                            </div>
                         </a>
 
                         <a 
@@ -84,7 +91,9 @@ export const DownloadsPage = () => (
                         >
                             <LinuxIcon />
                             <div>Linux</div>
-                            <div className="text-sm text-gray-400 mt-1">{appVersion}</div>
+                            <div className="text-sm text-gray-400 mt-1">
+                                {appVersion} {appDate && <span className="text-gray-500 font-normal"> • {appDate}</span>}
+                            </div>
                         </a>
                     </div>
                 </div>
@@ -104,8 +113,10 @@ export const DownloadsPage = () => (
                         >
                             <ChipIcon />
                             <div>Download Firmware</div>
-                            <div className="text-sm text-indigo-200 mt-1">{firmwareVersion}</div>
-                        </a>
+                            <div className="text-sm text-indigo-200 mt-1">
+                                {firmwareVersion} {firmwareDate && <span className="opacity-75"> • {firmwareDate}</span>}
+                            </div>
+                            </a>
                     </div>
                 </div>
             </section>

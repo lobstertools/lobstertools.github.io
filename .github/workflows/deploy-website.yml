@@ -60,6 +60,10 @@ jobs:
           LINUX_URL=$(echo $RELEASE_JSON | jq -r '.assets[] | select(.name | endswith(".AppImage")) | .browser_download_url // "not-found"')
           APP_VERSION=$(echo $RELEASE_JSON | jq -r '.tag_name // "0.0.0"')
 
+          # Extract and format date
+          APP_DATE_ISO=$(echo $RELEASE_JSON | jq -r '.published_at // empty')
+          APP_DATE=${APP_DATE_ISO:0:10}
+
           # --- Check for 'beta' in app version ---
           APP_IS_BETA="false"
           if [[ "${APP_VERSION,,}" == *beta* ]]; then
@@ -75,6 +79,7 @@ jobs:
           echo "VITE_WIN_DOWNLOAD_URL=$WIN_URL" >> $GITHUB_ENV
           echo "VITE_LINUX_DOWNLOAD_URL=$LINUX_URL" >> $GITHUB_ENV
           echo "VITE_APP_VERSION=$APP_VERSION" >> $GITHUB_ENV
+          echo "VITE_APP_DATE=$APP_DATE" >> $GITHUB_ENV
           echo "APP_IS_BETA=$APP_IS_BETA" >> $GITHUB_ENV # Pass to build step
 
       # --- 3. Fetch Latest 'Firmware' Release ---
@@ -94,6 +99,10 @@ jobs:
           FIRMWARE_URL=$(echo $RELEASE_JSON | jq -r '.assets[] | select(.name | endswith(".bin")) | .browser_download_url // "not-found"')
           FIRMWARE_VERSION=$(echo $RELEASE_JSON | jq -r '.tag_name // "0.0.0"')
 
+          # Extract and format date
+          FIRMWARE_DATE_ISO=$(echo $RELEASE_JSON | jq -r '.published_at // empty')
+          FIRMWARE_DATE=${FIRMWARE_DATE_ISO:0:10}
+
           # --- Check for 'beta' in firmware version ---
           FIRMWARE_IS_BETA="false"
           if [[ "${FIRMWARE_VERSION,,}" == *beta* ]]; then
@@ -108,6 +117,7 @@ jobs:
           
           echo "VITE_FIRMWARE_DOWNLOAD_URL=$FIRMWARE_URL" >> $GITHUB_ENV
           echo "VITE_FIRMWARE_VERSION=$FIRMWARE_VERSION" >> $GITHUB_ENV
+          echo "VITE_FIRMWARE_DATE=$FIRMWARE_DATE" >> $GITHUB_ENV
           echo "FIRMWARE_IS_BETA=$FIRMWARE_IS_BETA" >> $GITHUB_ENV # Pass to build step
 
       # --- 4. Build Website ---
@@ -120,10 +130,13 @@ jobs:
           echo "Starting build with the following environment variables:"
           echo "VITE_APP_VERSION=$VITE_APP_VERSION"
           echo "VITE_FIRMWARE_VERSION=$VITE_FIRMWARE_VERSION"
+          echo "VITE_APP_DATE=$VITE_APP_DATE"
+          echo "VITE_FIRMWARE_DATE=$VITE_FIRMWARE_DATE"
           echo "VITE_MAC_DOWNLOAD_URL=$VITE_MAC_DOWNLOAD_URL"
           echo "VITE_WIN_DOWNLOAD_URL=$VITE_WIN_DOWNLOAD_URL"
           echo "VITE_LINUX_DOWNLOAD_URL=$VITE_LINUX_DOWNLOAD_URL"
           echo "VITE_FIRMWARE_DOWNLOAD_URL=$VITE_FIRMWARE_DOWNLOAD_URL"
+          
           
           # --- Set final VITE_IS_BETA if *either* is beta ---
           IS_BETA="false"

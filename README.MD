@@ -1,3 +1,7 @@
+> [!IMPORTANT]
+> **Unreleased Beta**
+> This software is currently in an unreleased beta state. Features are subject to change and stability is not guaranteed.
+
 # Lobster Lock - Official Website
 
 This repository contains the source code for the official Lobster Lock website, which provides project information, detailed DIY build guides, and software downloads.

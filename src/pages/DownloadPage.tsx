@@ -121,22 +121,14 @@ export const DownloadsPage = () => (
                 </div>
             </section>
 
-            {/* Documentation */}
+            {/* Downloads */}
             <section className="my-16">
-                <h2 className="text-3xl font-bold text-white mb-6">Documentation & Resources</h2>
+                <h2 className="text-3xl font-bold text-white mb-6">Resources</h2>
                 <div className="bg-gray-800 p-8 rounded-lg">
                     <div className="space-y-4">
-                        <a href="#" className="block p-4 bg-gray-700 hover:bg-gray-600 rounded transition-colors">
-                            <div className="font-semibold text-white">Quick Start Guide (PDF)</div>
-                            <div className="text-sm text-gray-400">Get up and running in 10 minutes</div>
-                        </a>
-                        <a href="#" className="block p-4 bg-gray-700 hover:bg-gray-600 rounded transition-colors">
-                            <div className="font-semibold text-white">Wiring Diagrams (PDF)</div>
-                            <div className="text-sm text-gray-400">Detailed schematics for assembly</div>
-                        </a>
-                        <a href="#" className="block p-4 bg-gray-700 hover:bg-gray-600 rounded transition-colors">
-                            <div className="font-semibold text-white">3D Printable Enclosures (STL)</div>
-                            <div className="text-sm text-gray-400">Optional custom housing designs</div>
+                        <a href="/downloads/controller_drill_template.pdf" className="block p-4 bg-gray-700 hover:bg-gray-600 rounded transition-colors">
+                            <div className="font-semibold text-white">Drill Template (PDF)</div>
+                            <div className="text-sm text-gray-400">Drill template for the Plastic Project Box</div>
                         </a>
                     </div>
                 </div>

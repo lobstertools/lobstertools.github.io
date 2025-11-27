@@ -53,8 +53,7 @@ export const BuildControllerPage = () => (
                                 <li>1 x Panel-Mount DC Jack (Female)</li>
                                 <li>3 x GX12 Connector Pairs (Male + Female)</li>
                                 <li>1 x Status LED (with resistor)</li>
-                                <li>1 x Abort Switch (Momentary)</li>
-                                <li>Dupont Jumper Wires (Female)</li>
+                                <li>1 x Abort Switch (TFS-1)</li>
                             </ul>
                         </div>
                         <div>
@@ -75,7 +74,9 @@ export const BuildControllerPage = () => (
             <section className="my-16">
                 <div className="bg-gray-800 p-8 rounded-lg">
                     <h2 className="text-3xl font-bold text-white mb-6">Part 1: Solder PCB Headers</h2>
-                    <p className="text-gray-300 mb-8">Before we can flash the chip or connect accessories, we must solder the included pin headers.</p>
+                    <p className="text-gray-300 mb-8">
+                        We start by preparing the ESP32 board itself. You will solder the necessary pin headers to the PCB, enabling us to flash the firmware now and connect our peripherals later.
+                    </p>
 
                     <div className="bg-gray-800/50 rounded-lg p-6">
                         <h4 className="text-xl font-bold text-white mb-4">Step 1: Solder the Headers</h4>
@@ -87,7 +88,7 @@ export const BuildControllerPage = () => (
                         </div>
                         <ul className="list-disc list-outside pl-5 space-y-2 text-gray-300 mb-6">
                             <li><strong>Single Row (6-pin):</strong> Solder to the holes above the ESP32 (Required for Flashing).</li>
-                            <li><strong>Double Row (10-pin):</strong> Solder the entire block to the side holes (Required later for LED/Switch).</li>
+                            <li><strong>Double Row (10-pin):</strong> Solder the entire block to the side holes (Required later for LED/Switch wiring).</li>
                         </ul>
                         
                         <TutorialImage
@@ -117,7 +118,7 @@ export const BuildControllerPage = () => (
                 <div className="bg-gray-800 p-8 rounded-lg">
                     <h2 className="text-3xl font-bold text-white mb-6">Part 2: The "First Life" Test</h2>
                     <p className="text-gray-300 mb-8">
-                        We are going to skip the peripheral wiring for now. Let's just connect power and flash the board to see it come alive.
+                         Before building the full enclosure, we verify the core electronics. In this phase, you will connect basic power, flash the Lobster firmware, and provision the device over WiFi to ensure the "brain" is alive and working.
                     </p>
 
                     <div className="space-y-6">
@@ -131,7 +132,7 @@ export const BuildControllerPage = () => (
 
                             <ol className="list-decimal list-outside pl-5 space-y-3 text-gray-300 mb-6">
                                 <li>
-                                    <strong>Prepare your wires:</strong> Cut the DC Jack wires to about 10 cm in length and strip about 5mm of insulation from the ends. Also strip about 5mm of insulation fromn the end of your MagLock wires. Tin them with solder to ensure a clean connection.
+                                    <strong>Prepare your wires:</strong> Cut the DC Jack wires to about 10 cm in length and strip about 5mm of insulation from the ends. Also strip about 5mm of insulation from the end of your MagLock wires. Tin them with solder to ensure a clean connection.
                                 </li>
                                 <li>
                                     Solder the two short wires (Red/Black) to your <strong>Female DC Jack</strong>.
@@ -146,7 +147,7 @@ export const BuildControllerPage = () => (
                             
                             <div className="bg-blue-900/20 border border-blue-700/50 rounded p-3 mb-4">
                                 <p className="text-blue-200 text-sm">
-                                    <em>Note: We are ignoring the LED and Abort Switch for now. You can test the core functionality working first, however they are essential for safety in the final build.</em>
+                                    Note: We are ignoring the LED and Abort Switch for now. You can test the core functionality working first, however they are essential for safety in the final build.
                                 </p>
                             </div>
 
@@ -232,7 +233,7 @@ export const BuildControllerPage = () => (
                                     Select <strong>"Provision"</strong>. You will be asked to configure the device:
                                     <ul className="list-disc list-inside pl-4 mt-2 space-y-1 text-gray-400">
                                         <li><strong>WiFi:</strong> Enter your network credentials.</li>
-                                        <li><strong>Channels:</strong> Select which channels to enable (1, 2, 3, 4). If you are building the standard 2-lock box, enable 1 and 2. If you have the 4-channel board, enable 3 and 4 as these align best with the position of the front panel connectors. This allows you to customize the software to match your specific hardware build.</li>
+                                        <li><strong>Channels:</strong> Select which channels to enable (1, 2, 3, 4). If you are building the standard 2-lock box, enable 1 and 2. If you have the 4-channel board, enable 3 and 4 as these align best with the position of the front panel connectors.</li>
                                     </ul>
                                 </li>
                                 <li>
@@ -276,149 +277,127 @@ export const BuildControllerPage = () => (
                 </div>
             </section>
 
-            {/* --- PART 3: UPGRADING CONTROLS --- */}
+            {/* --- PART 3: INTERNAL WIRING --- */}
             <section className="my-16">
                 <div className="bg-gray-800 p-8 rounded-lg">
-                    <h2 className="text-3xl font-bold text-white mb-6">Part 3: Adding the LED and Abort Switch</h2>
+                    <h2 className="text-3xl font-bold text-white mb-6">Part 3: Internal Wiring Preparation</h2>
                     <p className="text-gray-300 mb-8">
-                        Now that the basics work, let's add the Status LED and physical Abort Switch using "Dupont" jumpers.
+                        Now we prepare the components that will live <em>inside</em> the enclosure. You will cut, tin, and solder wires to the LED and the rear side of the panel-mount connectors, getting everything ready for the final assembly.
                     </p>
 
                     <div className="space-y-6">
                         <div className="bg-gray-800/50 rounded-lg p-6">
-                            <h4 className="text-xl font-bold text-white mb-6">Step 4: Splice the Jumpers</h4>
+                            <h4 className="text-xl font-bold text-white mb-6">Step 4: Prepare the LED</h4>
 
-                            {/* LED Sub-section */}
-                            <h5 className="text-lg font-bold text-white mb-3">4a. Preparing the LED</h5>
                             <ul className="list-disc list-outside pl-5 space-y-2 text-gray-300 mb-8">
-                                <li>Cut the LED wires to about 3cm in length and strip the ends.</li>
-                                <li>Cut a female jumper cable to about 2cm in length and strip the cut ends.</li>
-                                <li>Splice the jumpers and the LED wires together (Red to Red, Black to Black).</li>
-                                <li>Secure the connection using heat shrink tubing or a piece of insulation tape to prevent shorts.</li>
+                                <li>Cut the LED wires to approximately 10-12cm in length. This gives you enough slack to reach the board when mounted.</li>
+                                <li>Strip about 5mm of insulation from the ends and tin them with solder.</li>
+                                <li><strong>Optional:</strong> Use heat shrink tubing to bundle the wires together for a cleaner look.</li>
                             </ul>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                                 <ImageOverlay 
-                                    src="/images/controller/led_jumpers.jpg" 
-                                    alt="LED jumpers cut to size"
+                                    src="/images/controller/switch_and_led_cut_to_size.jpg" 
+                                    alt="Switch and LED wires cut to size"
                                     className="w-full h-auto rounded-md"
                                 />
                                 <ImageOverlay
-                                    src="/images/controller/led_fully_wired.jpg" 
-                                    alt="LED fully wired" 
+                                    src="/images/controller/prepared_gx_connectors.jpg" 
+                                     alt="Fully prepared GX panel mount connectors"
                                     className="w-full h-auto rounded-md"
                                 />
                             </div>
-
-                            {/* Abort Switch Sub-section */}
-                            <h5 className="text-lg font-bold text-white mb-3">4b. Preparing the Abort Switch</h5>
-                            
-                            <div className="bg-blue-900/20 border border-blue-700/50 rounded p-3 mb-4">
-                                <p className="text-blue-200 text-sm"><strong>Tip:</strong> To ensure your wiring logic is correct, screw the male panel mount and female cable connector together before soldering. This helps you visually trace which wire goes to which pin.</p>
-                            </div>
-
-                            <ol className="list-decimal list-outside pl-5 space-y-3 text-gray-300">
-                                <li><strong>Panel Mount Side:</strong> Cut a female jumper cable to about 10cm in length, strip and tin the cut ends.</li>
-                                <li>Solder these jumper cables to the rear lugs of the <strong>GX12 Panel Mount</strong>. Make a note of which pin corresponds to Signal (+) and which to Ground (-).</li>
-                                <li><strong>Switch Side:</strong> Disassemble the female GX12 cable connector. Slide the housing parts onto your Abort Switch cable in this order: End Screw &rarr; Rubber Strain Relief &rarr; Housing.</li>
-                                <li>Strip and tin the ends of the Abort Switch wires. Cut small pieces of heat shrink tubing and slide them over the individual wires.</li>
-                                <li>Solder the Abort Switch wires to the GX12 pins, <strong>mirroring the configuration</strong> of the panel mount (Signal to Signal, Ground to Ground).</li>
-                                <li>Slide the heat shrink over the solder joints and apply heat to insulate them.</li>
-                                <li>Screw the GX12 housing back together.</li>
-                            </ol>
                         </div>
-
-                        <TutorialImage 
-                            src="/images/controller/gx12_connector_disassembled.png" 
-                            alt="GX12 Connector Disassembled" 
-                            wrapperClassName="mb-4"
-                            className="w-full h-auto rounded-md"
-                        />
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                            <ImageOverlay 
-                                src="/images/controller/led_jumpers.jpg" 
-                                alt="LED jumpers cut to size"
-                                className="w-full h-auto rounded-md"
-                            />
-                            <ImageOverlay
-                                src="/images/controller/led_fully_wired.jpg" 
-                                alt="LED fully wired" 
-                                className="w-full h-auto rounded-md"
-                            />
-                        </div>
-
 
                         <div className="bg-gray-800/50 rounded-lg p-6">
-                            <h4 className="text-xl font-bold text-white mb-4">Step 5: Connect & Retest</h4>
-                            <ol className="list-decimal list-outside pl-5 space-y-3 text-gray-300">
-                                <li>Plug the LED onto the headers (Red → GPIO21, Black → GND).</li>
-                                <li>Plug the Abort Switch connector onto the headers (Red → GPIO18, Black → GND).</li>
+                            <h4 className="text-xl font-bold text-white mb-6">Step 5: MagLock & Abort Switch Panel Mounts</h4>
+                            <p className="text-gray-300 mb-4">
+                                You need to prepare 3 panel mount connectors: one for the Abort Switch (Signal) and two for the MagLocks (Power).
+                            </p>
+                            
+                            <div className="bg-blue-900/20 border border-blue-700/50 rounded p-3 mb-4">
+                                <p className="text-blue-200 text-sm">
+                                    <strong>Tip:</strong> Solder the wires to the <strong>Female Panel Mount</strong> sockets. After soldering, we highly recommend insulating the individual pins with heat shrink tubing to prevent shorts inside the tight case.
+                                </p>
+                            </div>
+
+                            <ol className="list-decimal list-outside pl-5 space-y-4 text-gray-300">
                                 <li>
-                                    <strong>Test again:</strong> Using the Session Manager, re-run the <strong>Hardware Test</strong>.
-                                    <ul className="list-disc list-inside pl-4 mt-2 space-y-1 text-gray-400">
-                                        <li>You should see the LED in a "Slow Breath" pattern after booting (indicating the device is READY).</li>
-                                        <li>The LED should fade into a "Medium Pulse" during hardware testing.</li>
-                                        <li>Pressing the <strong>Abort Switch</strong> should immediately end the test session, allowing you to confirm everything works as intended.</li>
+                                    <strong>Abort Switch Input:</strong> Cut two wires (Red/Black) to about 12cm. Solder them to the rear lugs of one GX12 connector.
+                                    <ul className="list-disc list-inside pl-4 mt-1 text-gray-400 text-sm">
+                                        <li>Note which pin is Signal (Red) and which is Ground (Black).</li>
                                     </ul>
                                 </li>
+                                <li>
+                                    <strong>MagLock Outputs:</strong> Cut two pairs of wires (Red/Black) to about 8cm. Solder these to the remaining two GX12 connectors.
+                                    <ul className="list-disc list-inside pl-4 mt-1 text-gray-400 text-sm">
+                                        <li>Ensure you are consistent with polarity (e.g., Pin 1 = Positive, Pin 2 = Negative).</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <strong>Insulate:</strong> Apply heat shrink tubing over all soldered connections on the back of the connectors.
+                                </li>
                             </ol>
+                        
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* --- PART 4: CONNECTOR PREP --- */}
+            {/* --- PART 4: EXTERNAL CABLE ASSEMBLY --- */}
             <section className="my-16">
                 <div className="bg-gray-800 p-8 rounded-lg">
-                    <h2 className="text-3xl font-bold text-white mb-6">Part 4: MagLock Connector Assembly</h2>
+                    <h2 className="text-3xl font-bold text-white mb-6">Part 4: External Cable Assembly</h2>
                     <p className="text-gray-300 mb-8">
-                        Everything works! Now we replace the temporary direct wiring of the MagLocks with secure GX aviation connectors.
+                        With the internal components ready, we turn to the external accessories. Here you will assemble the robust aviation connectors for your MagLock cables and the safety Abort Switch (or foot pedal).
                     </p>
                     
                     <div className="space-y-6">
                         <div className="bg-gray-800/50 rounded-lg p-6">
-                            <h4 className="text-xl font-bold text-white mb-6">Step 6: MagLock Internal Wiring (Panel Mounts)</h4>
-                            <div className="bg-blue-900/20 border border-blue-700/50 rounded p-3 mb-4">
-                                <p className="text-blue-200 text-sm"><strong>Note:</strong> This process mirrors the Abort Switch assembly, but this time you are preparing connectors for the MagLock outputs.</p>
-                            </div>
-                            <ol className="list-decimal list-outside pl-5 space-y-3 text-gray-300">
-                                <li>Cut two pairs of wires (Red/Black) to about 8cm in length.</li>
-                                <li>Strip about 5mm of insulation from the ends and tin them with solder.</li>
-                                <li>Solder these wires to the rear lugs of your <strong>GX12 Panel Mount connectors</strong>. Ensure you are consistent with polarity (e.g., Pin 1 = Positive, Pin 2 = Negative).</li>
-                                <li>
-                                    <strong>Important:</strong> After soldering, insulate the individual pin connections with heat shrink tubing to prevent short circuits inside the case.
-                                </li>
-                            </ol>
-                        </div>
-                    
-                        <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <ImageOverlay 
-                                src="/images/controller/two_sizes_of_pvc_sleeves.jpg" 
-                                alt="Two sizes of PVC sleeves" 
-                                className="w-full h-auto rounded-md" 
-                            />
-                            <ImageOverlay 
-                                src="/images/controller/ring_does_not_fit_correctly.jpg" 
-                                alt="The ring does not fit correctly" 
-                                className="w-full h-auto rounded-md" 
-                            />
-                            <ImageOverlay 
-                                src="/images/controller/prepared_gx_connectors.jpg" 
-                                alt="Fully prepared GX panel mount connectors" 
-                                className="w-full h-auto rounded-md" 
-                            />
-                        </div>
+                            <h4 className="text-xl font-bold text-white mb-6">Step 6: Abort Switch Assembly</h4>
+                            <p className="text-gray-300 mb-4">This connects your momentary switch (or foot pedal) to a Male GX12 plug.</p>
 
+                            <ol className="list-decimal list-outside pl-5 space-y-3 text-gray-300 mb-8">
+                                <li>Disassemble a male GX12 cable connector. Slide the housing parts onto your switch cable in this order: End Screw &rarr; Rubber Strain Relief &rarr; Housing.</li>
+                                <li>
+                                    Strip and tin the ends of the Abort Switch wires.
+                                    <div className="bg-blue-900/20 border border-blue-700/50 rounded p-3 mt-3 mb-2">
+                                        <p className="text-blue-200 text-sm">
+                                            <strong>Wiring the TFS-1:</strong> This switch typically has three wires: <strong>COM</strong>, <strong>NO</strong>, and <strong>NC</strong>.
+                                            You need to connect <strong>COM (White)</strong> and <strong>NO (Red)</strong> for the switch to work as expected. The third wire (Black/NC) can be cut or ignored.
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <strong>Verification Trick:</strong> Screw this male plug into the female panel mount you prepared in Step 5. This lets you visually trace the wires to ensure Signal connects to Signal and Ground to Ground.
+                                </li>
+                                <li>Solder the wires to the pins and insulate with heat shrink.</li>
+                                <li>Screw the GX12 housing back together.</li>
+                            </ol>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <ImageOverlay 
+                                    src="/images/controller/disassembled_gcx_connector.jpg" 
+                                    alt="GX12 Connector Disassembled" 
+                                    className="w-full h-auto rounded-md"
+                                />
+                                <ImageOverlay
+                                    src="/images/controller/abort_switch.jpg" 
+                                    alt="The abort switch with GX12 connector" 
+                                    className="w-full h-auto rounded-md"
+                                />
+                            </div>
+
+                        </div>
 
                         <div className="bg-gray-800/50 rounded-lg p-6">
-                            <h4 className="text-xl font-bold text-white mb-6">Step 7: MagLock External Wiring (Cable Plugs)</h4>
+                            <h4 className="text-xl font-bold text-white mb-6">Step 7: MagLock Cable Assembly</h4>
                             <p className="text-gray-300 mb-4">Now we attach the matching male plugs to your MagLock cables.</p>
                             <ol className="list-decimal list-outside pl-5 space-y-3 text-gray-300">
                                 <li>Disassemble the male GX12 cable connector and slide the housing parts (End Screw &rarr; Rubber &rarr; Housing) onto the MagLock wire.</li>
                                 <li>Strip and tin the ends of the MagLock wires.</li>
                                 <li>
-                                    <strong>Verification Trick:</strong> Before soldering, screw the male plug into the female panel mount you just prepared in Step 6. This allows you to visually trace the wires and ensure you are soldering Positive to Positive and Negative to Negative.
+                                    <strong>Verification Trick:</strong> Again, screw the male plug into the female panel mount from Step 5. Ensure you are soldering Positive to Positive and Negative to Negative.
                                 </li>
                                 <li>Solder the MagLock wires to the pins, insulate with heat shrink, and reassemble the connector housing.</li>
                             </ol>
@@ -431,6 +410,9 @@ export const BuildControllerPage = () => (
             <section className="my-16">
                 <div className="bg-gray-800 p-8 rounded-lg">
                     <h2 className="text-3xl font-bold text-white mb-6">Part 5: Enclosure Preparation</h2>
+                    <p className="text-gray-300 mb-8">
+                        It is time to prepare the housing. Using the provided template, you will drill precise holes in the project box to accommodate the status LED, power jack, and aviation connectors.
+                    </p>
                     
                     <div className="bg-gray-800/50 rounded-lg p-6">
                         <h4 className="text-xl font-bold text-white mb-4">Step 8: Drilling the Enclosure</h4>
@@ -494,25 +476,35 @@ export const BuildControllerPage = () => (
             <section className="my-16">
                 <div className="bg-gray-800 p-8 rounded-lg">
                     <h2 className="text-3xl font-bold text-white mb-6">Part 6: Final Assembly</h2>
+                    <p className="text-gray-300 mb-8">
+                        This final stage brings everything together. To make assembly easy, we will wire the MagLock connectors <strong>with the PCB out of the box</strong> to ensure easy access. Once those are secure, we will place the board <strong>inside the box</strong> and perform the final in-place soldering for the LED and Abort Switch, as well as connecting the power supply.
+                    </p>
                     
                     <div className="bg-gray-800/50 rounded-lg p-6">
-                        <h4 className="text-xl font-bold text-white mb-4">Step 9: Mounting and Wiring</h4>
+                        <h4 className="text-xl font-bold text-white mb-4">Step 9: Mounting and Soldering</h4>
                         
                         <ul className="list-disc list-outside pl-5 space-y-4 text-gray-300 mb-8">
                             <li>
-                                <strong>Install Front Components:</strong> Insert the LED, the Abort Switch GX12 panel mount, and the two MagLock GX12 panel mounts into the front of the box. Use pliers to tighten the counter nuts securely.
+                                <strong>Install Front Components (Part 1):</strong> Insert the two MagLock GX12 panel mounts into the front of the box. Use a wrench and socket (size 10) to tighten the counter nuts securely.
                             </li>
                             <li>
                                 <strong>Wire MagLocks:</strong> Attach the MagLock GX12 wires (from the panel mounts) to <strong>Channels 1 and 2</strong> on the screw terminals (labeled CH1 and CH2).
+                                <br />
+                                <span className="text-gray-400 italic text-sm">Note: If you are using the 4-channel board, Channels 3 and 4 are closer to the side of the PCB and may offer a better physical fit.</span>
                             </li>
                             <li>
-                                <strong>Mount the Board:</strong> Cut a thick piece (approx 6mm) of double-sided tape and place it on the bottom of the project box. Slide the controller board into place, pressing it firmly against the pad so it doesn't slide.
+                                <strong>Mount the Board:</strong> Cut a thick piece of double-sided tape and place it on the bottom of the project box. Slide the controller board into place, pressing it firmly against the pad so it doesn't slide.
+                                <br />
+                                <span className="text-gray-400 italic text-sm">Note: You might need to stack a few pieces of tape to overcome the height of the solder joints or stands on the bottom of the board.</span>
                             </li>
                             <li>
-                                <strong>Connect Jumpers:</strong> Locate the pin headers you soldered earlier and attach the Dupont connectors:
+                                <strong>Install Front Components (Part 2):</strong> Now insert the LED and the Abort Switch GX12 panel mount into the front of the box and tighten them.
+                            </li>
+                            <li>
+                                <strong>Solder Connections:</strong> Locate the 10-pin header you soldered in Part 1. Now we must solder the peripheral wires directly to these header pins. Be careful not to melt the surrounding plastic.
                                 <ul className="list-circle list-inside pl-4 mt-2 space-y-2 text-gray-400">
-                                    <li><strong>LED:</strong> Connect to pins <strong>IO21</strong> and <strong>GND</strong>.</li>
-                                    <li><strong>Abort Switch:</strong> Connect to pins <strong>IO18</strong> and <strong>GND</strong>.</li>
+                                    <li><strong>LED:</strong> Solder the Red wire to pin <strong>IO21</strong> and Black to <strong>GND</strong>.</li>
+                                    <li><strong>Abort Switch:</strong> Solder the Red wire (Signal) to pin <strong>IO15</strong> and Black to <strong>GND</strong>.</li>
                                 </ul>
                             </li>
                             <li>
@@ -522,24 +514,47 @@ export const BuildControllerPage = () => (
                                 <strong>Power Wiring:</strong> Bring the power wires from the DC connector to the green <strong>INPUT</strong> terminal and screw them fit (Red to +, Black to -).
                             </li>
                         </ul> 
-                        
+
+                        <TutorialImage 
+                            src="/images/controller/controller_inside_the_box_soldered.jpg" 
+                            alt="LED and Abort wires soldered to the pin header" 
+                            className="w-full h-auto rounded-md" 
+                        />
+
                         <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
                             <ImageOverlay 
-                                src="/images/controller/two_sizes_of_pvc_sleeves.jpg" 
-                                alt="Two sizes of PVC sleeves" 
+                                src="/images/controller/controller_edge_box.jpg" 
+                                alt="wire the MagLock connectors to the controller terminals" 
                                 className="w-full h-auto rounded-md" 
                             />
                             <ImageOverlay 
-                                src="/images/controller/ring_does_not_fit_correctly.jpg" 
-                                alt="The ring does not fit correctly" 
+                                src="/images/controller/controller_inside_the_box.jpg" 
+                                alt="Flip the controller board over, and mount inside the box" 
                                 className="w-full h-auto rounded-md" 
                             />
                             <ImageOverlay 
-                                src="/images/controller/prepared_gx_connectors.jpg" 
-                                alt="Fully prepared GX panel mount connectors" 
+                                src="/images/controller/controller_with_sticky_pad.jpg" 
+                                alt="Place some double sides pads on the bottom of the controller or project box" 
                                 className="w-full h-auto rounded-md" 
                             />
                         </div>
+                    </div>
+
+                    <div className="bg-gray-800/50 rounded-lg p-6 mt-6">
+                        <h4 className="text-xl font-bold text-white mb-4">Step 10: Final Hardware Test</h4>
+                        <ol className="list-decimal list-outside pl-5 space-y-3 text-gray-300">
+                            <li>
+                                Power up the device using the 12V adapter.
+                            </li>
+                            <li>
+                                <strong>Test again:</strong> Using the Session Manager, re-run the <strong>Hardware Test</strong>.
+                                <ul className="list-disc list-inside pl-4 mt-2 space-y-1 text-gray-400">
+                                    <li>You should see the LED in a "Slow Breath" pattern after booting (indicating the device is READY).</li>
+                                    <li>The LED should fade into a "Medium Pulse" during hardware testing.</li>
+                                    <li>Pressing the <strong>Abort Switch</strong> should immediately end the test session, allowing you to confirm everything works as intended.</li>
+                                </ul>
+                            </li>
+                        </ol>
 
                         <div className="mt-8 p-4 bg-green-900/20 border border-green-600/50 rounded-lg text-center">
                             <p className="text-green-100 font-bold text-xl">

@@ -13,8 +13,7 @@ import { DownloadsPage } from './pages/DownloadPage';
 import { FeaturesSection } from './components/Features';
 import { FaqSection } from './components/FAQ';
 import { BuildControllerPage } from './pages/BuildControllerPage';
-import { OpenSource } from './components/OpenSource';
-import { Contact } from './components/Contact';
+import { Community } from './components/Community';
 import { PageTitle } from './components/PageTitle';
 import { SafetyPage } from './pages/SafetyPage';
 
@@ -117,7 +116,7 @@ const Navbar: React.FC = () => {
 const Footer = () => (
     <footer className="border-t border-gray-700/50 mt-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-gray-500">
-            <p>&copy; 2025 Lobster Project. Released under the MIT License.</p>
+            <p>&copy; 2025 Lobster Project. Released under the Apaches 2.0.</p>
             <p className="mt-1 text-sm">Please play safely and responsibly.</p>
         </div>
     </footer>
@@ -158,9 +157,7 @@ const HomePage: React.FC = () => {
             <SafetyWarning />
             <FeaturesSection />
             <FaqSection />
-            <OpenSource />
-            <Contact />
-
+            <Community />
         </>
     )
 };

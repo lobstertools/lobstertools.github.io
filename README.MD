@@ -4,6 +4,8 @@
 
 # Lobster Lock - Official Website
 
+![AI Assisted](https://img.shields.io/badge/Code-AI_Assisted-success)
+
 This repository contains the source code for the official Lobster Lock website, which provides project information, detailed DIY build guides, and software downloads.
 
 The site is built as a modern static-generated site (SSG) using Vite and React, and styled with Tailwind CSS.

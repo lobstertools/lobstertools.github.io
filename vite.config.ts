@@ -5,6 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 import { imagetools } from 'vite-imagetools'
 import tsconfigPaths from 'vite-tsconfig-paths'
 import path from 'path';
+import fs from 'fs';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -16,6 +17,22 @@ export default defineConfig({
         tsconfigPaths({
             root: '../'
         }),
+        {
+            name: 'github-404-hack',
+            closeBundle() {
+                const outDir = path.resolve(__dirname, './dist');
+                const index = path.resolve(outDir, 'index.html');
+                const fourOhFour = path.resolve(outDir, '404.html');
+
+                if (fs.existsSync(index)) {
+                    fs.copyFileSync(index, fourOhFour);
+                    console.log('✅ Generated 404.html for GitHub Pages');
+                } else {
+                    console.error('☠️ Could not copy index.html for GitHub Pages')
+                    process.exit(-1);
+                }
+            }
+        }        
     ],
 
     root: 'src/', 

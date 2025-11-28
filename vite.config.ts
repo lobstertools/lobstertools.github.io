@@ -12,12 +12,8 @@ export default defineConfig({
     publicDir: '../public',
 
     build: {
-        // This path is now relative to the 'root' (src/), 
-        // so '../dist/' correctly places the build folder
-        // in the project root.
         outDir: '../dist/', 
         emptyOutDir: true,
     },
-    // base: './' is good for static hosting if not at domain root
-    base: './',
+    base: '/',
 });

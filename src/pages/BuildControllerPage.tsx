@@ -206,9 +206,9 @@ export const BuildControllerPage = () => (
                                     Press <strong>"Flash"</strong>. The process should take about 2 minutes; watch the progress bar to confirm completion.
                                 </li>
                             </ol>
-                            <p className="text-xs text-gray-500 italic mb-8 pl-5">
+                            {/* <p className="text-xs text-gray-500 italic mb-8 pl-5">
                                 * If you don't see your programmer or have trouble flashing, please join the support Reddit for assistance.
-                            </p>
+                            </p> */}
 
                             <TutorialImage 
                                 src="/images/controller/session_manager_device_flasher.png" 

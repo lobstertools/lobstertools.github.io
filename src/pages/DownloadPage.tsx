@@ -1,5 +1,4 @@
 import React from 'react';
-import { NavLink } from "react-router-dom";
 import { SafetyWarning } from "../components/SafetyWarning";
 import { ImageOverlay } from "../components/ImageOverlay";
 
@@ -20,13 +19,11 @@ interface DownloadButtonProps {
 }
 
 const DownloadButton: React.FC<DownloadButtonProps> = ({ url, label, Icon, version, date, primary = false }) => {
-    // Check if the URL is valid
     const isAvailable = url && url !== "not-found" && url.trim() !== "";
     
     if (!isAvailable) {
-        // Disabled "Coming Soon" State
         return (
-            <div className={`block ${primary ? 'bg-indigo-900/50 text-indigo-200' : 'bg-gray-800 text-gray-500'} font-bold py-4 px-6 rounded-lg text-center cursor-not-allowed border border-dashed border-gray-700`}>
+            <div className={`block ${primary ? 'bg-indigo-900/50 text-indigo-200' : 'bg-gray-800 text-gray-500'} font-bold py-4 px-6 rounded-lg text-center cursor-not-allowed border border-dashed border-gray-700 h-full`}>
                 <div className="opacity-50"><Icon /></div>
                 <div>{label}</div>
                 <div className="text-sm mt-1 uppercase tracking-wider font-semibold">Coming Soon</div>
@@ -34,8 +31,7 @@ const DownloadButton: React.FC<DownloadButtonProps> = ({ url, label, Icon, versi
         );
     }
 
-    // Active State
-    const baseClasses = "block font-bold py-4 px-6 rounded-lg text-center transition-colors";
+    const baseClasses = "block font-bold py-4 px-6 rounded-lg text-center transition-colors h-full flex flex-col justify-center items-center";
     const colorClasses = primary 
         ? "bg-indigo-600 hover:bg-indigo-700 text-white" 
         : "bg-gray-700 hover:bg-gray-600 text-white";
@@ -52,13 +48,11 @@ const DownloadButton: React.FC<DownloadButtonProps> = ({ url, label, Icon, versi
 };
 
 // --- DATA FROM ENV ---
-
 const appVersion = (import.meta as any).env?.VITE_APP_VERSION || 'latest';
 const appDate = (import.meta as any).env?.VITE_APP_DATE || '';
 const firmwareVersion = (import.meta as any).env?.VITE_FIRMWARE_VERSION || 'latest';
 const firmwareDate = (import.meta as any).env?.VITE_FIRMWARE_DATE || '';
-
-// --- MAIN PAGE ---
+const firmwareZipUrl = (import.meta as any).env?.VITE_FIRMWARE_ZIP_URL;
 
 export const DownloadsPage = () => (
     <>
@@ -121,22 +115,22 @@ export const DownloadsPage = () => (
                 <h2 className="text-3xl font-bold text-white mb-6">Controller Firmware</h2>
                 <div className="bg-gray-800 p-8 rounded-lg">
                     <p className="text-gray-400 mb-6">
-                        Flash this firmware onto your ESP32 controller. For detailed build and flashing instructions, see the <NavLink to="/build-controller" className="underline">Build Controller</NavLink> page.
+                        Flash this firmware onto your ESP32 controller. 
                     </p>
+                   
                     <div className="max-w-md mx-auto"> 
                         <DownloadButton 
-                            label="Download Firmware"
-                            url={(import.meta as any).env?.VITE_FIRMWARE_DOWNLOAD_URL}
+                            label="Download Firmware Bundle (ZIP)"
+                            url={firmwareZipUrl}
                             Icon={ChipIcon}
                             version={firmwareVersion}
                             date={firmwareDate}
-                            primary={true}
                         />
                     </div>
                 </div>
             </section>
 
-            {/* Downloads */}
+            {/* Resources */}
             <section className="my-16">
                 <h2 className="text-3xl font-bold text-white mb-6">Resources</h2>
                 <div className="bg-gray-800 p-8 rounded-lg">

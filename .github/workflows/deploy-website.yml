@@ -89,15 +89,17 @@ jobs:
           RELEASE_JSON=$(gh api "repos/$RELEASE_REPO_OWNER/$FIRMWARE_REPO_NAME/releases/latest" 2>/dev/null || echo "empty")
           
           # Initialize defaults
-          FIRMWARE_URL=""
+          FIRMWARE_ZIP_URL=""
           FIRMWARE_VERSION="0.0.0"
           FIRMWARE_DATE=""
-          FIRMWARE_IS_BETA="true" # Default to true if not found
+          FIRMWARE_IS_BETA="true"
 
           if [ "$RELEASE_JSON" != "empty" ] && [ "$(echo $RELEASE_JSON | jq -r .message)" != "Not Found" ]; then
             echo "Firmware release found. Extracting data..."
             
-            FIRMWARE_URL=$(echo $RELEASE_JSON | jq -r '.assets[] | select(.name | endswith(".bin")) | .browser_download_url // empty')
+            # Look specifically for the ZIP file
+            FIRMWARE_ZIP_URL=$(echo $RELEASE_JSON | jq -r '.assets[] | select(.name | endswith(".zip")) | .browser_download_url // empty')
+            
             FIRMWARE_VERSION=$(echo $RELEASE_JSON | jq -r '.tag_name // "0.0.0"')
             FIRMWARE_DATE_ISO=$(echo $RELEASE_JSON | jq -r '.published_at // empty')
             FIRMWARE_DATE=${FIRMWARE_DATE_ISO:0:10}
@@ -109,7 +111,8 @@ jobs:
              echo "::warning::No release found for Firmware. Setting to Coming Soon mode."
           fi
           
-          echo "VITE_FIRMWARE_DOWNLOAD_URL=$FIRMWARE_URL" >> $GITHUB_ENV
+          # Export the single ZIP url
+          echo "VITE_FIRMWARE_ZIP_URL=$FIRMWARE_ZIP_URL" >> $GITHUB_ENV
           echo "VITE_FIRMWARE_VERSION=$FIRMWARE_VERSION" >> $GITHUB_ENV
           echo "VITE_FIRMWARE_DATE=$FIRMWARE_DATE" >> $GITHUB_ENV
           echo "FIRMWARE_IS_BETA=$FIRMWARE_IS_BETA" >> $GITHUB_ENV

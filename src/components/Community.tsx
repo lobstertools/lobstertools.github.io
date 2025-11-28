@@ -6,14 +6,14 @@ export const Community = () => (
             The Lobster Toolkit is constantly evolving. Get in touch with the community or check out the source code.
         </p>
         <div className="mt-8 flex flex-col sm:flex-row justify-center items-center gap-6">
-            <a 
+            {/* <a 
                 href="https://www.reddit.com/r/lobstertools/" 
                 target="_blank" 
                 rel="noreferrer"
                 className="inline-block w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-lg text-lg transition-colors"
             >
                 Join on /r/lobstertools
-            </a>
+            </a> */}
             <a 
                 href="https://github.com/lobstertools" 
                 target="_blank" 

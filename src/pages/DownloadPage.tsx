@@ -1,6 +1,8 @@
+import React from 'react';
 import { NavLink } from "react-router-dom";
 import { SafetyWarning } from "../components/SafetyWarning";
 
+// --- ICONS ---
 const WindowsIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8 mx-auto mb-2">
       <path d="M3,3H11V11H3V3M13,3H21V11H13V3M3,13H11V21H3V13M13,13H21V21H13V13Z" />
@@ -25,12 +27,57 @@ const ChipIcon = () => (
     </svg>
 );
 
-// Read the version from the environment variable
-const appVersion = (import.meta as any).env?.VITE_APP_VERSION || 'latest';
-const appDate = (import.meta as any).env?.VITE_APP_DATE || ''; // [NEW]
+// --- HELPER COMPONENT ---
 
+interface DownloadButtonProps {
+    url: string;
+    label: string;
+    Icon: React.FC;
+    version: string;
+    date: string;
+    primary?: boolean;
+}
+
+const DownloadButton: React.FC<DownloadButtonProps> = ({ url, label, Icon, version, date, primary = false }) => {
+    // Check if the URL is valid
+    const isAvailable = url && url !== "not-found" && url.trim() !== "";
+    
+    if (!isAvailable) {
+        // Disabled "Coming Soon" State
+        return (
+            <div className={`block ${primary ? 'bg-indigo-900/50 text-indigo-200' : 'bg-gray-800 text-gray-500'} font-bold py-4 px-6 rounded-lg text-center cursor-not-allowed border border-dashed border-gray-700`}>
+                <div className="opacity-50"><Icon /></div>
+                <div>{label}</div>
+                <div className="text-sm mt-1 uppercase tracking-wider font-semibold">Coming Soon</div>
+            </div>
+        );
+    }
+
+    // Active State
+    const baseClasses = "block font-bold py-4 px-6 rounded-lg text-center transition-colors";
+    const colorClasses = primary 
+        ? "bg-indigo-600 hover:bg-indigo-700 text-white" 
+        : "bg-gray-700 hover:bg-gray-600 text-white";
+
+    return (
+        <a href={url} className={`${baseClasses} ${colorClasses}`}>
+            <Icon />
+            <div>{label}</div>
+            <div className={`text-sm mt-1 ${primary ? 'text-indigo-200' : 'text-gray-400'}`}>
+                {version} {date && <span className={`${primary ? 'opacity-75' : 'text-gray-500'} font-normal`}> • {date}</span>}
+            </div>
+        </a>
+    );
+};
+
+// --- DATA FROM ENV ---
+
+const appVersion = (import.meta as any).env?.VITE_APP_VERSION || 'latest';
+const appDate = (import.meta as any).env?.VITE_APP_DATE || '';
 const firmwareVersion = (import.meta as any).env?.VITE_FIRMWARE_VERSION || 'latest';
-const firmwareDate = (import.meta as any).env?.VITE_FIRMWARE_DATE || ''; // [NEW]
+const firmwareDate = (import.meta as any).env?.VITE_FIRMWARE_DATE || '';
+
+// --- MAIN PAGE ---
 
 export const DownloadsPage = () => (
     <>
@@ -63,38 +110,27 @@ export const DownloadsPage = () => (
                         The Session Manager is your control center. Use it to configure timers, manage locks, and monitor your sessions. Available for multiple platforms.
                     </p>
                     <div className="grid md:grid-cols-3 gap-4">
-                        <a 
-                            href={(import.meta as any).env?.VITE_WIN_DOWNLOAD_URL || '#'} 
-                            className="block bg-gray-700 hover:bg-gray-600 text-white font-bold py-4 px-6 rounded-lg text-center transition-colors"
-                        >
-                            <WindowsIcon />
-                            <div>Windows</div>
-                            <div className="text-sm text-gray-400 mt-1">
-                                {appVersion} {appDate && <span className="text-gray-500 font-normal"> • {appDate}</span>}
-                            </div>
-                        </a>
-                        
-                        <a 
-                            href={(import.meta as any).env?.VITE_MAC_DOWNLOAD_URL || '#'} 
-                            className="block bg-gray-700 hover:bg-gray-600 text-white font-bold py-4 px-6 rounded-lg text-center transition-colors"
-                        >
-                            <AppleIcon />
-                            <div>macOS</div>
-                            <div className="text-sm text-gray-400 mt-1">
-                                {appVersion} {appDate && <span className="text-gray-500 font-normal"> • {appDate}</span>}
-                            </div>
-                        </a>
-
-                        <a 
-                            href={(import.meta as any).env?.VITE_LINUX_DOWNLOAD_URL || '#'} 
-                            className="block bg-gray-700 hover:bg-gray-600 text-white font-bold py-4 px-6 rounded-lg text-center transition-colors"
-                        >
-                            <LinuxIcon />
-                            <div>Linux</div>
-                            <div className="text-sm text-gray-400 mt-1">
-                                {appVersion} {appDate && <span className="text-gray-500 font-normal"> • {appDate}</span>}
-                            </div>
-                        </a>
+                        <DownloadButton 
+                            label="Windows"
+                            url={(import.meta as any).env?.VITE_WIN_DOWNLOAD_URL}
+                            Icon={WindowsIcon}
+                            version={appVersion}
+                            date={appDate}
+                        />
+                        <DownloadButton 
+                            label="macOS"
+                            url={(import.meta as any).env?.VITE_MAC_DOWNLOAD_URL}
+                            Icon={AppleIcon}
+                            version={appVersion}
+                            date={appDate}
+                        />
+                        <DownloadButton 
+                            label="Linux"
+                            url={(import.meta as any).env?.VITE_LINUX_DOWNLOAD_URL}
+                            Icon={LinuxIcon}
+                            version={appVersion}
+                            date={appDate}
+                        />
                     </div>
                 </div>
             </section>
@@ -107,16 +143,14 @@ export const DownloadsPage = () => (
                         Flash this firmware onto your ESP32 controller. For detailed build and flashing instructions, see the <NavLink to="/build-controller" className="underline">Build Controller</NavLink> page.
                     </p>
                     <div className="max-w-md mx-auto"> 
-                        <a 
-                            href={(import.meta as any).env?.VITE_FIRMWARE_DOWNLOAD_URL || '#'} 
-                            className="block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-6 rounded-lg text-center transition-colors"
-                        >
-                            <ChipIcon />
-                            <div>Download Firmware</div>
-                            <div className="text-sm text-indigo-200 mt-1">
-                                {firmwareVersion} {firmwareDate && <span className="opacity-75"> • {firmwareDate}</span>}
-                            </div>
-                            </a>
+                        <DownloadButton 
+                            label="Download Firmware"
+                            url={(import.meta as any).env?.VITE_FIRMWARE_DOWNLOAD_URL}
+                            Icon={ChipIcon}
+                            version={firmwareVersion}
+                            date={firmwareDate}
+                            primary={true}
+                        />
                     </div>
                 </div>
             </section>

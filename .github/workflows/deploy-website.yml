@@ -16,12 +16,10 @@ permissions:
 
 jobs:
   build-and-deploy:
-    name: "Build Artifact" # Renamed for clarity
+    name: "Build Artifact"
     runs-on: ubuntu-latest
     
     env:
-      # Set the owner and name of your *other* repos
-      # Renamed for clarity, as it's used for both repos
       RELEASE_REPO_OWNER: ${{ github.repository_owner }}
       APP_REPO_NAME: app
       FIRMWARE_REPO_NAME: firmware
@@ -43,36 +41,36 @@ jobs:
       # --- 2. Fetch Latest 'App' Release ---
       - name: "Fetch Latest Release URLs from 'app'"
         env:
-          # Use the PAT you created as a secret
           GH_TOKEN: ${{ secrets.PAT_FOR_APP_REPO }}
         run: |
           echo "Fetching latest release data from $RELEASE_REPO_OWNER/$APP_REPO_NAME..."
-          RELEASE_JSON=$(gh api "repos/$RELEASE_REPO_OWNER/$APP_REPO_NAME/releases/latest")
+          # Allow failure using || echo empty
+          RELEASE_JSON=$(gh api "repos/$RELEASE_REPO_OWNER/$APP_REPO_NAME/releases/latest" 2>/dev/null || echo "empty")
           
-          if [ -z "$RELEASE_JSON" ] || [ "$(echo $RELEASE_JSON | jq -r .message)" = "Not Found" ]; then
-            echo "::error::No latest release found in $RELEASE_REPO_OWNER/$APP_REPO_NAME. Cannot proceed."
-            exit 1
-          fi
-          
-          echo "Extracting 'app' asset URLs..."
-          MAC_URL=$(echo $RELEASE_JSON | jq -r '.assets[] | select(.name | endswith(".dmg")) | .browser_download_url // "not-found"')
-          WIN_URL=$(echo $RELEASE_JSON | jq -r '.assets[] | select(.name | endswith(".exe")) | .browser_download_url // "not-found"')
-          LINUX_URL=$(echo $RELEASE_JSON | jq -r '.assets[] | select(.name | endswith(".AppImage")) | .browser_download_url // "not-found"')
-          APP_VERSION=$(echo $RELEASE_JSON | jq -r '.tag_name // "0.0.0"')
+          # Initialize defaults
+          MAC_URL=""
+          WIN_URL=""
+          LINUX_URL=""
+          APP_VERSION="0.0.0"
+          APP_DATE=""
+          APP_IS_BETA="true" # Default to true (beta/coming soon) if not found
 
-          # Extract and format date
-          APP_DATE_ISO=$(echo $RELEASE_JSON | jq -r '.published_at // empty')
-          APP_DATE=${APP_DATE_ISO:0:10}
+          if [ "$RELEASE_JSON" != "empty" ] && [ "$(echo $RELEASE_JSON | jq -r .message)" != "Not Found" ]; then
+            echo "Release found. Extracting data..."
+            
+            MAC_URL=$(echo $RELEASE_JSON | jq -r '.assets[] | select(.name | endswith(".dmg")) | .browser_download_url // empty')
+            WIN_URL=$(echo $RELEASE_JSON | jq -r '.assets[] | select(.name | endswith(".exe")) | .browser_download_url // empty')
+            LINUX_URL=$(echo $RELEASE_JSON | jq -r '.assets[] | select(.name | endswith(".AppImage")) | .browser_download_url // empty')
+            APP_VERSION=$(echo $RELEASE_JSON | jq -r '.tag_name // "0.0.0"')
+            APP_DATE_ISO=$(echo $RELEASE_JSON | jq -r '.published_at // empty')
+            APP_DATE=${APP_DATE_ISO:0:10}
 
-          # --- Check for 'beta' in app version ---
-          APP_IS_BETA="false"
-          if [[ "${APP_VERSION,,}" == *beta* ]]; then
-            APP_IS_BETA="true"
-          fi
-          # --- End Check ---
-
-          if [ "$MAC_URL" = "not-found" ] || [ "$WIN_URL" = "not-found" ] || [ "$LINUX_URL" = "not-found" ]; then
-            echo "::warning::Could not find all required 'app' release assets."
+            # Check if version tag contains 'beta'
+            if [[ "${APP_VERSION,,}" != *beta* ]]; then
+               APP_IS_BETA="false"
+            fi
+          else
+            echo "::warning::No release found for App. Setting to Coming Soon mode."
           fi
           
           echo "VITE_MAC_DOWNLOAD_URL=$MAC_URL" >> $GITHUB_ENV
@@ -80,7 +78,7 @@ jobs:
           echo "VITE_LINUX_DOWNLOAD_URL=$LINUX_URL" >> $GITHUB_ENV
           echo "VITE_APP_VERSION=$APP_VERSION" >> $GITHUB_ENV
           echo "VITE_APP_DATE=$APP_DATE" >> $GITHUB_ENV
-          echo "APP_IS_BETA=$APP_IS_BETA" >> $GITHUB_ENV # Pass to build step
+          echo "APP_IS_BETA=$APP_IS_BETA" >> $GITHUB_ENV
 
       # --- 3. Fetch Latest 'Firmware' Release ---
       - name: "Fetch Latest Release URLs from 'firmware'"
@@ -88,92 +86,71 @@ jobs:
           GH_TOKEN: ${{ secrets.PAT_FOR_FIRMWARE_REPO }}
         run: |
           echo "Fetching latest release data from $RELEASE_REPO_OWNER/$FIRMWARE_REPO_NAME..."
-          RELEASE_JSON=$(gh api "repos/$RELEASE_REPO_OWNER/$FIRMWARE_REPO_NAME/releases/latest")
+          RELEASE_JSON=$(gh api "repos/$RELEASE_REPO_OWNER/$FIRMWARE_REPO_NAME/releases/latest" 2>/dev/null || echo "empty")
           
-          if [ -z "$RELEASE_JSON" ] || [ "$(echo $RELEASE_JSON | jq -r .message)" = "Not Found" ]; then
-            echo "::error::No latest release found in $RELEASE_REPO_OWNER/$FIRMWARE_REPO_NAME. Cannot proceed."
-            exit 1
-          fi
-          
-          echo "Extracting 'firmware' asset URLs..."
-          FIRMWARE_URL=$(echo $RELEASE_JSON | jq -r '.assets[] | select(.name | endswith(".bin")) | .browser_download_url // "not-found"')
-          FIRMWARE_VERSION=$(echo $RELEASE_JSON | jq -r '.tag_name // "0.0.0"')
+          # Initialize defaults
+          FIRMWARE_URL=""
+          FIRMWARE_VERSION="0.0.0"
+          FIRMWARE_DATE=""
+          FIRMWARE_IS_BETA="true" # Default to true if not found
 
-          # Extract and format date
-          FIRMWARE_DATE_ISO=$(echo $RELEASE_JSON | jq -r '.published_at // empty')
-          FIRMWARE_DATE=${FIRMWARE_DATE_ISO:0:10}
+          if [ "$RELEASE_JSON" != "empty" ] && [ "$(echo $RELEASE_JSON | jq -r .message)" != "Not Found" ]; then
+            echo "Firmware release found. Extracting data..."
+            
+            FIRMWARE_URL=$(echo $RELEASE_JSON | jq -r '.assets[] | select(.name | endswith(".bin")) | .browser_download_url // empty')
+            FIRMWARE_VERSION=$(echo $RELEASE_JSON | jq -r '.tag_name // "0.0.0"')
+            FIRMWARE_DATE_ISO=$(echo $RELEASE_JSON | jq -r '.published_at // empty')
+            FIRMWARE_DATE=${FIRMWARE_DATE_ISO:0:10}
 
-          # --- Check for 'beta' in firmware version ---
-          FIRMWARE_IS_BETA="false"
-          if [[ "${FIRMWARE_VERSION,,}" == *beta* ]]; then
-            FIRMWARE_IS_BETA="true"
-          fi
-          # --- End Check ---
-
-          if [ "$FIRMWARE_URL" = "not-found" ]; then
-            # Updating warning to match the file type we're looking for
-            echo "::warning::Could not find required 'firmware' release asset ending in .bin."
+            if [[ "${FIRMWARE_VERSION,,}" != *beta* ]]; then
+               FIRMWARE_IS_BETA="false"
+            fi
+          else
+             echo "::warning::No release found for Firmware. Setting to Coming Soon mode."
           fi
           
           echo "VITE_FIRMWARE_DOWNLOAD_URL=$FIRMWARE_URL" >> $GITHUB_ENV
           echo "VITE_FIRMWARE_VERSION=$FIRMWARE_VERSION" >> $GITHUB_ENV
           echo "VITE_FIRMWARE_DATE=$FIRMWARE_DATE" >> $GITHUB_ENV
-          echo "FIRMWARE_IS_BETA=$FIRMWARE_IS_BETA" >> $GITHUB_ENV # Pass to build step
+          echo "FIRMWARE_IS_BETA=$FIRMWARE_IS_BETA" >> $GITHUB_ENV
 
       # --- 4. Build Website ---
       - name: "Build Vite Website"
-        # Make beta status from previous steps available
         env:
           APP_IS_BETA: ${{ env.APP_IS_BETA }}
           FIRMWARE_IS_BETA: ${{ env.FIRMWARE_IS_BETA }}
         run: |
-          echo "Starting build with the following environment variables:"
-          echo "VITE_APP_VERSION=$VITE_APP_VERSION"
-          echo "VITE_FIRMWARE_VERSION=$VITE_FIRMWARE_VERSION"
-          echo "VITE_APP_DATE=$VITE_APP_DATE"
-          echo "VITE_FIRMWARE_DATE=$VITE_FIRMWARE_DATE"
-          echo "VITE_MAC_DOWNLOAD_URL=$VITE_MAC_DOWNLOAD_URL"
-          echo "VITE_WIN_DOWNLOAD_URL=$VITE_WIN_DOWNLOAD_URL"
-          echo "VITE_LINUX_DOWNLOAD_URL=$VITE_LINUX_DOWNLOAD_URL"
-          echo "VITE_FIRMWARE_DOWNLOAD_URL=$VITE_FIRMWARE_DOWNLOAD_URL"
-          
-          
-          # --- Set final VITE_IS_BETA if *either* is beta ---
+          # --- Set final VITE_IS_BETA if *either* is beta or *either* is missing ---
           IS_BETA="false"
           if [[ "$APP_IS_BETA" == "true" ]] || [[ "$FIRMWARE_IS_BETA" == "true" ]]; then
             IS_BETA="true"
-            echo "::warning::A beta release was detected (App: $APP_IS_BETA, Firmware: $FIRMWARE_IS_BETA). A warning banner will be shown."
+            echo "::notice::Beta mode enabled (Releases missing or tagged beta)."
           fi
           echo "VITE_IS_BETA=$IS_BETA" >> $GITHUB_ENV
-          # --- End Set ---
-
-          # yarn build will now pick up VITE_IS_BETA
+          
           yarn build
 
-      # --- 5. Upload Website Artifact (Commented Out) ---
-      # - name: "Upload GitHub Pages artifact"
-      #   uses: actions/upload-pages-artifact@v3
-      #   with:
-      #     path: 'dist' 
+      # --- 5. Upload Website Artifact ---
+      - name: "Upload GitHub Pages artifact"
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'dist' 
 
-  # --- DEPLOY JOB (Commented Out) ---
-  
-  # deploy:
-  #   name: "Deploy to GitHub Pages"
-  #   needs: build-and-deploy # This job runs after 'build-and-deploy'
-  #   runs-on: ubuntu-latest
+  # --- DEPLOY JOB ---
+  deploy:
+    name: "Deploy to GitHub Pages"
+    needs: build-and-deploy
+    runs-on: ubuntu-latest
     
-  #   # Grant permissions for the deploy job
-  #   permissions:
-  #     pages: write      # to deploy to Pages
-  #     id-token: write   # to verify the deployment originates from an Actions workflow
+    permissions:
+      pages: write
+      id-token: write
       
-  #   # Configure the environment for GitHub Pages
-  #   environment:
-  #     name: github-pages
-  #     url: ${{ steps.deployment.outputs.page_url }}
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
       
-  #   steps:
-  #     - name: "Deploy to GitHub Pages"
-  #       id: deployment
-  #       uses: actions/deploy-pages@v4 # This action does the deployment
+    steps:
+      - name: "Deploy to GitHub Pages"
+        id: deployment
+        uses: actions/deploy-pages@v4

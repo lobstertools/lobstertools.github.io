@@ -2,8 +2,7 @@ import { SafetyWarning } from '../components/SafetyWarning';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
-// Helper component for icons (or you can use a real icon library like react-icons)
-// Using emoji for simplicity here
+// Helper component for icons
 const FeatureIcon = ({ emoji, label }: { emoji: string; label: string }) => (
   <div
     className="flex-shrink-0 w-16 h-16 rounded-full bg-gray-900 flex items-center justify-center mr-6"
@@ -20,7 +19,7 @@ interface Feature {
   description: string | React.ReactNode;
 }
 
-// We'll define our features as data to make the layout cleaner
+// Data Definition
 const features: {
   physical: Feature[];
   firmware: Feature[];
@@ -142,43 +141,48 @@ type TabCategory = 'physical' | 'firmware' | 'transparency';
 export const SafetyPage = () => {
   const [activeTab, setActiveTab] = useState<TabCategory>('physical');
 
+  // Updated TabButton
   const TabButton = ({
     label,
     category,
   }: {
     label: string;
     category: TabCategory;
-  }) => (
-    <button
-      onClick={() => setActiveTab(category)}
-      className={`
-        px-6 py-3 text-lg font-medium rounded-t-lg
-        focus:outline-none focus:ring-2 focus:ring-indigo-500
-        ${
-          activeTab === category
-            ? 'bg-gray-800 text-white' 
-            : 'bg-gray-900 text-gray-400 hover:bg-gray-700 hover:text-gray-200'
-        }
-      `}
-    >
-      {label}
-    </button>
-  );
+  }) => {
+    const isActive = activeTab === category;
+    
+    return (
+      <button
+        onClick={() => setActiveTab(category)}
+        className={`
+          relative w-full py-4 px-4 text-sm font-bold uppercase tracking-wider transition-all duration-200
+          border-b sm:border-b-0 sm:border-r border-gray-700 last:border-0
+          focus:outline-none 
+          
+          /* Active State: Matches the content bg (gray-800) and uses white text */
+          ${isActive 
+            ? 'bg-gray-800 text-white shadow-[inset_0_2px_0_0_#6366f1]' 
+            : 'bg-gray-900 text-gray-500 hover:bg-gray-800/50 hover:text-gray-300'
+          }
+        `}
+      >
+        {label}
+      </button>
+    );
+  };
 
   // --- Helper function to render a feature list ---
   const renderFeatureList = (list: Feature[]) => (
-    <div className="space-y-8">
+    <div className="space-y-8 animate-fade-in">
       {list.map((feature) => (
-        <div key={feature.title} className="flex items-start p-4">
-          <FeatureIcon emoji={feature.emoji} label={feature.title} />
+        <div key={feature.title} className="flex flex-col sm:flex-row items-center sm:items-start p-4 text-center sm:text-left">
+          <div className="mb-4 sm:mb-0">
+             <FeatureIcon emoji={feature.emoji} label={feature.title} />
+          </div>
           <div>
             <h3 className="text-xl font-bold text-white mb-2">
               {feature.title}
             </h3>
-            {/* Conditionally render:
-              - If it's a string, use dangerouslySetInnerHTML for HTML tags
-              - If it's JSX (like our NavLink), render it directly
-            */}
             {typeof feature.description === 'string' ? (
               <p
                 className="text-gray-300"
@@ -201,14 +205,14 @@ export const SafetyPage = () => {
         <h1 className="text-4xl font-bold text-white text-center mb-6">
           Safety by Design
         </h1>
-        <p className="text-xl text-center text-gray-400 mb-12 max-w-3xl mx-auto">
+        <p className="text-xl text-center text-gray-400 mb-12 max-w-3xl mx-auto px-4">
           A deep dive into the safety features and redundant failsafes built
           into the Lobster toolkit.
         </p>
 
         {/* Intro Section */}
-        <section className="my-16 max-w-5xl mx-auto">
-          <div className="bg-gray-800 p-8 rounded-lg shadow-xl">
+        <section className="my-16 max-w-5xl mx-auto px-4 sm:px-6">
+          <div className="bg-gray-800 p-8 rounded-lg shadow-xl border border-gray-700">
             <h2 className="text-3xl font-bold text-white mb-6">
               Our Design Philosophy
             </h2>
@@ -227,20 +231,34 @@ export const SafetyPage = () => {
 
         <SafetyWarning />
 
-        <section className="my-16 max-w-5xl mx-auto">
-          {/* Tab Navigation */}
-          <div className="flex space-x-1 border-b border-gray-700">
-            <TabButton label="Physical & Hardware" category="physical" />
-            <TabButton label="Firmware & Software" category="firmware" />
-            <TabButton label="Transparency" category="transparency" />
-          </div>
+        <section className="my-16 max-w-5xl mx-auto px-4 sm:px-6">
+          
+          {/* Main Card Container 
+              This holds both the Tabs (Header) and the Content (Body)
+              giving it a unified, solid look.
+          */}
+          <div className="rounded-xl overflow-hidden shadow-2xl border border-gray-700">
+            
+            {/* Tab Header 
+                - bg-gray-900 (Darker than content)
+                - Flex column on mobile (stacked)
+                - Flex row on desktop
+            */}
+            <div className="bg-gray-900 flex flex-col sm:flex-row border-b border-gray-700">
+              <TabButton label="Physical & Hardware" category="physical" />
+              <TabButton label="Firmware & Software" category="firmware" />
+              <TabButton label="Transparency" category="transparency" />
+            </div>
 
-          {/* Tab Content */}
-          <div className="bg-gray-800 p-8 rounded-b-lg shadow-xl">
-            {activeTab === 'physical' && renderFeatureList(features.physical)}
-            {activeTab === 'firmware' && renderFeatureList(features.firmware)}
-            {activeTab === 'transparency' &&
-              renderFeatureList(features.transparency)}
+            {/* Tab Content 
+                - bg-gray-800 (Lighter, matches active tab)
+            */}
+            <div className="bg-gray-800 p-6 sm:p-8">
+              {activeTab === 'physical' && renderFeatureList(features.physical)}
+              {activeTab === 'firmware' && renderFeatureList(features.firmware)}
+              {activeTab === 'transparency' &&
+                renderFeatureList(features.transparency)}
+            </div>
           </div>
         </section>
       </div>

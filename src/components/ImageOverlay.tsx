@@ -1,15 +1,15 @@
-// src/components/ImageOverlay.tsx
-
 import { useState, useEffect } from 'react';
 
 // Define the props for the component
 interface ImageOverlayProps {
     src: string;
+    srcSet?: string;
+    sizes?: string;
     alt: string;
     className?: string;
 }
 
-export const ImageOverlay = ({ src, alt, className }: ImageOverlayProps) => {
+export const ImageOverlay = ({ src, srcSet, sizes, alt, className }: ImageOverlayProps) => {
     const [isOpen, setIsOpen] = useState(false);
 
     // Effect to handle the 'Escape' key press
@@ -55,6 +55,9 @@ export const ImageOverlay = ({ src, alt, className }: ImageOverlayProps) => {
                 <div className="relative group"> {/* Inner wrapper for image + hover */}
                     <img 
                         src={src} 
+                        srcSet={srcSet}
+                        // Default sizes: 100vw on mobile, approx 600px on desktop if not provided
+                        sizes={sizes || "(max-width: 768px) 100vw, 600px"}
                         alt={alt} 
                         className="w-full h-auto object-cover rounded-md bg-gray-700"
                         onError={(e) => (e.currentTarget.src = `https://placehold.co/600x400/2D3748/E2E8F0?text=${alt.replace(/\s/g, '+')}`)}
@@ -94,6 +97,8 @@ export const ImageOverlay = ({ src, alt, className }: ImageOverlayProps) => {
                     >
                         <img 
                             src={src} 
+                            srcSet={srcSet}
+                            sizes="90vw" // Always large in overlay mode
                             alt={alt} 
                             className="block max-w-[90vw] max-h-[90vh] rounded-lg shadow-2xl"
                             onError={(e) => (e.currentTarget.src = `https://placehold.co/1200x800/2D3748/E2E8F0?text=${alt.replace(/\s/g, '+')}`)}

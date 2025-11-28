@@ -2,6 +2,78 @@ import { SafetyWarning } from "../components/SafetyWarning";
 import { ImageOverlay } from "../components/ImageOverlay";
 import { TutorialImage } from "../components/TutorialImage";
 
+// --- IMAGES ---
+
+// Header
+import finishedMagLockSrc from '@/images/maglock/finished_maglock.webp?w=1200&format=webp';
+import finishedMagLockSrcSet from '@/images/maglock/finished_maglock.webp?w=400;800;1200&format=webp&as=srcset';
+
+// Prelim
+import disassembledMagnetSrc from '@/images/maglock/disassembled_magnet.webp?w=1200&format=webp';
+import disassembledMagnetSrcSet from '@/images/maglock/disassembled_magnet.webp?w=400;800;1200&format=webp&as=srcset';
+import doorMagnet1Src from '@/images/maglock/door_magnet_1.webp?w=1200&format=webp';
+import doorMagnet1SrcSet from '@/images/maglock/door_magnet_1.webp?w=400;800;1200&format=webp&as=srcset';
+import doorMagnet2Src from '@/images/maglock/door_magnet_2.webp?w=1200&format=webp';
+import doorMagnet2SrcSet from '@/images/maglock/door_magnet_2.webp?w=400;800;1200&format=webp&as=srcset';
+import roughDiscSrc from '@/images/maglock/discs_rough.webp?w=1200&format=webp';
+import roughDiscSrcSet from '@/images/maglock/discs_rough.webp?w=400;800;1200&format=webp&as=srcset';
+import sandedDiscSrc from '@/images/maglock/discs_sanded.webp?w=1200&format=webp';
+import sandedDiscSrcSet from '@/images/maglock/discs_sanded.webp?w=400;800;1200&format=webp&as=srcset';
+
+// Part 1: Housing
+import sleeveNoHoleSrc from '@/images/maglock/sleeve_without_hole.webp?w=1200&format=webp';
+import sleeveNoHoleSrcSet from '@/images/maglock/sleeve_without_hole.webp?w=400;800;1200&format=webp&as=srcset';
+import twoSizesSrc from '@/images/maglock/two_sizes_of_pvc_sleeves.webp?w=1200&format=webp';
+import twoSizesSrcSet from '@/images/maglock/two_sizes_of_pvc_sleeves.webp?w=400;800;1200&format=webp&as=srcset';
+import ringWrongSrc from '@/images/maglock/ring_does_not_fit_correctly.webp?w=1200&format=webp';
+import ringWrongSrcSet from '@/images/maglock/ring_does_not_fit_correctly.webp?w=400;800;1200&format=webp&as=srcset';
+import customSpacerSrc from '@/images/maglock/custom_and_off-the_shelve_spacer.webp?w=1200&format=webp';
+import customSpacerSrcSet from '@/images/maglock/custom_and_off-the_shelve_spacer.webp?w=400;800;1200&format=webp&as=srcset';
+import sleeveHoleSrc from '@/images/maglock/sleeve_with_hole.webp?w=1200&format=webp';
+import sleeveHoleSrcSet from '@/images/maglock/sleeve_with_hole.webp?w=400;800;1200&format=webp&as=srcset';
+import wireHoleSrc from '@/images/maglock/wire_through_the_hole.webp?w=1200&format=webp';
+import wireHoleSrcSet from '@/images/maglock/wire_through_the_hole.webp?w=400;800;1200&format=webp&as=srcset';
+
+// Part 1: Diode
+import diodeSchematicSrc from '@/images/maglock/diode_schematic.webp?w=1200&format=webp';
+import diodeSchematicSrcSet from '@/images/maglock/diode_schematic.webp?w=400;800;1200&format=webp&as=srcset';
+import diodesSrc from '@/images/maglock/1N4007_diodes.webp?w=1200&format=webp';
+import diodesSrcSet from '@/images/maglock/1N4007_diodes.webp?w=400;800;1200&format=webp&as=srcset';
+import magnetDiodeSrc from '@/images/maglock/magnet_with_diode.webp?w=1200&format=webp';
+import magnetDiodeSrcSet from '@/images/maglock/magnet_with_diode.webp?w=400;800;1200&format=webp&as=srcset';
+import magnetWiresSrc from '@/images/maglock/magnet_with_diode_and_wires.webp?w=1200&format=webp';
+import magnetWiresSrcSet from '@/images/maglock/magnet_with_diode_and_wires.webp?w=400;800;1200&format=webp&as=srcset';
+import magnetInsulationSrc from '@/images/maglock/magnet_with_insulation.webp?w=1200&format=webp';
+import magnetInsulationSrcSet from '@/images/maglock/magnet_with_insulation.webp?w=400;800;1200&format=webp&as=srcset';
+import zipTieSrc from '@/images/maglock/zip_tie_strain_relief.webp?w=1200&format=webp';
+import zipTieSrcSet from '@/images/maglock/zip_tie_strain_relief.webp?w=400;800;1200&format=webp&as=srcset';
+
+// Part 2: Armature
+import centerPunchSrc from '@/images/maglock/center_punched.webp?w=1200&format=webp';
+import centerPunchSrcSet from '@/images/maglock/center_punched.webp?w=400;800;1200&format=webp&as=srcset';
+import countersunkSrc from '@/images/maglock/drilled_countersunk_hole.webp?w=1200&format=webp';
+import countersunkSrcSet from '@/images/maglock/drilled_countersunk_hole.webp?w=400;800;1200&format=webp&as=srcset';
+import armatureEye2Src from '@/images/maglock/armature_with_eye_2.webp?w=1200&format=webp';
+import armatureEye2SrcSet from '@/images/maglock/armature_with_eye_2.webp?w=400;800;1200&format=webp&as=srcset';
+import armatureScrewSrc from '@/images/maglock/armature_screw.webp?w=1200&format=webp';
+import armatureScrewSrcSet from '@/images/maglock/armature_screw.webp?w=400;800;1200&format=webp&as=srcset';
+import drilledHoleSrc from '@/images/maglock/drilled_hole.webp?w=1200&format=webp';
+import drilledHoleSrcSet from '@/images/maglock/drilled_hole.webp?w=400;800;1200&format=webp&as=srcset';
+import armatureEye1Src from '@/images/maglock/armature_with_eye_1.webp?w=1200&format=webp';
+import armatureEye1SrcSet from '@/images/maglock/armature_with_eye_1.webp?w=400;800;1200&format=webp&as=srcset';
+
+// Part 3: Final
+import rearEyeSrc from '@/images/maglock/assembled_rear_eye_bolt.webp?w=1200&format=webp';
+import rearEyeSrcSet from '@/images/maglock/assembled_rear_eye_bolt.webp?w=400;800;1200&format=webp&as=srcset';
+import threadLockSrc from '@/images/maglock/thread_lock_inside_magnet.webp?w=1200&format=webp';
+import threadLockSrcSet from '@/images/maglock/thread_lock_inside_magnet.webp?w=400;800;1200&format=webp&as=srcset';
+import finalTopSrc from '@/images/maglock/final_assembly_top.webp?w=1200&format=webp';
+import finalTopSrcSet from '@/images/maglock/final_assembly_top.webp?w=400;800;1200&format=webp&as=srcset';
+import finalSingleSrc from '@/images/maglock/final_assembly_single.webp?w=1200&format=webp';
+import finalSingleSrcSet from '@/images/maglock/final_assembly_single.webp?w=400;800;1200&format=webp&as=srcset';
+import finalPlaceSrc from '@/images/maglock/final_assembly_with_place.webp?w=1200&format=webp';
+import finalPlaceSrcSet from '@/images/maglock/final_assembly_with_place.webp?w=400;800;1200&format=webp&as=srcset';
+
 export const BuildMagLockPage = () => (
     <>
         <div className="py-12">
@@ -11,7 +83,8 @@ export const BuildMagLockPage = () => (
             </p>
 
             <TutorialImage 
-                src="/images/maglock/finished_maglock.jpg" 
+                src={finishedMagLockSrc}
+                srcSet={finishedMagLockSrcSet}
                 alt="Finished Lobster MagLock" 
                 wrapperClassName="mb-12"
                 className="w-full max-w-4xl mx-auto h-auto rounded-lg shadow-lg bg-gray-700"
@@ -189,7 +262,8 @@ export const BuildMagLockPage = () => (
                             <p className="text-gray-300 mb-4">Once you have the bare magnet, check its center. You may find a small, spring-loaded pusher pin. Unscrew the central hex screw to remove the pin and spring. This gives you a longer internal thread, allowing a deeper, more secure eye bolt connection.</p>
                             
                             <TutorialImage
-                                src="/images/maglock/disassembled_magnet.jpg" 
+                                src={disassembledMagnetSrc}
+                                srcSet={disassembledMagnetSrcSet}
                                 alt="Disassembled magnet" 
                                 wrapperClassName="mb-4"
                                 className="w-full h-auto rounded-md"
@@ -197,12 +271,14 @@ export const BuildMagLockPage = () => (
 
                             <div className="my-4 grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <ImageOverlay 
-                                    src="/images/maglock/door_magnet_1.jpg" 
+                                    src={doorMagnet1Src}
+                                    srcSet={doorMagnet1SrcSet}
                                     alt="Off-the-shelf door magnet example" 
                                     className="w-full h-auto rounded-md"
                                 />
                                 <ImageOverlay
-                                    src="/images/maglock/door_magnet_2.jpg" 
+                                    src={doorMagnet2Src}
+                                    srcSet={doorMagnet2SrcSet}
                                     alt="Off-the-shelf door magnet example" 
                                     className="w-full h-auto rounded-md"
                                 />
@@ -227,12 +303,14 @@ export const BuildMagLockPage = () => (
                             
                             <div className="my-4 grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <ImageOverlay
-                                    src="/images/maglock/discs_rough.jpg" 
+                                    src={roughDiscSrc}
+                                    srcSet={roughDiscSrcSet}
                                     alt="Laser-cut armature discs with rough edges" 
                                     className="w-full h-auto rounded-md"
                                 />
                                 <ImageOverlay 
-                                    src="/images/maglock/discs_sanded.jpg" 
+                                    src={sandedDiscSrc}
+                                    srcSet={sandedDiscSrcSet}
                                     alt="Armature discs after sanding" 
                                     className="w-full h-auto rounded-md"
                                 />
@@ -257,24 +335,28 @@ export const BuildMagLockPage = () => (
                                 </div>
                                 
                                 <TutorialImage 
-                                    src="/images/maglock/sleeve_without_hole.jpg" 
+                                    src={sleeveNoHoleSrc}
+                                    srcSet={sleeveNoHoleSrcSet}
                                     alt="Installing conversion ring, note how it leaves room for the back assembly" 
                                     className="w-full h-auto rounded-md"
                                 />
                                 
                                 <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
                                     <ImageOverlay 
-                                        src="/images/maglock/two_sizes_of_pvc_sleeves.jpg" 
+                                        src={twoSizesSrc}
+                                        srcSet={twoSizesSrcSet}
                                         alt="Two sizes of PVC sleeves" 
                                         className="w-full h-auto rounded-md" 
                                     />
                                     <ImageOverlay 
-                                        src="/images/maglock/ring_does_not_fit_correctly.jpg" 
+                                        src={ringWrongSrc}
+                                        srcSet={ringWrongSrcSet}
                                         alt="The ring does not fit correctly" 
                                         className="w-full h-auto rounded-md" 
                                     />
                                     <ImageOverlay 
-                                        src="/images/maglock/custom_and_off-the_shelve_spacer.jpg" 
+                                        src={customSpacerSrc}
+                                        srcSet={customSpacerSrcSet}
                                         alt="Both custom-cut and off-the-shelf spacers" 
                                         className="w-full h-auto rounded-md" 
                                     />
@@ -299,12 +381,14 @@ export const BuildMagLockPage = () => (
 
                                 <div className="my-4 grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <ImageOverlay
-                                        src="/images/maglock/sleeve_with_hole.jpg" 
+                                        src={sleeveHoleSrc}
+                                        srcSet={sleeveHoleSrcSet}
                                         alt="PVC sleeve and inset with drilled hole" 
                                         className="w-full h-auto rounded-md"
                                     />
                                     <ImageOverlay 
-                                        src="/images/maglock/wire_through_the_hole.jpg" 
+                                        src={wireHoleSrc}
+                                        srcSet={wireHoleSrcSet}
                                         alt="Feeding wire through drilled hole" 
                                         className="w-full h-auto rounded-md"
                                     />
@@ -329,7 +413,8 @@ export const BuildMagLockPage = () => (
 
                                 <div className="my-12 flex justify-center w-full">
                                     <TutorialImage 
-                                        src="/images/maglock/diode_schematic.jpg" 
+                                        src={diodeSchematicSrc}
+                                        srcSet={diodeSchematicSrcSet}
                                         alt="Diode schematic diagram" 
                                         wrapperClassName="w-full md:w-1/2"
                                         className="w-full h-auto rounded-md"
@@ -342,12 +427,14 @@ export const BuildMagLockPage = () => (
 
                                 <div className="my-4 grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <ImageOverlay 
-                                        src="/images/maglock/1N4007_diodes.jpg" 
+                                        src={diodesSrc}
+                                        srcSet={diodesSrcSet}
                                         alt="Selection of 1N4007 diodes" 
                                         className="w-full h-auto rounded-md"
                                     />
                                     <ImageOverlay
-                                        src="/images/maglock/magnet_with_diode.jpg" 
+                                        src={magnetDiodeSrc}
+                                        srcSet={magnetDiodeSrcSet}
                                         alt="Soldered flyback diode on magnet terminals" 
                                         className="w-full h-auto rounded-md"
                                     />
@@ -377,12 +464,14 @@ export const BuildMagLockPage = () => (
 
                                 <div className="my-4 grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <ImageOverlay 
-                                        src="/images/maglock/magnet_with_diode_and_wires.jpg" 
+                                        src={magnetWiresSrc}
+                                        srcSet={magnetWiresSrcSet}
                                         alt="Soldering wires to magnet terminals" 
                                         className="w-full h-auto rounded-md"
                                     />
                                     <ImageOverlay
-                                        src="/images/maglock/magnet_with_insulation.jpg" 
+                                        src={magnetInsulationSrc}
+                                        srcSet={magnetInsulationSrcSet}
                                         alt="Magnet terminals with diode and wires insulated" 
                                         className="w-full h-auto rounded-md"
                                     />
@@ -406,7 +495,8 @@ export const BuildMagLockPage = () => (
                                 <p className="text-gray-300 mb-4">On the inside of the housing, place a cable tie tightly around the main electrical wire. Cut the long end off, leaving the small square tab in place. This tab will act as a "stop," preventing the wire from being pulled directly from the solder joints if the cord is tugged.</p>
                                 
                                 <TutorialImage 
-                                    src="/images/maglock/zip_tie_strain_relief.jpg" 
+                                    src={zipTieSrc}
+                                    srcSet={zipTieSrcSet}
                                     alt="Strain relief" 
                                     className="w-full h-auto rounded-md"
                                 />
@@ -430,7 +520,8 @@ export const BuildMagLockPage = () => (
                                 <p className="text-gray-300">Use the center finder to locate the center of the 50mm galvanized iron disc. Mark this spot with the center punch.</p>
 
                                 <TutorialImage 
-                                    src="/images/maglock/center_punched.jpg" 
+                                    src={centerPunchSrc}
+                                    srcSet={centerPunchSrcSet}
                                     alt="Center punched armature disc" 
                                     className="w-full h-auto rounded-md"
                                 />
@@ -447,7 +538,8 @@ export const BuildMagLockPage = () => (
                                 <p className="text-gray-300 mb-4">On one side of the disc, use the countersink drill bit to create a recess. Drill deep enough that the head of the screw sits perfectly flush on the surface of the disc.</p>
                                 
                                 <TutorialImage 
-                                    src="/images/maglock/drilled_countersunk_hole.jpg" 
+                                    src={countersunkSrc}
+                                    srcSet={countersunkSrcSet}
                                     alt="Countersunk center hole" 
                                     className="w-full h-auto rounded-md"
                                 />
@@ -462,24 +554,28 @@ export const BuildMagLockPage = () => (
                                 <p className="text-gray-300 mb-4">Insert the conical screw through the countersunk side of the disc. Apply a drop of thread lock, then screw the eye bolt onto the threads until it is tight against the disc.</p>
                                 
                                 <TutorialImage 
-                                    src="/images/maglock/armature_with_eye_2.jpg" 
+                                    src={armatureEye2Src}
+                                    srcSet={armatureEye2SrcSet}
                                     alt="Assembled Armature" 
                                     className="w-full h-auto rounded-md"
                                 />
 
                                 <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
                                     <ImageOverlay 
-                                        src="/images/maglock/armature_screw.jpg" 
+                                        src={armatureScrewSrc}
+                                        srcSet={armatureScrewSrcSet}
                                         alt="Armature screw" 
                                         className="w-full h-auto rounded-md" 
                                     />
                                     <ImageOverlay 
-                                        src="/images/maglock/drilled_hole.jpg" 
+                                        src={drilledHoleSrc}
+                                        srcSet={drilledHoleSrcSet}
                                         alt="Drilled hole" 
                                         className="w-full h-auto rounded-md" 
                                     />
                                     <ImageOverlay 
-                                        src="/images/maglock/armature_with_eye_1.jpg" 
+                                        src={armatureEye1Src}
+                                        srcSet={armatureEye1SrcSet}
                                         alt="Armature with eye bolt" 
                                         className="w-full h-auto rounded-md" 
                                     />
@@ -522,7 +618,8 @@ export const BuildMagLockPage = () => (
                                 <p className="text-gray-300 mb-4">Apply a drop of thread lock to the threads and screw on the M8 nut. Ensure the washers are properly aligned and do not skew as you tighten the nut firmly.</p>
                                 
                                 <TutorialImage 
-                                    src="/images/maglock/assembled_rear_eye_bolt.jpg" 
+                                    src={rearEyeSrc}
+                                    srcSet={rearEyeSrcSet}
                                     alt="Rear eye bolt assembly" 
                                     className="w-full h-auto rounded-md"
                                 />
@@ -536,7 +633,8 @@ export const BuildMagLockPage = () => (
                                 <p className="text-gray-300 mb-4">Apply a few drops of thread lock inside the threaded hole on the back of the electromagnet. This prevents the liquid from being pushed out as you tighten the bolt. Firmly screw your rear eye bolt assembly into the back of the magnet, which is now seated inside its PVC housing. Cover the central hole on the magnet's face with a small piece of electrical tape to catch any excess thread lock.</p>
                                 
                                 <TutorialImage 
-                                    src="/images/maglock/thread_lock_inside_magnet.jpg" 
+                                    src={threadLockSrc}
+                                    srcSet={threadLockSrcSet}
                                     alt="Thread lock inside the magnet" 
                                     wrapperClassName="mb-4"
                                     className="w-full h-auto rounded-md"
@@ -562,7 +660,8 @@ export const BuildMagLockPage = () => (
                     <p className="text-gray-300 mb-4">To make it functional, attach an appropriate electrical connector (such as a barrel jack or aviation plug) to the other end of the cable. This will allow you to easily connect it to your 12v power supply and a control system, such as a simple timer, a remote switch, or control software.</p>
 
                     <TutorialImage 
-                        src="/images/maglock/finished_maglock.jpg" 
+                        src={finishedMagLockSrc}
+                        srcSet={finishedMagLockSrcSet}
                         alt="Final assembly" 
                         wrapperClassName="mb-4"
                         className="w-full h-auto rounded-md"
@@ -570,17 +669,20 @@ export const BuildMagLockPage = () => (
 
                     <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                         <ImageOverlay 
-                            src="/images/maglock/final_assembly_top.jpg" 
+                            src={finalTopSrc}
+                            srcSet={finalTopSrcSet}
                             alt="Final assembly top view" 
                             className="w-full h-auto rounded-md" 
                         />
                         <ImageOverlay 
-                            src="/images/maglock/final_assembly_single.jpg" 
+                            src={finalSingleSrc}
+                            srcSet={finalSingleSrcSet}
                             alt="Final assembly single view" 
                             className="w-full h-auto rounded-md" 
                         />
                         <ImageOverlay 
-                            src="/images/maglock/final_assembly_with_place.jpg" 
+                            src={finalPlaceSrc}
+                            srcSet={finalPlaceSrcSet}
                             alt="Final assembly with armature plate" 
                             className="w-full h-auto rounded-md" 
                         />

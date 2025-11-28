@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+        "baseUrl": ".",
         "target": "ESNext",
         "lib": ["DOM", "DOM.Iterable", "ESNext"],
         "module": "ESNext",
@@ -21,10 +22,18 @@
 
         /* Module interoperability */
         "esModuleInterop": true,
-        "allowSyntheticDefaultImports": true
+        "allowSyntheticDefaultImports": true,
+        "paths": {
+             "@/images/*": ["./src/images/*"]
+        }
     },
     "include": [
-        "src"
+        "src",
+        "vite-env.d.ts"
+    ],
+    "exclude": [
+        "vite.config.ts",
+        "node_modules"
     ],
     "references": [{ "path": "./tsconfig.node.json" }]
 }

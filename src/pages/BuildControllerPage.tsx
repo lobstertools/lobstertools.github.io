@@ -2,6 +2,63 @@ import { ImageOverlay } from "../components/ImageOverlay";
 import { SafetyWarning } from "../components/SafetyWarning";
 import { TutorialImage } from "../components/TutorialImage";
 
+// --- IMAGES ---
+
+// Header
+import finishedControllerSrc from '@/images/controller/finished_controller.webp?w=1200&format=webp';
+import finishedControllerSrcSet from '@/images/controller/finished_controller.webp?w=400;800;1200&format=webp&as=srcset';
+
+// Part 1
+import headersSrc from '@/images/controller/diymore_mosfet_board_headers.webp?w=1200&format=webp';
+import headersSrcSet from '@/images/controller/diymore_mosfet_board_headers.webp?w=400;800;1200&format=webp&as=srcset';
+import headers4chSrc from '@/images/controller/diymore_mosfet_board_4ch.webp?w=1200&format=webp';
+import headers4chSrcSet from '@/images/controller/diymore_mosfet_board_4ch.webp?w=400;800;1200&format=webp&as=srcset';
+import serialSrc from '@/images/controller/diymore_mosfet_board_serial.webp?w=1200&format=webp';
+import serialSrcSet from '@/images/controller/diymore_mosfet_board_serial.webp?w=400;800;1200&format=webp&as=srcset';
+
+// Part 2
+import powerConnSrc from '@/images/controller/power_connector.webp?w=1200&format=webp';
+import powerConnSrcSet from '@/images/controller/power_connector.webp?w=400;800;1200&format=webp&as=srcset';
+import firstLifeWiringSrc from '@/images/controller/diymore_first_life_wiring.webp?w=1200&format=webp';
+import firstLifeWiringSrcSet from '@/images/controller/diymore_first_life_wiring.webp?w=400;800;1200&format=webp&as=srcset';
+import flasherSrc from '@/images/controller/session_manager_device_flasher.webp?w=1200&format=webp';
+import flasherSrcSet from '@/images/controller/session_manager_device_flasher.webp?w=400;800;1200&format=webp&as=srcset';
+import provisionSrc from '@/images/controller/session_manager_device_provision.webp?w=1200&format=webp';
+import provisionSrcSet from '@/images/controller/session_manager_device_provision.webp?w=400;800;1200&format=webp&as=srcset';
+import hardwareTestSrc from '@/images/controller/session_manager_hardware_test.webp?w=1200&format=webp';
+import hardwareTestSrcSet from '@/images/controller/session_manager_hardware_test.webp?w=400;800;1200&format=webp&as=srcset';
+
+// Part 3
+import cutWiresSrc from '@/images/controller/switch_and_led_cut_to_size.webp?w=1200&format=webp';
+import cutWiresSrcSet from '@/images/controller/switch_and_led_cut_to_size.webp?w=400;800;1200&format=webp&as=srcset';
+import prepGxSrc from '@/images/controller/prepared_gx_connectors.webp?w=1200&format=webp';
+import prepGxSrcSet from '@/images/controller/prepared_gx_connectors.webp?w=400;800;1200&format=webp&as=srcset';
+
+// Part 4
+import disassembledGxSrc from '@/images/controller/disassembled_gcx_connector.webp?w=1200&format=webp';
+import disassembledGxSrcSet from '@/images/controller/disassembled_gcx_connector.webp?w=400;800;1200&format=webp&as=srcset';
+import abortSwitchSrc from '@/images/controller/abort_switch.webp?w=1200&format=webp';
+import abortSwitchSrcSet from '@/images/controller/abort_switch.webp?w=400;800;1200&format=webp&as=srcset';
+
+// Part 5
+import enclosureHolesSrc from '@/images/controller/enclosure_with_holes.webp?w=1200&format=webp';
+import enclosureHolesSrcSet from '@/images/controller/enclosure_with_holes.webp?w=400;800;1200&format=webp&as=srcset';
+import enclosureTemplateSrc from '@/images/controller/enclosure_with_template.webp?w=1200&format=webp';
+import enclosureTemplateSrcSet from '@/images/controller/enclosure_with_template.webp?w=400;800;1200&format=webp&as=srcset';
+import enclosureMarkingsSrc from '@/images/controller/enclosure_with_markings.webp?w=1200&format=webp';
+import enclosureMarkingsSrcSet from '@/images/controller/enclosure_with_markings.webp?w=400;800;1200&format=webp&as=srcset';
+
+// Part 6
+import insideSolderedSrc from '@/images/controller/controller_inside_the_box_soldered.webp?w=1200&format=webp';
+import insideSolderedSrcSet from '@/images/controller/controller_inside_the_box_soldered.webp?w=400;800;1200&format=webp&as=srcset';
+import edgeBoxSrc from '@/images/controller/controller_edge_box.webp?w=1200&format=webp';
+import edgeBoxSrcSet from '@/images/controller/controller_edge_box.webp?w=400;800;1200&format=webp&as=srcset';
+import insideBoxSrc from '@/images/controller/controller_inside_the_box.webp?w=1200&format=webp';
+import insideBoxSrcSet from '@/images/controller/controller_inside_the_box.webp?w=400;800;1200&format=webp&as=srcset';
+import stickyPadSrc from '@/images/controller/controller_with_sticky_pad.webp?w=1200&format=webp';
+import stickyPadSrcSet from '@/images/controller/controller_with_sticky_pad.webp?w=400;800;1200&format=webp&as=srcset';
+
+
 export const BuildControllerPage = () => (
     <>
         <div className="py-12">
@@ -11,7 +68,8 @@ export const BuildControllerPage = () => (
             </p>
 
             <TutorialImage 
-                src="/images/controller/finished_controller.jpg" 
+                src={finishedControllerSrc}
+                srcSet={finishedControllerSrcSet}
                 alt="Finished Lobster MagLock Controller" 
                 wrapperClassName="mb-12"
                 className="w-full h-auto rounded-lg shadow-lg bg-gray-700"
@@ -92,19 +150,22 @@ export const BuildControllerPage = () => (
                         </ul>
                         
                         <TutorialImage
-                            src="/images/controller/diymore_mosfet_board_headers.jpg" 
+                            src={headersSrc}
+                            srcSet={headersSrcSet}
                             alt="Diymore Mosfet Board with headers soldered"  
                             wrapperClassName="mb-4"
                             className="w-full h-auto rounded-md"
                         />
                         <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-6">
                             <ImageOverlay 
-                                src="/images/controller/diymore_mosfet_board_4ch.jpg" 
+                                src={headers4chSrc}
+                                srcSet={headers4chSrcSet}
                                 alt="Diymore Mosfet Board with provided headers" 
                                 className="w-full h-auto rounded-md"
                             />
                             <ImageOverlay
-                                src="/images/controller/diymore_mosfet_board_serial.jpg" 
+                                src={serialSrc}
+                                srcSet={serialSrcSet}
                                 alt="Diymore Mosfet Board with serial programmer connected" 
                                 className="w-full h-auto rounded-md"
                             />
@@ -153,12 +214,14 @@ export const BuildControllerPage = () => (
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <ImageOverlay 
-                                src="/images/controller/power_connector.jpg" 
+                                src={powerConnSrc}
+                                srcSet={powerConnSrcSet}
                                 alt="DC Power Connector"
                                 className="w-full h-auto rounded-md"
                             />
                             <ImageOverlay
-                                src="/images/controller/diymore_first_life_wiring.jpg" 
+                                src={firstLifeWiringSrc}
+                                srcSet={firstLifeWiringSrcSet}
                                 alt="Diymore Mosfet Board fully wired for testing" 
                                 className="w-full h-auto rounded-md"
                             />
@@ -206,12 +269,10 @@ export const BuildControllerPage = () => (
                                     Press <strong>"Flash"</strong>. The process should take about 2 minutes; watch the progress bar to confirm completion.
                                 </li>
                             </ol>
-                            {/* <p className="text-xs text-gray-500 italic mb-8 pl-5">
-                                * If you don't see your programmer or have trouble flashing, please join the support Reddit for assistance.
-                            </p> */}
-
+                           
                             <TutorialImage 
-                                src="/images/controller/session_manager_device_flasher.png" 
+                                src={flasherSrc}
+                                srcSet={flasherSrcSet}
                                 alt="Session Manager Device Flasher" 
                                 wrapperClassName="mb-4"
                                 className="w-full h-auto rounded-md"
@@ -242,7 +303,8 @@ export const BuildControllerPage = () => (
                             </ol>
 
                             <TutorialImage 
-                                src="/images/controller/session_manager_device_provision.png" 
+                                src={provisionSrc}
+                                srcSet={provisionSrcSet}
                                 alt="Session Manager in Devic Provision Mode" 
                                 wrapperClassName="mb-4"
                                 className="w-full h-auto rounded-md"
@@ -266,7 +328,8 @@ export const BuildControllerPage = () => (
                             </ol>
 
                             <TutorialImage 
-                                src="/images/controller/session_manager_hardware_test.png" 
+                                src={hardwareTestSrc}
+                                srcSet={hardwareTestSrcSet}
                                 alt="Session Manager in Hardware Test Mode" 
                                 wrapperClassName="mb-4"
                                 className="w-full h-auto rounded-md"
@@ -297,12 +360,14 @@ export const BuildControllerPage = () => (
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                                 <ImageOverlay 
-                                    src="/images/controller/switch_and_led_cut_to_size.jpg" 
+                                    src={cutWiresSrc}
+                                    srcSet={cutWiresSrcSet}
                                     alt="Switch and LED wires cut to size"
                                     className="w-full h-auto rounded-md"
                                 />
                                 <ImageOverlay
-                                    src="/images/controller/prepared_gx_connectors.jpg" 
+                                    src={prepGxSrc}
+                                    srcSet={prepGxSrcSet}
                                      alt="Fully prepared GX panel mount connectors"
                                     className="w-full h-auto rounded-md"
                                 />
@@ -377,12 +442,14 @@ export const BuildControllerPage = () => (
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <ImageOverlay 
-                                    src="/images/controller/disassembled_gcx_connector.jpg" 
+                                    src={disassembledGxSrc}
+                                    srcSet={disassembledGxSrcSet}
                                     alt="GX12 Connector Disassembled" 
                                     className="w-full h-auto rounded-md"
                                 />
                                 <ImageOverlay
-                                    src="/images/controller/abort_switch.jpg" 
+                                    src={abortSwitchSrc}
+                                    srcSet={abortSwitchSrcSet}
                                     alt="The abort switch with GX12 connector" 
                                     className="w-full h-auto rounded-md"
                                 />
@@ -451,19 +518,22 @@ export const BuildControllerPage = () => (
                         </div>
 
                         <TutorialImage 
-                            src="/images/controller/enclosure_with_holes.jpg" 
+                            src={enclosureHolesSrc}
+                            srcSet={enclosureHolesSrcSet}
                             alt="Drilled enclosure" 
                             wrapperClassName="mb-4"
                             className="w-full h-auto rounded-md"
                         />
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <ImageOverlay 
-                                src="/images/controller/enclosure_with_template.jpg" 
+                                src={enclosureTemplateSrc}
+                                srcSet={enclosureTemplateSrcSet}
                                 alt="Enclosure with template attached using tape" 
                                 className="w-full h-auto rounded-md"
                             />
                             <ImageOverlay
-                                src="/images/controller/enclosure_with_markings.jpg" 
+                                src={enclosureMarkingsSrc}
+                                srcSet={enclosureMarkingsSrcSet}
                                 alt="Enclosure with markings made with center punch" 
                                 className="w-full h-auto rounded-md"
                             />
@@ -516,24 +586,28 @@ export const BuildControllerPage = () => (
                         </ul> 
 
                         <TutorialImage 
-                            src="/images/controller/controller_inside_the_box_soldered.jpg" 
+                            src={insideSolderedSrc}
+                            srcSet={insideSolderedSrcSet}
                             alt="LED and Abort wires soldered to the pin header" 
                             className="w-full h-auto rounded-md" 
                         />
 
                         <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
                             <ImageOverlay 
-                                src="/images/controller/controller_edge_box.jpg" 
+                                src={edgeBoxSrc}
+                                srcSet={edgeBoxSrcSet}
                                 alt="wire the MagLock connectors to the controller terminals" 
                                 className="w-full h-auto rounded-md" 
                             />
                             <ImageOverlay 
-                                src="/images/controller/controller_inside_the_box.jpg" 
+                                src={insideBoxSrc}
+                                srcSet={insideBoxSrcSet}
                                 alt="Flip the controller board over, and mount inside the box" 
                                 className="w-full h-auto rounded-md" 
                             />
                             <ImageOverlay 
-                                src="/images/controller/controller_with_sticky_pad.jpg" 
+                                src={stickyPadSrc}
+                                srcSet={stickyPadSrcSet}
                                 alt="Place some double sides pads on the bottom of the controller or project box" 
                                 className="w-full h-auto rounded-md" 
                             />

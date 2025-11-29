@@ -138,6 +138,13 @@ const features: {
 
 type TabCategory = 'physical' | 'firmware' | 'transparency';
 
+// Helper map for display titles
+const categoryTitles: Record<TabCategory, string> = {
+  physical: "Physical & Hardware",
+  firmware: "Firmware & Software",
+  transparency: "Transparency"
+};
+
 export const SafetyPage = () => {
   const [activeTab, setActiveTab] = useState<TabCategory>('physical');
 
@@ -159,7 +166,7 @@ export const SafetyPage = () => {
           border-b sm:border-b-0 sm:border-r border-gray-700 last:border-0
           focus:outline-none 
           
-          /* Active State: Matches the content bg (gray-800) and uses white text */
+          /* Active State */
           ${isActive 
             ? 'bg-gray-800 text-white shadow-[inset_0_2px_0_0_#6366f1]' 
             : 'bg-gray-900 text-gray-500 hover:bg-gray-800/50 hover:text-gray-300'
@@ -201,19 +208,19 @@ export const SafetyPage = () => {
 
   return (
     <>
-      <div className="py-12">
-        <h1 className="text-4xl font-bold text-white text-center mb-6">
+      <div className="py-6 md:py-12">
+        <h1 className="text-2xl md:text-4xl font-bold text-white text-center mb-4 md:mb-6">
           Safety by Design
         </h1>
-        <p className="text-xl text-center text-gray-400 mb-12 max-w-3xl mx-auto px-4">
+        <p className="text-lg md:text-xl text-center text-gray-400 mb-8 md:mb-12 max-w-3xl mx-auto px-4">
           A deep dive into the safety features and redundant failsafes built
           into the Lobster toolkit.
         </p>
 
         {/* Intro Section */}
-        <section className="my-16 max-w-5xl mx-auto px-4 sm:px-6">
-          <div className="bg-gray-800 p-8 rounded-lg shadow-xl border border-gray-700">
-            <h2 className="text-3xl font-bold text-white mb-6">
+        <section className="my-8 md:my-16 max-w-5xl mx-auto px-4 sm:px-6">
+          <div className="bg-gray-800 p-6 md:p-8 rounded-lg shadow-xl border border-gray-700">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 md:mb-6">
               Our Design Philosophy
             </h2>
             <p className="text-gray-300 mb-4">
@@ -231,35 +238,44 @@ export const SafetyPage = () => {
 
         <SafetyWarning />
 
-        <section className="my-16 max-w-5xl mx-auto px-4 sm:px-6">
+        <section className="my-8 md:my-16 max-w-5xl mx-auto px-4 sm:px-6">
           
-          {/* Main Card Container 
-              This holds both the Tabs (Header) and the Content (Body)
-              giving it a unified, solid look.
-          */}
-          <div className="rounded-xl overflow-hidden shadow-2xl border border-gray-700">
-            
-            {/* Tab Header 
-                - bg-gray-900 (Darker than content)
-                - Flex column on mobile (stacked)
-                - Flex row on desktop
-            */}
-            <div className="bg-gray-900 flex flex-col sm:flex-row border-b border-gray-700">
-              <TabButton label="Physical & Hardware" category="physical" />
-              <TabButton label="Firmware & Software" category="firmware" />
-              <TabButton label="Transparency" category="transparency" />
+          {/* --- MOBILE VIEW: STACKED LIST --- */}
+          <div className="md:hidden space-y-12">
+             {(['physical', 'firmware', 'transparency'] as TabCategory[]).map((category) => (
+                <div key={category} className="bg-gray-800 rounded-xl overflow-hidden shadow-2xl border border-gray-700">
+                   {/* Mobile Section Header */}
+                   <div className="bg-gray-900 border-b border-gray-700 p-4">
+                      <h3 className="text-lg font-bold text-indigo-100 uppercase tracking-wider text-center">
+                         {categoryTitles[category]}
+                      </h3>
+                   </div>
+                   {/* Mobile List Content */}
+                   <div className="p-4">
+                      {renderFeatureList(features[category])}
+                   </div>
+                </div>
+             ))}
+          </div>
+
+          {/* --- DESKTOP VIEW: TABS --- */}
+          <div className="hidden md:block rounded-xl overflow-hidden shadow-2xl border border-gray-700">
+            {/* Tab Header */}
+            <div className="bg-gray-900 flex flex-row border-b border-gray-700">
+              <TabButton label={categoryTitles.physical} category="physical" />
+              <TabButton label={categoryTitles.firmware} category="firmware" />
+              <TabButton label={categoryTitles.transparency} category="transparency" />
             </div>
 
-            {/* Tab Content 
-                - bg-gray-800 (Lighter, matches active tab)
-            */}
-            <div className="bg-gray-800 p-6 sm:p-8">
+            {/* Tab Content */}
+            <div className="bg-gray-800 p-8">
               {activeTab === 'physical' && renderFeatureList(features.physical)}
               {activeTab === 'firmware' && renderFeatureList(features.firmware)}
               {activeTab === 'transparency' &&
                 renderFeatureList(features.transparency)}
             </div>
           </div>
+
         </section>
       </div>
     </>

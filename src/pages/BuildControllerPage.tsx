@@ -61,9 +61,9 @@ import stickyPadSrcSet from '@/images/controller/controller_with_sticky_pad.webp
 
 export const BuildControllerPage = () => (
     <>
-        <div className="py-12">
-            <h1 className="text-4xl font-bold text-white text-center mb-6">Build the MagLock Controller</h1>
-            <p className="text-xl text-center text-gray-400 mb-12 max-w-3xl mx-auto">
+        <div className="py-6 md:py-12">
+            <h1 className="text-2xl md:text-4xl font-bold text-white text-center mb-4 md:mb-6">Build the MagLock Controller</h1>
+            <p className="text-lg md:text-xl text-center text-gray-400 mb-8 md:mb-12 max-w-3xl mx-auto px-4">
                 The "brains" of your Lobster system. This guide follows a <strong>"First Life" workflow</strong>: we will get the MagLock working with the absolute minimum wiring first to give you a quick win, then add the advanced features.
             </p>
 
@@ -71,22 +71,22 @@ export const BuildControllerPage = () => (
                 src={finishedControllerSrc}
                 srcSet={finishedControllerSrcSet}
                 alt="Finished Lobster MagLock Controller" 
-                wrapperClassName="mb-12"
+                wrapperClassName="mb-8 md:mb-12"
                 className="w-full h-auto rounded-lg shadow-lg bg-gray-700"
             />
             
             <SafetyWarning />
 
             {/* Introduction */}
-            <section className="my-16">
-                <div className="bg-gray-800 p-8 rounded-lg">
-                    <h2 className="text-3xl font-bold text-white mb-6 flex items-center">
+            <section className="my-8 md:my-16">
+                <div className="bg-gray-800 p-4 md:p-8 rounded-lg">
+                    <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 md:mb-6 flex items-center">
                         Overview
                     </h2>
                     <p className="text-gray-300 mb-6 leading-relaxed">This guide covers the assembly of the Lobster MagLock Controller using the DIYMORE ESP32 WiFi MOS Switch Module.</p>
                     
-                    <div className="bg-blue-900/20 border border-blue-700/50 rounded p-4 mb-6">
-                        <h4 className="text-blue-100 font-bold mb-2">ℹ️ A Note on Board Versions</h4>
+                    <div className="bg-blue-900/20 border border-blue-700/50 rounded p-3 md:p-4 mb-6">
+                        <h4 className="text-blue-100 font-bold mb-2 text-sm md:text-base">ℹ️ A Note on Board Versions</h4>
                         <p className="text-blue-200 text-sm mb-2">
                             This board is available in <strong>2-channel</strong> and <strong>4-channel</strong> versions. We recommend the <strong>2-channel</strong> version as it's slightly narrower, making for a better fit in the project box.
                         </p>
@@ -98,13 +98,13 @@ export const BuildControllerPage = () => (
             </section>
 
             {/* Materials & Tools */}
-            <section className="my-16">
-                <div className="bg-gray-800 p-8 rounded-lg">
-                    <h2 className="text-3xl font-bold text-white mb-6">Required Materials & Tools</h2>
+            <section className="my-8 md:my-16">
+                <div className="bg-gray-800 p-4 md:p-8 rounded-lg">
+                    <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">Required Materials & Tools</h2>
                     <div className="grid md:grid-cols-2 gap-8">
                         <div>
-                            <h3 className="text-2xl font-bold text-white mb-4">Materials</h3>
-                            <ul className="list-disc list-outside pl-5 space-y-2 text-gray-300">
+                            <h3 className="text-xl md:text-2xl font-bold text-white mb-4">Materials</h3>
+                            <ul className="list-disc list-inside md:list-outside md:pl-5 space-y-2 text-gray-300 text-sm md:text-base">
                                 <li>1 x DIYMORE ESP32 MOS Switch Module</li>
                                 <li>1 x Plastic Project Box (min 100x60x25mm)</li>
                                 <li>1 x 12V Power Supply (2A+)</li>
@@ -115,8 +115,8 @@ export const BuildControllerPage = () => (
                             </ul>
                         </div>
                         <div>
-                            <h3 className="text-2xl font-bold text-white mb-4">Tools</h3>
-                            <ul className="list-disc list-outside pl-5 space-y-2 text-gray-300">
+                            <h3 className="text-xl md:text-2xl font-bold text-white mb-4">Tools</h3>
+                            <ul className="list-disc list-inside md:list-outside md:pl-5 space-y-2 text-gray-300 text-sm md:text-base">
                                 <li>Soldering Iron & Solder</li>
                                 <li>USB-to-Serial (UART) Programmer</li>
                                 <li>Drill & Bits (6mm, 8mm, 11mm)</li>
@@ -129,22 +129,22 @@ export const BuildControllerPage = () => (
             </section>
 
             {/* --- PART 1: BOARD PREP --- */}
-            <section className="my-16">
-                <div className="bg-gray-800 p-8 rounded-lg">
-                    <h2 className="text-3xl font-bold text-white mb-6">Part 1: Solder PCB Headers</h2>
+            <section className="my-8 md:my-16">
+                <div className="bg-gray-800 p-4 md:p-8 rounded-lg">
+                    <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 md:mb-6">Part 1: Solder PCB Headers</h2>
                     <p className="text-gray-300 mb-8">
                         We start by preparing the ESP32 board itself. You will solder the necessary pin headers to the PCB, enabling us to flash the firmware now and connect our peripherals later.
                     </p>
 
-                    <div className="bg-gray-800/50 rounded-lg p-6">
-                        <h4 className="text-xl font-bold text-white mb-4">Step 1: Solder the Headers</h4>
+                    <div className="md:bg-gray-800/50 md:rounded-lg md:p-6">
+                        <h4 className="text-lg md:text-xl font-bold text-white mb-4">Step 1: Solder the Headers</h4>
                         
                         <div className="bg-blue-900/20 border border-blue-700/50 rounded p-3 mb-4">
                             <p className="text-blue-200 text-sm">
                                 <strong>Tip:</strong> Solder just one pin first to check alignment. Once straight, solder the rest.
                             </p>
                         </div>
-                        <ul className="list-disc list-outside pl-5 space-y-2 text-gray-300 mb-6">
+                        <ul className="list-disc list-inside md:list-outside md:pl-5 space-y-2 text-gray-300 mb-6 text-sm md:text-base">
                             <li><strong>Single Row (6-pin):</strong> Solder to the holes above the ESP32 (Required for Flashing).</li>
                             <li><strong>Double Row (10-pin):</strong> Solder the entire block to the side holes (Required later for LED/Switch wiring).</li>
                         </ul>
@@ -156,7 +156,7 @@ export const BuildControllerPage = () => (
                             wrapperClassName="mb-4"
                             className="w-full h-auto rounded-md"
                         />
-                        <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                             <ImageOverlay 
                                 src={headers4chSrc}
                                 srcSet={headers4chSrcSet}
@@ -175,9 +175,9 @@ export const BuildControllerPage = () => (
             </section>
 
             {/* --- PART 2: FIRST LIFE TEST --- */}
-            <section className="my-16">
-                <div className="bg-gray-800 p-8 rounded-lg">
-                    <h2 className="text-3xl font-bold text-white mb-6">Part 2: The "First Life" Test</h2>
+            <section className="my-8 md:my-16">
+                <div className="bg-gray-800 p-4 md:p-8 rounded-lg">
+                    <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 md:mb-6">Part 2: The "First Life" Test</h2>
                     <p className="text-gray-300 mb-8">
                          Before building the full enclosure, we verify the core electronics. In this phase, you will connect basic power, flash the Lobster firmware, and provision the device over WiFi to ensure the "brain" is alive and working.
                     </p>
@@ -185,13 +185,13 @@ export const BuildControllerPage = () => (
                     <div className="space-y-6">
                         
                         {/* Step 2: Basic Power Wiring */}
-                        <div className="bg-gray-800/50 rounded-lg p-6">
-                            <h4 className="text-xl font-bold text-white mb-4">Step 2: Basic Power Wiring</h4>
-                            <p className="text-gray-300 mb-6">
+                        <div className="md:bg-gray-800/50 md:rounded-lg md:p-6">
+                            <h4 className="text-lg md:text-xl font-bold text-white mb-4">Step 2: Basic Power Wiring</h4>
+                            <p className="text-gray-300 mb-6 text-sm md:text-base">
                                 We are going to skip the LED and Abort Switch wiring for now. Let's just connect power and flash the board to see it come alive.
                             </p>
 
-                            <ol className="list-decimal list-outside pl-5 space-y-3 text-gray-300 mb-6">
+                            <ol className="list-decimal list-inside md:list-outside md:pl-5 space-y-3 text-gray-300 mb-6 text-sm md:text-base">
                                 <li>
                                     <strong>Prepare your wires:</strong> Cut the DC Jack wires to about 10 cm in length and strip about 5mm of insulation from the ends. Also strip about 5mm of insulation from the end of your MagLock wires. Tin them with solder to ensure a clean connection.
                                 </li>
@@ -212,7 +212,7 @@ export const BuildControllerPage = () => (
                                 </p>
                             </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                             <ImageOverlay 
                                 src={powerConnSrc}
                                 srcSet={powerConnSrcSet}
@@ -229,15 +229,15 @@ export const BuildControllerPage = () => (
                         </div>
 
                         {/* Step 3: Flash & Test */}
-                        <div className="bg-gray-800/50 rounded-lg p-6">
-                            <h4 className="text-xl font-bold text-white mb-6">Step 3: Flash, Provision & Test</h4>
+                        <div className="md:bg-gray-800/50 md:rounded-lg md:p-6">
+                            <h4 className="text-lg md:text-xl font-bold text-white mb-6">Step 3: Flash, Provision & Test</h4>
                             
                             {/* Critical Warnings */}
-                            <div className="bg-red-900/20 border border-red-700/50 rounded p-4 mb-8">
-                                <h5 className="text-red-100 font-bold flex items-center gap-2 mb-2">
+                            <div className="bg-red-900/20 border border-red-700/50 rounded p-3 md:p-4 mb-8">
+                                <h5 className="text-red-100 font-bold flex items-center gap-2 mb-2 text-sm md:text-base">
                                     <span>⚠️</span> CRITICAL POWER WARNINGS
                                 </h5>
-                                <ul className="list-disc list-outside pl-5 space-y-2 text-red-100 text-sm">
+                                <ul className="list-disc list-inside md:list-outside md:pl-5 space-y-2 text-red-100 text-sm">
                                     <li>
                                         <strong>Voltage Conflict:</strong> Never connect the serial programming tool (5V) and the external 12V power supply at the same time. Connecting these together can damage your controller board or destroy your computer's USB port.
                                     </li>
@@ -248,8 +248,8 @@ export const BuildControllerPage = () => (
                             </div>
 
                             {/* 3a. Flashing */}
-                            <h5 className="text-lg font-bold text-white mb-3">3a. Flashing the Firmware</h5>
-                            <ol className="list-decimal list-outside pl-5 space-y-3 text-gray-300 mb-6">
+                            <h5 className="text-base md:text-lg font-bold text-white mb-3">3a. Flashing the Firmware</h5>
+                            <ol className="list-decimal list-inside md:list-outside md:pl-5 space-y-3 text-gray-300 mb-6 text-sm md:text-base">
                                 <li>
                                     Connect the USB Programmer to the 6-pin header, <strong>making sure to swap RX and TX</strong> (RX on the board goes to TX on the programmer, and vice versa).
                                 </li>
@@ -279,8 +279,8 @@ export const BuildControllerPage = () => (
                             />
 
                             {/* 3b. Power & Provisioning */}
-                            <h5 className="text-lg font-bold text-white mb-3">3b. Power Up & Provisioning</h5>
-                            <ol className="list-decimal list-outside pl-5 space-y-3 text-gray-300 mb-8">
+                            <h5 className="text-base md:text-lg font-bold text-white mb-3">3b. Power Up & Provisioning</h5>
+                            <ol className="list-decimal list-inside md:list-outside md:pl-5 space-y-3 text-gray-300 mb-8 text-sm md:text-base">
                                 <li>
                                     <strong>Unplug the USB programmer</strong> from your computer. Now, plug in your <strong>12V power adapter</strong>. This reboots the ESP32 and provides sufficient power for the MagLocks.
                                 </li>
@@ -292,7 +292,7 @@ export const BuildControllerPage = () => (
                                 </li>
                                 <li>
                                     Select <strong>"Provision"</strong>. You will be asked to configure the device:
-                                    <ul className="list-disc list-inside pl-4 mt-2 space-y-1 text-gray-400">
+                                    <ul className="list-disc list-inside md:list-outside md:pl-4 mt-2 space-y-1 text-gray-400">
                                         <li><strong>WiFi:</strong> Enter your network credentials.</li>
                                         <li><strong>Channels:</strong> Select which channels to enable (1, 2, 3, 4). If you are building the standard 2-lock box, enable 1 and 2. If you have the 4-channel board, enable 3 and 4 as these align best with the position of the front panel connectors.</li>
                                     </ul>
@@ -311,8 +311,8 @@ export const BuildControllerPage = () => (
                             />
 
                             {/* 3c. Hardware Test */}
-                            <h5 className="text-lg font-bold text-white mb-3">3c. Hardware Test</h5>
-                            <ol className="list-decimal list-outside pl-5 space-y-3 text-gray-300 mb-8">
+                            <h5 className="text-base md:text-lg font-bold text-white mb-3">3c. Hardware Test</h5>
+                            <ol className="list-decimal list-inside md:list-outside md:pl-5 space-y-3 text-gray-300 mb-8 text-sm md:text-base">
                                 <li>
                                     Verify the status tag is green and reads <strong>"Ready"</strong>.
                                 </li>
@@ -341,24 +341,24 @@ export const BuildControllerPage = () => (
             </section>
 
             {/* --- PART 3: INTERNAL WIRING --- */}
-            <section className="my-16">
-                <div className="bg-gray-800 p-8 rounded-lg">
-                    <h2 className="text-3xl font-bold text-white mb-6">Part 3: Internal Wiring Preparation</h2>
+            <section className="my-8 md:my-16">
+                <div className="bg-gray-800 p-4 md:p-8 rounded-lg">
+                    <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 md:mb-6">Part 3: Internal Wiring Preparation</h2>
                     <p className="text-gray-300 mb-8">
                         Now we prepare the components that will live <em>inside</em> the enclosure. You will cut, tin, and solder wires to the LED and the rear side of the panel-mount connectors, getting everything ready for the final assembly.
                     </p>
 
                     <div className="space-y-6">
-                        <div className="bg-gray-800/50 rounded-lg p-6">
-                            <h4 className="text-xl font-bold text-white mb-6">Step 4: Prepare the LED</h4>
+                        <div className="md:bg-gray-800/50 md:rounded-lg md:p-6">
+                            <h4 className="text-lg md:text-xl font-bold text-white mb-6">Step 4: Prepare the LED</h4>
 
-                            <ul className="list-disc list-outside pl-5 space-y-2 text-gray-300 mb-8">
+                            <ul className="list-disc list-inside md:list-outside md:pl-5 space-y-2 text-gray-300 mb-8 text-sm md:text-base">
                                 <li>Cut the LED wires to approximately 10-12cm in length. This gives you enough slack to reach the board when mounted.</li>
                                 <li>Strip about 5mm of insulation from the ends and tin them with solder.</li>
                                 <li><strong>Optional:</strong> Use heat shrink tubing to bundle the wires together for a cleaner look.</li>
                             </ul>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-8">
                                 <ImageOverlay 
                                     src={cutWiresSrc}
                                     srcSet={cutWiresSrcSet}
@@ -374,8 +374,8 @@ export const BuildControllerPage = () => (
                             </div>
                         </div>
 
-                        <div className="bg-gray-800/50 rounded-lg p-6">
-                            <h4 className="text-xl font-bold text-white mb-6">Step 5: MagLock & Abort Switch Panel Mounts</h4>
+                        <div className="md:bg-gray-800/50 md:rounded-lg md:p-6">
+                            <h4 className="text-lg md:text-xl font-bold text-white mb-6">Step 5: MagLock & Abort Switch Panel Mounts</h4>
                             <p className="text-gray-300 mb-4">
                                 You need to prepare 3 panel mount connectors: one for the Abort Switch (Signal) and two for the MagLocks (Power).
                             </p>
@@ -386,16 +386,16 @@ export const BuildControllerPage = () => (
                                 </p>
                             </div>
 
-                            <ol className="list-decimal list-outside pl-5 space-y-4 text-gray-300">
+                            <ol className="list-decimal list-inside md:list-outside md:pl-5 space-y-4 text-gray-300 text-sm md:text-base">
                                 <li>
                                     <strong>Abort Switch Input:</strong> Cut two wires (Red/Black) to about 12cm. Solder them to the rear lugs of one GX12 connector.
-                                    <ul className="list-disc list-inside pl-4 mt-1 text-gray-400 text-sm">
+                                    <ul className="list-disc list-inside md:list-outside md:pl-4 mt-1 text-gray-400 text-sm">
                                         <li>Note which pin is Signal (Red) and which is Ground (Black).</li>
                                     </ul>
                                 </li>
                                 <li>
                                     <strong>MagLock Outputs:</strong> Cut two pairs of wires (Red/Black) to about 8cm. Solder these to the remaining two GX12 connectors.
-                                    <ul className="list-disc list-inside pl-4 mt-1 text-gray-400 text-sm">
+                                    <ul className="list-disc list-inside md:list-outside md:pl-4 mt-1 text-gray-400 text-sm">
                                         <li>Ensure you are consistent with polarity (e.g., Pin 1 = Positive, Pin 2 = Negative).</li>
                                     </ul>
                                 </li>
@@ -410,19 +410,19 @@ export const BuildControllerPage = () => (
             </section>
 
             {/* --- PART 4: EXTERNAL CABLE ASSEMBLY --- */}
-            <section className="my-16">
-                <div className="bg-gray-800 p-8 rounded-lg">
-                    <h2 className="text-3xl font-bold text-white mb-6">Part 4: External Cable Assembly</h2>
+            <section className="my-8 md:my-16">
+                <div className="bg-gray-800 p-4 md:p-8 rounded-lg">
+                    <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 md:mb-6">Part 4: External Cable Assembly</h2>
                     <p className="text-gray-300 mb-8">
                         With the internal components ready, we turn to the external accessories. Here you will assemble the robust aviation connectors for your MagLock cables and the safety Abort Switch (or foot pedal).
                     </p>
                     
                     <div className="space-y-6">
-                        <div className="bg-gray-800/50 rounded-lg p-6">
-                            <h4 className="text-xl font-bold text-white mb-6">Step 6: Abort Switch Assembly</h4>
+                        <div className="md:bg-gray-800/50 md:rounded-lg md:p-6">
+                            <h4 className="text-lg md:text-xl font-bold text-white mb-6">Step 6: Abort Switch Assembly</h4>
                             <p className="text-gray-300 mb-4">This connects your momentary switch (or foot pedal) to a Male GX12 plug.</p>
 
-                            <ol className="list-decimal list-outside pl-5 space-y-3 text-gray-300 mb-8">
+                            <ol className="list-decimal list-inside md:list-outside md:pl-5 space-y-3 text-gray-300 mb-8 text-sm md:text-base">
                                 <li>Disassemble a male GX12 cable connector. Slide the housing parts onto your switch cable in this order: End Screw &rarr; Rubber Strain Relief &rarr; Housing.</li>
                                 <li>
                                     Strip and tin the ends of the Abort Switch wires.
@@ -440,7 +440,7 @@ export const BuildControllerPage = () => (
                                 <li>Screw the GX12 housing back together.</li>
                             </ol>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                                 <ImageOverlay 
                                     src={disassembledGxSrc}
                                     srcSet={disassembledGxSrcSet}
@@ -457,10 +457,10 @@ export const BuildControllerPage = () => (
 
                         </div>
 
-                        <div className="bg-gray-800/50 rounded-lg p-6">
-                            <h4 className="text-xl font-bold text-white mb-6">Step 7: MagLock Cable Assembly</h4>
+                        <div className="md:bg-gray-800/50 md:rounded-lg md:p-6">
+                            <h4 className="text-lg md:text-xl font-bold text-white mb-6">Step 7: MagLock Cable Assembly</h4>
                             <p className="text-gray-300 mb-4">Now we attach the matching male plugs to your MagLock cables.</p>
-                            <ol className="list-decimal list-outside pl-5 space-y-3 text-gray-300">
+                            <ol className="list-decimal list-inside md:list-outside md:pl-5 space-y-3 text-gray-300 text-sm md:text-base">
                                 <li>Disassemble the male GX12 cable connector and slide the housing parts (End Screw &rarr; Rubber &rarr; Housing) onto the MagLock wire.</li>
                                 <li>Strip and tin the ends of the MagLock wires.</li>
                                 <li>
@@ -474,15 +474,15 @@ export const BuildControllerPage = () => (
             </section>
 
             {/* --- PART 5: ENCLOSURE PREPARATION --- */}
-            <section className="my-16">
-                <div className="bg-gray-800 p-8 rounded-lg">
-                    <h2 className="text-3xl font-bold text-white mb-6">Part 5: Enclosure Preparation</h2>
+            <section className="my-8 md:my-16">
+                <div className="bg-gray-800 p-4 md:p-8 rounded-lg">
+                    <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 md:mb-6">Part 5: Enclosure Preparation</h2>
                     <p className="text-gray-300 mb-8">
                         It is time to prepare the housing. Using the provided template, you will drill precise holes in the project box to accommodate the status LED, power jack, and aviation connectors.
                     </p>
                     
-                    <div className="bg-gray-800/50 rounded-lg p-6">
-                        <h4 className="text-xl font-bold text-white mb-4">Step 8: Drilling the Enclosure</h4>
+                    <div className="md:bg-gray-800/50 md:rounded-lg md:p-6">
+                        <h4 className="text-lg md:text-xl font-bold text-white mb-4">Step 8: Drilling the Enclosure</h4>
                         
                         <div className="mb-6">
                             <p className="text-gray-300 mb-4">
@@ -491,19 +491,19 @@ export const BuildControllerPage = () => (
                             <a 
                                 href="/downloads/controller_drill_template.pdf" 
                                 target="_blank"
-                                className="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-6 rounded-md transition-colors duration-200"
+                                className="inline-block w-full md:w-auto text-center bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 md:py-2 rounded-md transition-colors duration-200"
                             >
                                 Download Drill Template
                             </a>
                         </div>
 
-                        <ol className="list-decimal list-outside pl-5 space-y-3 text-gray-300 mb-6">
+                        <ol className="list-decimal list-inside md:list-outside md:pl-5 space-y-3 text-gray-300 mb-6 text-sm md:text-base">
                             <li>Download and print the template. <strong>Make sure to set the page size to 100%</strong> (Do not scale).</li>
                             <li>Carefully cut out the front and back templates. Using a piece of transparent tape, stick them onto the respective sides of your enclosure. <strong>Make sure the edges align perfectly</strong> with the box corners.</li>
                             <li>Using a sharp object (like a center punch) or a pencil, mark the center of each crosshair. Remove the paper template before drilling to avoid it catching and tearing.</li>
                             <li>
                                 Drill the holes using the following sizes:
-                                <ul className="list-disc list-inside pl-4 mt-2 space-y-1 text-gray-400">
+                                <ul className="list-disc list-inside md:list-outside md:pl-4 mt-2 space-y-1 text-gray-400">
                                     <li><strong>LED:</strong> 6mm</li>
                                     <li><strong>GX12 panel mounts:</strong> 8mm</li>
                                     <li><strong>DC connector:</strong> 11mm</li>
@@ -511,7 +511,7 @@ export const BuildControllerPage = () => (
                             </li>
                         </ol>
 
-                        <div className="bg-yellow-900/20 border border-yellow-700/50 rounded p-4 mb-6">
+                        <div className="bg-yellow-900/20 border border-yellow-700/50 rounded p-3 md:p-4 mb-6">
                             <p className="text-yellow-100 text-sm">
                                 <strong>Tip:</strong> Your components may vary slightly in diameter. We highly recommend measuring your specific components using a caliper before drilling to avoid disappointment.
                             </p>
@@ -524,7 +524,7 @@ export const BuildControllerPage = () => (
                             wrapperClassName="mb-4"
                             className="w-full h-auto rounded-md"
                         />
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                             <ImageOverlay 
                                 src={enclosureTemplateSrc}
                                 srcSet={enclosureTemplateSrcSet}
@@ -543,17 +543,17 @@ export const BuildControllerPage = () => (
             </section>
 
             {/* --- PART 6: FINAL ASSEMBLY --- */}
-            <section className="my-16">
-                <div className="bg-gray-800 p-8 rounded-lg">
-                    <h2 className="text-3xl font-bold text-white mb-6">Part 6: Final Assembly</h2>
+            <section className="my-8 md:my-16">
+                <div className="bg-gray-800 p-4 md:p-8 rounded-lg">
+                    <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 md:mb-6">Part 6: Final Assembly</h2>
                     <p className="text-gray-300 mb-8">
                         This final stage brings everything together. To make assembly easy, we will wire the MagLock connectors <strong>with the PCB out of the box</strong> to ensure easy access. Once those are secure, we will place the board <strong>inside the box</strong> and perform the final in-place soldering for the LED and Abort Switch, as well as connecting the power supply.
                     </p>
                     
-                    <div className="bg-gray-800/50 rounded-lg p-6">
-                        <h4 className="text-xl font-bold text-white mb-4">Step 9: Mounting and Soldering</h4>
+                    <div className="md:bg-gray-800/50 md:rounded-lg md:p-6">
+                        <h4 className="text-lg md:text-xl font-bold text-white mb-4">Step 9: Mounting and Soldering</h4>
                         
-                        <ul className="list-disc list-outside pl-5 space-y-4 text-gray-300 mb-8">
+                        <ul className="list-disc list-inside md:list-outside md:pl-5 space-y-4 text-gray-300 mb-8 text-sm md:text-base">
                             <li>
                                 <strong>Install Front Components (Part 1):</strong> Insert the two MagLock GX12 panel mounts into the front of the box. Use a wrench and socket (size 10) to tighten the counter nuts securely.
                             </li>
@@ -572,7 +572,7 @@ export const BuildControllerPage = () => (
                             </li>
                             <li>
                                 <strong>Solder Connections:</strong> Locate the 10-pin header you soldered in Part 1. Now we must solder the peripheral wires directly to these header pins. Be careful not to melt the surrounding plastic.
-                                <ul className="list-circle list-inside pl-4 mt-2 space-y-2 text-gray-400">
+                                <ul className="list-circle list-inside md:list-outside md:pl-4 mt-2 space-y-2 text-gray-400">
                                     <li><strong>LED:</strong> Solder the Red wire to pin <strong>IO21</strong> and Black to <strong>GND</strong>.</li>
                                     <li><strong>Abort Switch:</strong> Solder the Red wire (Signal) to pin <strong>IO15</strong> and Black to <strong>GND</strong>.</li>
                                 </ul>
@@ -614,15 +614,15 @@ export const BuildControllerPage = () => (
                         </div>
                     </div>
 
-                    <div className="bg-gray-800/50 rounded-lg p-6 mt-6">
-                        <h4 className="text-xl font-bold text-white mb-4">Step 10: Final Hardware Test</h4>
-                        <ol className="list-decimal list-outside pl-5 space-y-3 text-gray-300">
+                    <div className="md:bg-gray-800/50 md:rounded-lg md:p-6 mt-6">
+                        <h4 className="text-lg md:text-xl font-bold text-white mb-4">Step 10: Final Hardware Test</h4>
+                        <ol className="list-decimal list-inside md:list-outside md:pl-5 space-y-3 text-gray-300 text-sm md:text-base">
                             <li>
                                 Power up the device using the 12V adapter.
                             </li>
                             <li>
                                 <strong>Test again:</strong> Using the Session Manager, re-run the <strong>Hardware Test</strong>.
-                                <ul className="list-disc list-inside pl-4 mt-2 space-y-1 text-gray-400">
+                                <ul className="list-disc list-inside md:list-outside md:pl-4 mt-2 space-y-1 text-gray-400">
                                     <li>You should see the LED in a "Slow Breath" pattern after booting (indicating the device is READY).</li>
                                     <li>The LED should fade into a "Medium Pulse" during hardware testing.</li>
                                     <li>Pressing the <strong>Abort Switch</strong> should immediately end the test session, allowing you to confirm everything works as intended.</li>
@@ -631,7 +631,7 @@ export const BuildControllerPage = () => (
                         </ol>
 
                         <div className="mt-8 p-4 bg-green-900/20 border border-green-600/50 rounded-lg text-center">
-                            <p className="text-green-100 font-bold text-xl">
+                            <p className="text-green-100 font-bold text-lg md:text-xl">
                                 Screw the lid shut. You built a MagLock Controller!
                             </p>
                         </div>
@@ -640,16 +640,16 @@ export const BuildControllerPage = () => (
             </section>
 
              {/* Usage Recommendation / Battery */}
-             <section className="my-16">
-                <div className="bg-gray-800 p-8 rounded-lg">
-                    <h2 className="text-3xl font-bold text-white mb-6 flex items-center">
+             <section className="my-8 md:my-16">
+                <div className="bg-gray-800 p-4 md:p-8 rounded-lg">
+                    <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 md:mb-6 flex items-center">
                         Session Safety: The Battery Fail-Safe
                     </h2>
                     
-                    <div className="rounded p-6">
+                    <div className="rounded p-2 md:p-6">
                         <div className="flex items-center gap-3 mb-4">
                             <span className="text-2xl">🔋</span>
-                            <h4 className="text-green-100 font-bold text-xl">The Ultimate Fail-Safe</h4>
+                            <h4 className="text-green-100 font-bold text-lg md:text-xl">The Ultimate Fail-Safe</h4>
                         </div>
                         
                         <p className="text-gray-300 mb-4">
@@ -660,8 +660,8 @@ export const BuildControllerPage = () => (
                         </p>
 
                         <div className="bg-blue-900/20 border border-blue-700/50 rounded p-4 mb-6">
-                            <h4 className="text-blue-100 font-bold mb-2">Recommended: 600mAh Ni-Cd Battery Pack (10 Cells)</h4>
-                            <ul className="list-disc list-inside text-gray-300 space-y-2">
+                            <h4 className="text-blue-100 font-bold mb-2 text-sm md:text-base">Recommended: 600mAh Ni-Cd Battery Pack (10 Cells)</h4>
+                            <ul className="list-disc list-inside md:list-outside md:pl-5 text-gray-300 space-y-2 text-sm md:text-base">
                                 <li><strong>Configuration:</strong> 10 Cells × 1.2V = <strong>12.0V Nominal</strong>.</li>
                                 <li><strong>Chemistry:</strong> Ni-Cd (Nickel-Cadmium).</li>
                                 <li><strong>Why Ni-Cd?</strong> Unlike other chemistries, Ni-Cd batteries maintain a very steady voltage (~1.2V per cell) for about 80-90% of their discharge cycle. This is perfect for MagLocks, which require constant voltage to hold securely.</li>

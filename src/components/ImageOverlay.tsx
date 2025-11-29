@@ -32,7 +32,11 @@ export const ImageOverlay = ({ src, srcSet, sizes, alt, className }: ImageOverla
 
     // Function to handle image click
     const handleImageClick = () => {
-        setIsOpen(true);
+        // Disable opening the overlay on mobile devices ( < 768px )
+        // Using matchMedia ensures we align exactly with Tailwind's 'md' breakpoint
+        if (window.matchMedia('(min-width: 768px)').matches) {
+            setIsOpen(true);
+        }
     };
 
     // Function to close the overlay
@@ -49,7 +53,8 @@ export const ImageOverlay = ({ src, srcSet, sizes, alt, className }: ImageOverla
         <>
             {/* The inline image block (wrapper + image + caption) */}
             <div 
-                className={className || ''} // Apply prop styles to the outer wrapper
+                // Only show pointer cursor on desktop
+                className={`${className || ''} cursor-default md:cursor-pointer`} 
                 onClick={handleImageClick}
             >
                 <div className="relative group"> {/* Inner wrapper for image + hover */}
@@ -62,8 +67,8 @@ export const ImageOverlay = ({ src, srcSet, sizes, alt, className }: ImageOverla
                         className="w-full h-auto object-cover rounded-md bg-gray-700"
                         onError={(e) => (e.currentTarget.src = `https://placehold.co/600x400/2D3748/E2E8F0?text=${alt.replace(/\s/g, '+')}`)}
                     />
-                    {/* Magnifying glass icon on hover */}
-                    <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 opacity-0 group-hover:opacity-60 cursor-pointer rounded-md">
+                    {/* Magnifying glass icon on hover - Hidden on mobile */}
+                    <div className="absolute inset-0 items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 opacity-0 group-hover:opacity-60 rounded-md hidden md:flex">
                         <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
                         </svg>

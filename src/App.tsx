@@ -21,6 +21,7 @@ import { SafetyPage } from './pages/SafetyPage';
 import logoSrc from '@/images/lobster-logo.png?w=200&format=webp';
 import logoSrcSet from '@/images/lobster-logo.png?w=64;128;256&format=webp&as=srcset';
 import { GitHubIcon, CloseIcon, MenuIcon } from './icons';
+import { Footer } from './components/Footer';
 
 
 // --- Navbar ---
@@ -118,16 +119,6 @@ const Navbar: React.FC = () => {
         </header>
     );
 };
-
-// --- Footer ---
-const Footer = () => (
-    <footer className="border-t border-gray-700/50 mt-16">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-gray-500">
-            <p>&copy; 2025 Lobster. Released under the Apaches 2.0 license.</p>
-            <p className="mt-1 text-sm">Please play safely and responsibly.</p>
-        </div>
-    </footer>
-);
 
 // --- HOME PAGE ---
 const HomePage: React.FC = () => {

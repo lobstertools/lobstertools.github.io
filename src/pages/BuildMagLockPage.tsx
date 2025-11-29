@@ -76,9 +76,9 @@ import finalPlaceSrcSet from '@/images/maglock/final_assembly_with_place.webp?w=
 
 export const BuildMagLockPage = () => (
     <>
-        <div className="py-12">
-            <h1 className="text-4xl font-bold text-white text-center mb-6">Build the MagLock</h1>
-            <p className="text-xl text-center text-gray-400 mb-12 max-w-3xl mx-auto">
+        <div className="py-6 md:py-12">
+            <h1 className="text-2xl md:text-4xl font-bold text-white text-center mb-4 md:mb-6">Build the MagLock</h1>
+            <p className="text-lg md:text-xl text-center text-gray-400 mb-8 md:mb-12 max-w-3xl mx-auto px-4">
                 Easy & Low-Cost DIY Electromagnet Lock
             </p>
 
@@ -86,16 +86,16 @@ export const BuildMagLockPage = () => (
                 src={finishedMagLockSrc}
                 srcSet={finishedMagLockSrcSet}
                 alt="Finished Lobster MagLock" 
-                wrapperClassName="mb-12"
+                wrapperClassName="mb-8 md:mb-12"
                 className="w-full max-w-4xl mx-auto h-auto rounded-lg shadow-lg bg-gray-700"
             />
 
             <SafetyWarning />
 
             {/* Introduction */}
-            <section className="my-16">
-                <div className="bg-gray-800 p-8 rounded-lg">
-                    <h2 className="text-3xl font-bold text-white mb-6 flex items-center">
+            <section className="my-8 md:my-16">
+                <div className="bg-gray-800 p-4 md:p-8 rounded-lg">
+                    <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 md:mb-6 flex items-center">
                         Overview
                     </h2>
                     <p className="text-gray-300 mb-4">This guide provides step-by-step instructions for assembling an electromagnet lock intended for self-bondage applications.</p>
@@ -105,23 +105,23 @@ export const BuildMagLockPage = () => (
             </section>
 
             {/* Cost Breakdown */}
-            <section className="my-16">
-                <div className="bg-gray-800 p-8 rounded-lg">
-                    <h2 className="text-3xl font-bold text-white mb-6 flex items-center">
+            <section className="my-8 md:my-16">
+                <div className="bg-gray-800 p-4 md:p-8 rounded-lg">
+                    <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 md:mb-6 flex items-center">
                         Cost Breakdown
                     </h2>
-                    <div className="grid md:grid-cols-3 gap-6 mb-6">
-                        <div className="bg-gray-800/50 p-4 rounded-lg text-center">
-                            <div className="text-3xl font-bold text-green-400">~€50</div>
-                            <div className="text-gray-400 mt-2">Total Cost</div>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-6">
+                        <div className="bg-gray-800/50 p-3 md:p-4 rounded-lg text-center">
+                            <div className="text-2xl md:text-3xl font-bold text-green-400">~€50</div>
+                            <div className="text-gray-400 mt-2 text-sm md:text-base">Total Cost</div>
                         </div>
-                        <div className="bg-gray-800/50 p-4 rounded-lg text-center">
-                            <div className="text-3xl font-bold text-yellow-400">~€40</div>
-                            <div className="text-gray-400 mt-2">Electromagnet</div>
+                        <div className="bg-gray-800/50 p-3 md:p-4 rounded-lg text-center">
+                            <div className="text-2xl md:text-3xl font-bold text-yellow-400">~€40</div>
+                            <div className="text-gray-400 mt-2 text-sm md:text-base">Electromagnet</div>
                         </div>
-                        <div className="bg-gray-800/50 p-4 rounded-lg text-center">
-                            <div className="text-3xl font-bold text-blue-400">~€10</div>
-                            <div className="text-gray-400 mt-2">Hardware</div>
+                        <div className="bg-gray-800/50 p-3 md:p-4 rounded-lg text-center">
+                            <div className="text-2xl md:text-3xl font-bold text-blue-400">~€10</div>
+                            <div className="text-gray-400 mt-2 text-sm md:text-base">Hardware</div>
                         </div>
                     </div>
                     <p className="text-gray-300 mb-4">Building this MagLock costs around €50, a significant saving compared to commercial versions which can easily cost three times as much. The electromagnet is the main expense at about €40, with the remaining €10 covering all the smaller hardware.</p>
@@ -130,16 +130,16 @@ export const BuildMagLockPage = () => (
             </section>
 
             {/* Materials Section */}
-            <section className="my-16">
-                <div className="bg-gray-800 p-8 rounded-lg">
-                    <h2 className="text-3xl font-bold text-white mb-6">Required Materials</h2>
+            <section className="my-8 md:my-16">
+                <div className="bg-gray-800 p-4 md:p-8 rounded-lg">
+                    <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 md:mb-6">Required Materials</h2>
                     <p className="text-gray-300 mb-8">This shopping list is broken down by component. Some parts are conditional based on what you can source.</p>
 
                     {/* Base Materials */}
                     <div className="mb-8">
-                        <h3 className="text-2xl font-bold text-white mb-4">Base Materials</h3>
-                        <p className="text-gray-400 mb-4 italic">Core parts required for every build</p>
-                        <ul className="list-disc list-outside pl-5 space-y-2 text-gray-300">
+                        <h3 className="text-xl md:text-2xl font-bold text-white mb-4">Base Materials</h3>
+                        <p className="text-gray-400 mb-4 italic text-sm md:text-base">Core parts required for every build</p>
+                        <ul className="list-disc list-inside md:list-outside md:pl-5 space-y-2 text-gray-300 text-sm md:text-base">
                             <li>1 x Electromagnet (50mm Diameter, 60kg Holder Strength, 12V)</li>
                             <li>1 x 1N4001 Flyback Diode (or similar, e.g., 1N4007)</li>
                             <li>3 x 50mm Washers with an M8 hole</li>
@@ -154,19 +154,19 @@ export const BuildMagLockPage = () => (
 
                     {/* Armature Plate Parts */}
                     <div className="mb-8">
-                        <h3 className="text-2xl font-bold text-white mb-4">Armature Plate Parts</h3>
-                        <p className="text-gray-400 mb-6 italic">Your parts will depend on whether your electromagnet includes a 50mm armature plate.</p>
+                        <h3 className="text-xl md:text-2xl font-bold text-white mb-4">Armature Plate Parts</h3>
+                        <p className="text-gray-400 mb-6 italic text-sm md:text-base">Your parts will depend on whether your electromagnet includes a 50mm armature plate.</p>
                         
                         <div className="mb-6">
-                            <h4 className="text-lg font-semibold text-white mb-4">Path A: If your magnet *includes* a 50mm armature plate:</h4>
-                            <ul className="list-disc list-outside pl-5 space-y-2 text-gray-300">
+                            <h4 className="text-base md:text-lg font-semibold text-white mb-4">Path A: If your magnet *includes* a 50mm armature plate:</h4>
+                            <ul className="list-disc list-inside md:list-outside md:pl-5 space-y-2 text-gray-300 text-sm md:text-base">
                                 <li>1 x Galvanized Iron Eye Bolt, M8 Thread, 5 to 8mm long</li>
                             </ul>
                         </div>
 
                         <div>
-                            <h4 className="text-lg font-semibold text-white mb-4">Path B: If your magnet *does NOT* include a 50mm armature plate:</h4>
-                            <ul className="list-disc list-outside pl-5 space-y-2 text-gray-300">
+                            <h4 className="text-base md:text-lg font-semibold text-white mb-4">Path B: If your magnet *does NOT* include a 50mm armature plate:</h4>
+                            <ul className="list-disc list-inside md:list-outside md:pl-5 space-y-2 text-gray-300 text-sm md:text-base">
                                 <li>1 x 50mm Galvanized Iron Circular Disc (Armature Plate), 5mm thick</li>
                                 <li>1 x M6 Galvanized Iron Countersunk Screw, length 16mm</li>
                                 <li>1 x Galvanized Iron Eye Bolt, M6 hole</li>
@@ -176,12 +176,12 @@ export const BuildMagLockPage = () => (
 
                     {/* Housing Parts */}
                     <div className="mb-8">
-                        <h3 className="text-2xl font-bold text-white mb-4">Housing Parts</h3>
-                        <p className="text-gray-400 mb-6 italic">Your parts will depend on the PVC sleeve you can source. The goal is to have the magnet + spacer fit snugly. The ~72mm "simple build" sleeve is designed to fit an off-the-shelf `50-to-40mm conversion ring` perfectly. If your sleeve is shorter (e.g., ~65mm), you will need to cut your own spacer from 50mm PVC pipe.</p>
+                        <h3 className="text-xl md:text-2xl font-bold text-white mb-4">Housing Parts</h3>
+                        <p className="text-gray-400 mb-6 italic text-sm md:text-base">Your parts will depend on the PVC sleeve you can source. The goal is to have the magnet + spacer fit snugly. The ~72mm "simple build" sleeve is designed to fit an off-the-shelf `50-to-40mm conversion ring` perfectly. If your sleeve is shorter (e.g., ~65mm), you will need to cut your own spacer from 50mm PVC pipe.</p>
 
                         <div className="mb-6">
-                            <h4 className="text-lg font-semibold text-white mb-4">Path 1: The "Simple Build" (using a ~72mm sleeve):</h4>
-                            <ul className="list-disc list-outside pl-5 space-y-2 text-gray-300">
+                            <h4 className="text-base md:text-lg font-semibold text-white mb-4">Path 1: The "Simple Build" (using a ~72mm sleeve):</h4>
+                            <ul className="list-disc list-inside md:list-outside md:pl-5 space-y-2 text-gray-300 text-sm md:text-base">
                                 <li>1 x 50mm PVC Connector Sleeve (approx. 72mm long)</li>
                                 <li>1 x 50-to-40-mm conversion ring</li>
                                 <li>1 x Stainless Steel Eye Bolt, 45 to 50mm M8 Thread</li>
@@ -189,8 +189,8 @@ export const BuildMagLockPage = () => (
                         </div>
 
                         <div>
-                            <h4 className="text-lg font-semibold text-white mb-4">Path 2: The "Custom Spacer" Build (using a ~65mm sleeve):</h4>
-                            <ul className="list-disc list-outside pl-5 space-y-2 text-gray-300">
+                            <h4 className="text-base md:text-lg font-semibold text-white mb-4">Path 2: The "Custom Spacer" Build (using a ~65mm sleeve):</h4>
+                            <ul className="list-disc list-inside md:list-outside md:pl-5 space-y-2 text-gray-300 text-sm md:text-base">
                                 <li>1 x 50mm PVC Connector Sleeve (approx. 65mm long)</li>
                                 <li>1 x 50mm PVC pipe (typically sold per meter, will be cut down to ~27mm)</li>
                                 <li>1 x Stainless Steel Eye Bolt, 40 to 45mm M8 Thread</li>
@@ -201,15 +201,15 @@ export const BuildMagLockPage = () => (
             </section>
 
             {/* Tools Section */}
-            <section className="my-16">
-                <div className="bg-gray-800 p-8 rounded-lg">
-                    <h2 className="text-3xl font-bold text-white mb-6">Required Tools</h2>
+            <section className="my-8 md:my-16">
+                <div className="bg-gray-800 p-4 md:p-8 rounded-lg">
+                    <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">Required Tools</h2>
                     <p className="text-gray-300 mb-8">Tool requirements depend on your chosen materials and build approach.</p>
 
                     {/* Base Tools */}
                     <div className="mb-8">
-                        <h3 className="text-2xl font-bold text-white mb-4">Base Tools</h3>
-                        <ul className="list-disc list-outside pl-5 space-y-2 text-gray-300">
+                        <h3 className="text-xl md:text-2xl font-bold text-white mb-4">Base Tools</h3>
+                        <ul className="list-disc list-inside md:list-outside md:pl-5 space-y-2 text-gray-300 text-sm md:text-base">
                             <li>Power Drill with a 6 or 8mm drill bit (for making a hole in the PVC housing)</li>
                             <li>Soldering Iron</li>
                             <li>Wire Stripper and Cutting pliers</li>
@@ -220,9 +220,9 @@ export const BuildMagLockPage = () => (
 
                     {/* Tools for Armature */}
                     <div className="mb-8">
-                        <h3 className="text-2xl font-bold text-white mb-4">Additional Tools for Armature</h3>
-                        <p className="text-gray-400 mb-4 italic">Only required if your magnet did not come with a 50mm armature plate and you need to drill your own.</p>
-                        <ul className="list-disc list-outside pl-5 space-y-2 text-gray-300">
+                        <h3 className="text-xl md:text-2xl font-bold text-white mb-4">Additional Tools for Armature</h3>
+                        <p className="text-gray-400 mb-4 italic text-sm md:text-base">Only required if your magnet did not come with a 50mm armature plate and you need to drill your own.</p>
+                        <ul className="list-disc list-inside md:list-outside md:pl-5 space-y-2 text-gray-300 text-sm md:text-base">
                             <li>Drill Press or a Hand Drill with a Vertical Hole Drilling Jig</li>
                             <li>Center Finder</li>
                             <li>Center Punch & Hammer</li>
@@ -233,9 +233,9 @@ export const BuildMagLockPage = () => (
 
                     {/* Tools for Custom Spacer */}
                     <div>
-                        <h3 className="text-2xl font-bold text-white mb-4">Additional Tools for Custom Spacer</h3>
-                        <p className="text-gray-400 mb-4 italic">Only required if your PVC sleeve is shorter than 72mm and you need to cut a custom spacer.</p>
-                        <ul className="list-disc list-outside pl-5 space-y-2 text-gray-300">
+                        <h3 className="text-xl md:text-2xl font-bold text-white mb-4">Additional Tools for Custom Spacer</h3>
+                        <p className="text-gray-400 mb-4 italic text-sm md:text-base">Only required if your PVC sleeve is shorter than 72mm and you need to cut a custom spacer.</p>
+                        <ul className="list-disc list-inside md:list-outside md:pl-5 space-y-2 text-gray-300 text-sm md:text-base">
                             <li>Cross-cutting Saw (Recommended for a perfectly flat, square cut)</li>
                             <li>Alternative: A fine-toothed handsaw or PVC pipe cutter, but you must be very steady to ensure the cut is not angled</li>
                         </ul>
@@ -244,18 +244,18 @@ export const BuildMagLockPage = () => (
             </section>
 
             {/* Assembly Instructions */}
-            <section className="my-16">
-                <div className="bg-gray-800 p-8 rounded-lg">
-                    <h2 className="text-3xl font-bold text-white mb-6">Assembly Instructions</h2>
+            <section className="my-8 md:my-16">
+                <div className="bg-gray-800 p-4 md:p-8 rounded-lg">
+                    <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">Assembly Instructions</h2>
                     <p className="text-gray-300 mb-8">Before starting the main build, complete the preliminary steps. Then proceed through the three main assembly parts.</p>
 
                     {/* Preliminary Steps */}
                     <div className="mb-12">
-                        <h3 className="text-2xl font-bold text-gray-200 mb-6 pb-3 border-b border-gray-700">Preliminary Steps</h3>
+                        <h3 className="text-xl md:text-2xl font-bold text-gray-200 mb-6 pb-3 border-b border-gray-700">Preliminary Steps</h3>
                         
                         {/* Step 1 */}
-                        <div className="bg-gray-800/50 rounded-lg p-6 mb-6">
-                            <h4 className="text-xl font-bold text-white mb-4">
+                        <div className="md:bg-gray-800/50 md:rounded-lg md:p-6 mb-6">
+                            <h4 className="text-lg md:text-xl font-bold text-white mb-4">
                                 Step 1: Disassemble the Magnet
                             </h4>
                             <p className="text-gray-300 mb-4">The electromagnet will arrive in a metal factory housing. Disassemble this first. It is usually secured with a few simple screws. Remove them to take out the bare 50mm round electromagnet, the only part needed for this build.</p>
@@ -269,7 +269,7 @@ export const BuildMagLockPage = () => (
                                 className="w-full h-auto rounded-md"
                             />
 
-                            <div className="my-4 grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="my-4 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                                 <ImageOverlay 
                                     src={doorMagnet1Src}
                                     srcSet={doorMagnet1SrcSet}
@@ -289,19 +289,19 @@ export const BuildMagLockPage = () => (
                                                     
 
                         {/* Step 2 */}
-                        <div className="bg-gray-800/50 rounded-lg p-6">
-                            <h4 className="text-xl font-bold text-white mb-4">
+                        <div className="md:bg-gray-800/50 md:rounded-lg md:p-6">
+                            <h4 className="text-lg md:text-xl font-bold text-white mb-4">
                                 Step 2: Shape the Armature Disc
                             </h4>
                             <div className="bg-yellow-900/20 border border-yellow-700/50 rounded p-3 mb-6">
-                                <p className="text-yellow-200">⚠️ This step is only required if your building your own armature plate.</p>
+                                <p className="text-yellow-200 text-sm md:text-base">⚠️ This step is only required if your building your own armature plate.</p>
                             </div>
 
                             <p className="text-gray-300 mb-4">The 50mm armature metal discs match the inner diameter of the PVC connector sleeve, creating a very tight fit. This is often compounded by the laser-cutting process, which can leave a sharp, rough edge or small burrs.</p>
                             <p className="text-gray-300 mb-4">This combination makes it easy for the disc to catch or jam sideways if not inserted perfectly.</p>
                             <p className="text-gray-300 mb-4">To fix this, use a light piece of sandpaper to smooth the roughness from the laser-cut edge and create a slight lead-in by chamfering or rounding the sides. Test fit the disc in the sleeve to ensure it now enters and exits smoothly.</p>
                             
-                            <div className="my-4 grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="my-4 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                                 <ImageOverlay
                                     src={roughDiscSrc}
                                     srcSet={roughDiscSrcSet}
@@ -321,12 +321,12 @@ export const BuildMagLockPage = () => (
 
                     {/* Part 1: Housing */}
                     <div className="mb-12">
-                        <h3 className="text-2xl font-bold text-gray-200 mb-6 pb-3 border-b border-gray-700">Part 1: Magnet Housing Assembly</h3>
+                        <h3 className="text-xl md:text-2xl font-bold text-gray-200 mb-6 pb-3 border-b border-gray-700">Part 1: Magnet Housing Assembly</h3>
                         
                         <div className="space-y-6">
                             {/* Housing Step 1 */}
-                            <div className="bg-gray-800/50 rounded-lg p-6">
-                                <h4 className="text-xl font-bold text-white mb-4">
+                            <div className="md:bg-gray-800/50 md:rounded-lg md:p-6">
+                                <h4 className="text-lg md:text-xl font-bold text-white mb-4">
                                     Step 1: Install the Conversion Ring
                                 </h4>
                                 <p className="text-gray-300 mb-4">Push the 50-to-40mm conversion ring into one of the sides of PVC Connector so that it fits tightly against the ridge in the middle. Optionally, apply some PVC cement to glue the inset in place.</p>
@@ -365,8 +365,8 @@ export const BuildMagLockPage = () => (
                             </div>
 
                             {/* Housing Step 2 */}
-                            <div className="bg-gray-800/50 rounded-lg p-6">
-                                <h4 className="text-xl font-bold text-white mb-4">
+                            <div className="md:bg-gray-800/50 md:rounded-lg md:p-6">
+                                <h4 className="text-lg md:text-xl font-bold text-white mb-4">
                                     Step 2: Drill Wire Hole and Feed Wire
                                 </h4>
                                 <p className="text-gray-300 mb-4">
@@ -379,7 +379,7 @@ export const BuildMagLockPage = () => (
                                     Next, feed the end of your electrical wire through this new hole. Push it from the <strong>outside</strong> of the sleeve, through both walls you just drilled, so the end of the wire is now inside the central cavity where the magnet will be seated.
                                 </p>
 
-                                <div className="my-4 grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div className="my-4 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                                     <ImageOverlay
                                         src={sleeveHoleSrc}
                                         srcSet={sleeveHoleSrcSet}
@@ -396,14 +396,14 @@ export const BuildMagLockPage = () => (
                             </div>
 
                             {/* Housing Step 3 */}
-                            <div className="bg-gray-800/50 rounded-lg p-6">
-                                <h4 className="text-xl font-bold text-white mb-4">
+                            <div className="md:bg-gray-800/50 md:rounded-lg md:p-6">
+                                <h4 className="text-lg md:text-xl font-bold text-white mb-4">
                                     Step 3: Install Flyback Diode & Solder Wires
                                 </h4>
 
                                 <p className="text-gray-300 mb-4">This step is critical for protecting your electronics. We will first install a flyback diode directly onto the magnet's terminals before attaching the main power wires.</p>
 
-                                <h5 className="text-lg font-semibold text-white mb-4">Step 4a: Install the Flyback Diode</h5>
+                                <h5 className="text-base md:text-lg font-semibold text-white mb-4">Step 4a: Install the Flyback Diode</h5>
                                 <p className="text-gray-300 mb-4">
                                     A diode has polarity. Look for a <strong>silver or white band</strong> on one end of the diode; this is the <strong>cathode (-)</strong>. The other end is the <strong>anode (+)</strong>.
                                 </p>
@@ -411,7 +411,7 @@ export const BuildMagLockPage = () => (
                                     You must install this diode in <strong>reverse bias</strong>. This means the diode's band (cathode) connects to the magnet's <strong>POSITIVE (+)</strong> terminal, and the non-banded side (anode) connects to the magnet's <strong>NEGATIVE (-)</strong> terminal.
                                 </p>
 
-                                <div className="my-12 flex justify-center w-full">
+                                <div className="my-8 md:my-12 flex justify-center w-full">
                                     <TutorialImage 
                                         src={diodeSchematicSrc}
                                         srcSet={diodeSchematicSrcSet}
@@ -425,7 +425,7 @@ export const BuildMagLockPage = () => (
                                     Solder the diode's legs directly across the magnet's two terminals, ensuring the polarity is correct as described. Trim any excess wire from the diode's legs after soldering.
                                 </p>
 
-                                <div className="my-4 grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div className="my-4 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                                     <ImageOverlay 
                                         src={diodesSrc}
                                         srcSet={diodesSrcSet}
@@ -440,8 +440,8 @@ export const BuildMagLockPage = () => (
                                     />
                                 </div>
                                 
-                                <div className="bg-blue-900/20 border border-blue-700/50 rounded p-4 my-6">
-                                    <h4 className="text-blue-100 font-bold mb-4">What is a Flyback Diode and Why is it Essential?</h4>
+                                <div className="bg-blue-900/20 border border-blue-700/50 rounded p-3 md:p-4 my-6">
+                                    <h4 className="text-blue-100 font-bold mb-4 text-sm md:text-base">What is a Flyback Diode and Why is it Essential?</h4>
                                     <p className="text-blue-200 text-sm mb-4">
                                         An electromagnet is an <strong>inductor</strong>. When you cut the power, its collapsing magnetic field creates a massive, instantaneous <strong>reverse-voltage spike</strong> (also called "inductive kickback"). This spike can be hundreds of volts and will instantly destroy sensitive electronics like timers, relays, or microcontrollers.
                                     </p>
@@ -454,15 +454,15 @@ export const BuildMagLockPage = () => (
                                     </p>
                                 </div>
                                 
-                                <h5 className="text-lg font-semibold text-white mb-4">Step 4b: Solder the Power Wires and Insulate Connections</h5>
+                                <h5 className="text-base md:text-lg font-semibold text-white mb-4">Step 4b: Solder the Power Wires and Insulate Connections</h5>
                                 <p className="text-gray-300 mb-4">Strip about 1cm of insulation from your two main power wires. Solder them to the same terminals where you just attached the diode, matching the polarity.</p>
                                 
-                                <div className="bg-red-900/20 border border-red-700/50 rounded p-4 mb-4">
-                                    <p className="text-red-100 mb-2">In the electromagnet shown in the sourced materials the 12v wiring is as follows: red + yellow connect to the <strong>positive (+)</strong> terminal (this is where the diode's band should be). Black and orange connect to the <strong>negative (-)</strong> terminal. Otherwise, follow the wiring instructions that came with the electromagnet.</p>
-                                    <p className="text-red-100 font-bold">⚠️ Test the wiring of your magnet using the 12v power supply *after* installing the diode to ensure it functions correctly.</p>
+                                <div className="bg-red-900/20 border border-red-700/50 rounded p-3 md:p-4 mb-4">
+                                    <p className="text-red-100 mb-2 text-sm md:text-base">In the electromagnet shown in the sourced materials the 12v wiring is as follows: red + yellow connect to the <strong>positive (+)</strong> terminal (this is where the diode's band should be). Black and orange connect to the <strong>negative (-)</strong> terminal. Otherwise, follow the wiring instructions that came with the electromagnet.</p>
+                                    <p className="text-red-100 font-bold text-sm md:text-base">⚠️ Test the wiring of your magnet using the 12v power supply *after* installing the diode to ensure it functions correctly.</p>
                                 </div>
 
-                                <div className="my-4 grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div className="my-4 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                                     <ImageOverlay 
                                         src={magnetWiresSrc}
                                         srcSet={magnetWiresSrcSet}
@@ -480,16 +480,16 @@ export const BuildMagLockPage = () => (
                             </div>
 
                             {/* Housing Step 4 */}
-                            <div className="bg-gray-800/50 rounded-lg p-6">
-                                <h4 className="text-xl font-bold text-white mb-4">
+                            <div className="md:bg-gray-800/50 md:rounded-lg md:p-6">
+                                <h4 className="text-lg md:text-xl font-bold text-white mb-4">
                                     Step 4: Insulate Connections
                                 </h4>
                                 <p className="text-gray-300">Cover all bare connections (the power wire joints <strong>and</strong> the flyback diode's legs) individually with electrical tape or heat shrink tubing to prevent any short circuits.</p>
                             </div>
 
                             {/* Housing Step 5 */}
-                            <div className="bg-gray-800/50 rounded-lg p-6">
-                                <h4 className="text-xl font-bold text-white mb-4">
+                            <div className="md:bg-gray-800/50 md:rounded-lg md:p-6">
+                                <h4 className="text-lg md:text-xl font-bold text-white mb-4">
                                     Step 5: Add Strain Relief
                                 </h4>
                                 <p className="text-gray-300 mb-4">On the inside of the housing, place a cable tie tightly around the main electrical wire. Cut the long end off, leaving the small square tab in place. This tab will act as a "stop," preventing the wire from being pulled directly from the solder joints if the cord is tugged.</p>
@@ -506,15 +506,15 @@ export const BuildMagLockPage = () => (
 
                     {/* Part 2: Armature Plate */}
                     <div className="mb-12">
-                        <h3 className="text-2xl font-bold text-gray-200 mb-6 pb-3 border-b border-gray-700">Part 2: Armature Plate Assembly</h3>
+                        <h3 className="text-xl md:text-2xl font-bold text-gray-200 mb-6 pb-3 border-b border-gray-700">Part 2: Armature Plate Assembly</h3>
                         <div className="bg-yellow-900/20 border border-yellow-700/50 rounded p-3 mb-6">
-                            <p className="text-yellow-200">⚠️ This entire section is only required if your electromagnet did NOT come with a 50mm armature plate and you are following "Path B" from the materials list and building your own.</p>
+                            <p className="text-yellow-200 text-sm md:text-base">⚠️ This entire section is only required if your electromagnet did NOT come with a 50mm armature plate and you are following "Path B" from the materials list and building your own.</p>
                         </div>
                         
                         <div className="space-y-6">
                             {/* Armature Step 1 */}
-                            <div className="bg-gray-800/50 rounded-lg p-6">
-                                <h4 className="text-xl font-bold text-white mb-4">
+                            <div className="md:bg-gray-800/50 md:rounded-lg md:p-6">
+                                <h4 className="text-lg md:text-xl font-bold text-white mb-4">
                                     Step 1: Find Center
                                 </h4>
                                 <p className="text-gray-300">Use the center finder to locate the center of the 50mm galvanized iron disc. Mark this spot with the center punch.</p>
@@ -530,8 +530,8 @@ export const BuildMagLockPage = () => (
                             </div>
 
                             {/* Armature Step 2 */}
-                            <div className="bg-gray-800/50 rounded-lg p-6">
-                                <h4 className="text-xl font-bold text-white mb-4">
+                            <div className="md:bg-gray-800/50 md:rounded-lg md:p-6">
+                                <h4 className="text-lg md:text-xl font-bold text-white mb-4">
                                     Step 2: Drill Hole and Countersink
                                 </h4>
                                 <p className="text-gray-300 mb-4">Drill a 6mm hole through the center mark by stepping up your drill bit sizes. Start with a 2mm drill bit, move to a 4mm bit, and finish with the 6mm bit.</p>
@@ -547,8 +547,8 @@ export const BuildMagLockPage = () => (
                             </div>
 
                               {/* Armature Step 3 */}
-                            <div className="bg-gray-800/50 rounded-lg p-6">
-                                <h4 className="text-xl font-bold text-white mb-4">
+                            <div className="md:bg-gray-800/50 md:rounded-lg md:p-6">
+                                <h4 className="text-lg md:text-xl font-bold text-white mb-4">
                                     Step 3: Assemble Plate
                                 </h4>
                                 <p className="text-gray-300 mb-4">Insert the conical screw through the countersunk side of the disc. Apply a drop of thread lock, then screw the eye bolt onto the threads until it is tight against the disc.</p>
@@ -582,14 +582,14 @@ export const BuildMagLockPage = () => (
                                 </div>
 
 
-                                <div className="bg-orange-900/20 border border-orange-700/50 rounded p-4 mt-6">
-                                    <p className="text-orange-100">
+                                <div className="bg-orange-900/20 border border-orange-700/50 rounded p-3 md:p-4 mt-6">
+                                    <p className="text-orange-100 text-sm md:text-base">
                                         <strong>Critical Test: Check for Flatness</strong>
                                     </p>
-                                    <p className="text-orange-100 mt-2">
+                                    <p className="text-orange-100 mt-2 text-sm md:text-base">
                                         After assembly, you must test that the base of your armature plate is perfectly flat. Place it on a level surface (like a table) with the screw head facing down.
                                     </p>
-                                    <p className="text-orange-100 mt-2">
+                                    <p className="text-orange-100 mt-2 text-sm md:text-base">
                                         Try to rock the disc back and forth. If it rocks, it means your countersunk screw isn't set deep enough or the disc is warped. A plate that rocks will not make a secure connection with the magnet; it will only hold on a single point, allowing you to rock yourself free and defeating the purpose of this project.
                                     </p>
                                 </div>
@@ -599,20 +599,20 @@ export const BuildMagLockPage = () => (
 
                     {/* Part 3: Final Assembly */}
                     <div>
-                        <h3 className="text-2xl font-bold text-gray-200 mb-6 pb-3 border-b border-gray-700">Part 3: Magnet Backing and Body Assembly</h3>
+                        <h3 className="text-xl md:text-2xl font-bold text-gray-200 mb-6 pb-3 border-b border-gray-700">Part 3: Magnet Backing and Body Assembly</h3>
                         
                         <div className="space-y-6">
                             {/* Final Step 1 */}
-                            <div className="bg-gray-800/50 rounded-lg p-6">
-                                <h4 className="text-xl font-bold text-white mb-4">
+                            <div className="md:bg-gray-800/50 md:rounded-lg md:p-6">
+                                <h4 className="text-lg md:text-xl font-bold text-white mb-4">
                                     Step 1: Prepare Rear Eye Bolt
                                 </h4>
                                 <p className="text-gray-300">Take the <strong>Stainless Steel M8 Eye Bolt</strong> (the long one for the magnet's housing, not the shorter one for the armature plate). Slide the 50mm washers onto the thread so they rest against the flat base of the eye. Depending on the final size of your inset, you may need to use two or three washers to ensure a proper fit.</p>
                             </div>
 
                             {/* Final Step 2 */}
-                            <div className="bg-gray-800/50 rounded-lg p-6">
-                                <h4 className="text-xl font-bold text-white mb-4">
+                            <div className="md:bg-gray-800/50 md:rounded-lg md:p-6">
+                                <h4 className="text-lg md:text-xl font-bold text-white mb-4">
                                     Step 2: Secure Washers
                                 </h4>
                                 <p className="text-gray-300 mb-4">Apply a drop of thread lock to the threads and screw on the M8 nut. Ensure the washers are properly aligned and do not skew as you tighten the nut firmly.</p>
@@ -626,8 +626,8 @@ export const BuildMagLockPage = () => (
                             </div>
 
                             {/* Final Step 3 */}
-                            <div className="bg-gray-800/50 rounded-lg p-6">
-                                <h4 className="text-xl font-bold text-white mb-4">
+                            <div className="md:bg-gray-800/50 md:rounded-lg md:p-6">
+                                <h4 className="text-lg md:text-xl font-bold text-white mb-4">
                                     Step 3: Final Assembly
                                 </h4>
                                 <p className="text-gray-300 mb-4">Apply a few drops of thread lock inside the threaded hole on the back of the electromagnet. This prevents the liquid from being pushed out as you tighten the bolt. Firmly screw your rear eye bolt assembly into the back of the magnet, which is now seated inside its PVC housing. Cover the central hole on the magnet's face with a small piece of electrical tape to catch any excess thread lock.</p>
@@ -640,8 +640,8 @@ export const BuildMagLockPage = () => (
                                     className="w-full h-auto rounded-md"
                                 />
 
-                                <div className="bg-orange-900/20 border border-orange-700/50 rounded p-4">
-                                    <p className="text-orange-100"><strong>Important:</strong> Tightening the rear eye bolt is critical to lock the electromagnet and prevent wires from twisting. However, do not over tighten as this can warp the PVD sleeve and jam the armature plate. As you tighten, test-fit the armature plate a few times. Find the balance where the magnet is secure, and the armature still slides smoothly.</p>
+                                <div className="bg-orange-900/20 border border-orange-700/50 rounded p-3 md:p-4">
+                                    <p className="text-orange-100 text-sm md:text-base"><strong>Important:</strong> Tightening the rear eye bolt is critical to lock the electromagnet and prevent wires from twisting. However, do not over tighten as this can warp the PVD sleeve and jam the armature plate. As you tighten, test-fit the armature plate a few times. Find the balance where the magnet is secure, and the armature still slides smoothly.</p>
                                 </div>
 
                             </div>
@@ -651,9 +651,9 @@ export const BuildMagLockPage = () => (
             </section>
 
             {/* Using the MagLock */}
-            <section className="my-16">
-                <div className="bg-gray-800 p-8 rounded-lg">
-                    <h2 className="text-3xl font-bold text-white mb-6 flex items-center">
+            <section className="my-8 md:my-16">
+                <div className="bg-gray-800 p-4 md:p-8 rounded-lg">
+                    <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 flex items-center">
                         Using Your MagLock
                     </h2>
                     <p className="text-gray-300 mb-4">Congratulations! You have now fully assembled your own custom electromagnet lock, securely encased in a durable PVC housing. You have a solid attachment eye on the magnet body and a matching armature plate, also with its own eye, ready to be integrated into your self-bondage setup.</p> 
@@ -688,17 +688,17 @@ export const BuildMagLockPage = () => (
                         />
                     </div>
 
-                    <div className="bg-green-900/30 border border-green-600/50 rounded-lg p-4 mb-6">
-                        <p className="text-green-100 font-semibold">⚠️ Before putting it to its final use, thoroughly test the lock with your power source and control system to ensure it engages and disengages reliably. Play safe and have fun.</p>
+                    <div className="bg-green-900/30 border border-green-600/50 rounded-lg p-3 md:p-4 mb-6">
+                        <p className="text-green-100 font-semibold text-sm md:text-base">⚠️ Before putting it to its final use, thoroughly test the lock with your power source and control system to ensure it engages and disengages reliably. Play safe and have fun.</p>
                     </div>
                     
                 </div>
             </section>
 
             {/* Sourcing Materials */}
-            <section className="my-16">
-                <div className="bg-gray-800 p-8 rounded-lg">
-                    <h2 className="text-3xl font-bold text-white mb-6 flex items-center">
+            <section className="my-8 md:my-16">
+                <div className="bg-gray-800 p-4 md:p-8 rounded-lg">
+                    <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 flex items-center">
                         Sourcing Materials
                     </h2>
                     <p className="text-gray-300 mb-6">Finding the specific components is straightforward. Here are a few suggested search terms for AliExpress or similar online marketplaces, focusing on the more specialized parts:</p>

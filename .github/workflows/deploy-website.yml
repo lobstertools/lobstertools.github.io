@@ -129,7 +129,12 @@ jobs:
             IS_BETA="true"
             echo "::notice::Beta mode enabled (Releases missing or tagged beta)."
           fi
+          
+          # 1. Save to GITHUB_ENV (optional, good for logging)
           echo "VITE_IS_BETA=$IS_BETA" >> $GITHUB_ENV
+          
+          # 2. EXPORT for the current 'yarn build' command
+          export VITE_IS_BETA="$IS_BETA"
           
           yarn build
 

@@ -110,18 +110,20 @@ export const BuildMagLockPage = () => (
                     <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 md:mb-6 flex items-center">
                         Cost Breakdown
                     </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-6">
-                        <div className="bg-gray-800/50 p-3 md:p-4 rounded-lg text-center">
-                            <div className="text-2xl md:text-3xl font-bold text-green-400">~€50</div>
-                            <div className="text-gray-400 mt-2 text-sm md:text-base">Total Cost</div>
+                    {/* Updated Grid: Always 3 columns (grid-cols-3), smaller gap on mobile */}
+                    <div className="grid grid-cols-3 gap-2 md:gap-6 mb-6">
+                        <div className="bg-gray-800/50 p-2 md:p-4 rounded-lg text-center flex flex-col justify-center">
+                            {/* Adjusted text sizes for mobile fit */}
+                            <div className="text-lg sm:text-2xl md:text-3xl font-bold text-green-400">~€50</div>
+                            <div className="text-gray-400 mt-1 md:mt-2 text-[10px] sm:text-xs md:text-base leading-tight">Total Cost</div>
                         </div>
-                        <div className="bg-gray-800/50 p-3 md:p-4 rounded-lg text-center">
-                            <div className="text-2xl md:text-3xl font-bold text-yellow-400">~€40</div>
-                            <div className="text-gray-400 mt-2 text-sm md:text-base">Electromagnet</div>
+                        <div className="bg-gray-800/50 p-2 md:p-4 rounded-lg text-center flex flex-col justify-center">
+                            <div className="text-lg sm:text-2xl md:text-3xl font-bold text-yellow-400">~€40</div>
+                            <div className="text-gray-400 mt-1 md:mt-2 text-[10px] sm:text-xs md:text-base leading-tight">Electromagnet</div>
                         </div>
-                        <div className="bg-gray-800/50 p-3 md:p-4 rounded-lg text-center">
-                            <div className="text-2xl md:text-3xl font-bold text-blue-400">~€10</div>
-                            <div className="text-gray-400 mt-2 text-sm md:text-base">Hardware</div>
+                        <div className="bg-gray-800/50 p-2 md:p-4 rounded-lg text-center flex flex-col justify-center">
+                            <div className="text-lg sm:text-2xl md:text-3xl font-bold text-blue-400">~€10</div>
+                            <div className="text-gray-400 mt-1 md:mt-2 text-[10px] sm:text-xs md:text-base leading-tight">Hardware</div>
                         </div>
                     </div>
                     <p className="text-gray-300 mb-4">Building this MagLock costs around €50, a significant saving compared to commercial versions which can easily cost three times as much. The electromagnet is the main expense at about €40, with the remaining €10 covering all the smaller hardware.</p>

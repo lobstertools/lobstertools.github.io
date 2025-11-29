@@ -96,6 +96,35 @@ export const BuildControllerPage = () => (
                     </div>
                 </div>
             </section>
+            
+            {/* Cost Breakdown */}
+            <section className="my-8 md:my-16">
+                <div className="bg-gray-800 p-4 md:p-8 rounded-lg">
+                    <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 md:mb-6 flex items-center">
+                        Controller Cost Breakdown
+                    </h2>
+                    
+                    {/* Updated Grid: Always 3 columns (grid-cols-3), smaller gap on mobile */}
+                    <div className="grid grid-cols-3 gap-2 md:gap-6 mb-6">
+                        <div className="bg-gray-800/50 p-2 md:p-4 rounded-lg text-center flex flex-col justify-center">
+                            {/* Adjusted text sizes for mobile fit */}
+                            <div className="text-lg sm:text-2xl md:text-3xl font-bold text-green-400">~€40</div>
+                            <div className="text-gray-400 mt-1 md:mt-2 text-[10px] sm:text-xs md:text-base leading-tight">Total Cost</div>
+                        </div>
+                        <div className="bg-gray-800/50 p-2 md:p-4 rounded-lg text-center flex flex-col justify-center">
+                            <div className="text-lg sm:text-2xl md:text-3xl font-bold text-yellow-400">~€25</div>
+                            <div className="text-gray-400 mt-1 md:mt-2 text-[10px] sm:text-xs md:text-base leading-tight">Main Board & Connectors</div>
+                        </div>
+                        <div className="bg-gray-800/50 p-2 md:p-4 rounded-lg text-center flex flex-col justify-center">
+                            <div className="text-lg sm:text-2xl md:text-3xl font-bold text-blue-400">~€15</div>
+                            <div className="text-gray-400 mt-1 md:mt-2 text-[10px] sm:text-xs md:text-base leading-tight">Housing, PSU & Programmer</div>
+                        </div>
+                    </div>
+
+                    <p className="text-gray-300 mb-4">The total cost to build the controller is roughly 40 to 50 EUR. The main expense is the DIYMORE 2-Channel board, the secure GX-series connectors and the Abort Switch (foot pedal), which costs about 25 EUR, depending on the supplier. </p>
+                    <p className="text-gray-300">The remaining cost covers the 12V power supply, the USB-to-Serial programmer for flashing, and all the additional hardware. This includes the project box, the status LED, and other miscellaneous wires and components. Prices will vary a bit over time and based on shipping.</p>
+                </div>
+            </section>
 
             {/* Materials & Tools */}
             <section className="my-8 md:my-16">

@@ -135,7 +135,7 @@ export const BuildControllerPage = () => (
                             <h3 className="text-xl md:text-2xl font-bold text-white mb-4">Materials</h3>
                             <ul className="list-disc list-inside md:list-outside md:pl-5 space-y-2 text-gray-300 text-sm md:text-base">
                                 <li>1 x DIYMORE ESP32 MOS Switch Module</li>
-                                <li>1 x Plastic Project Box (min 100x60x25mm)</li>
+                                <li>1 x Plastic Project Box (100x68x50mm)</li>
                                 <li>1 x 12V Power Supply (2A+)</li>
                                 <li>1 x Panel-Mount DC Jack (Female)</li>
                                 <li>3 x GX12 Connector Pairs (Male + Female)</li>
@@ -149,7 +149,7 @@ export const BuildControllerPage = () => (
                                 <li>Soldering Iron & Solder</li>
                                 <li>USB-to-Serial (UART) Programmer</li>
                                 <li>Drill & Bits (6mm, 8mm, 11mm)</li>
-                                <li>Wire Strippers & Heat Shrink</li>
+                                <li>Wire Strippers & Heat Shrink or Elecrical Tape</li>
                                 <li>Caliper (recommended)</li>
                             </ul>
                         </div>
@@ -703,6 +703,44 @@ export const BuildControllerPage = () => (
                     </div>
                 </div>
             </section>
+
+            {/* Sourcing Materials */}
+            <section className="my-8 md:my-16">
+                <div className="bg-gray-800 p-4 md:p-8 rounded-lg">
+                    <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 flex items-center">
+                        Sourcing Materials
+                    </h2>
+                    <p className="text-gray-300 mb-6">Finding the specific components is straightforward. Here are a few suggested search terms for AliExpress or similar online marketplaces, focusing on the more specialized parts:</p>
+                    
+                    <div className="space-y-4">
+                        <div className="bg-gray-700/50 rounded-lg p-4">
+                            <h3 className="text-lg font-semibold text-white mb-4">Controller board</h3>
+                            <p className="text-gray-300 text-sm">Diymore ESP32 2/4-way MOS Switch 60v</p>
+
+                        </div>
+                        
+                        <div className="bg-gray-700/50 rounded-lg p-4">
+                            <h3 className="text-lg font-semibold text-white mb-4">Project Box</h3>
+                            <p className="text-gray-300 text-sm mb-4">Transparent Waterproof Outdoor Box FT100-68-50</p>
+                        </div>
+                        
+                        <div className="bg-gray-700/50 rounded-lg p-4">
+                            <h3 className="text-lg font-semibold text-white mb-4">LED</h3>
+                            <p className="text-gray-300 text-sm">5pcs LED Metal Indicator 6mm 3-6v</p>
+                        </div>
+                        
+                        <div className="bg-gray-700/50 rounded-lg p-4">
+                            <h3 className="text-lg font-semibold text-white mb-4">Foot Pedal</h3>
+                            <p className="text-gray-300 text-sm">OMCH Foot Switch TFS-1</p>
+                        </div>
+                        
+                        <div className="bg-gray-700/50 rounded-lg p-4">
+                            <h3 className="text-lg font-semibold text-white mb-4">USB Programmer Cable</h3>
+                            <p className="text-gray-300 text-sm">CH340 CH340G USB 2.0 to TTL Serial Adapter Dupont Interface</p>
+                        </div>
+                    </div>
+                </div>
+            </section>            
         </div>
     </>
 );

@@ -554,7 +554,13 @@ export const BuildMagLockPage = () => (
                                     Step 3: Assemble Plate
                                 </h4>
                                 <p className="text-gray-300 mb-4">Insert the conical screw through the countersunk side of the disc. Apply a drop of thread lock, then screw the eye bolt onto the threads until it is tight against the disc.</p>
-                                
+                                <div className="bg-blue-900/20 border border-blue-700/50 rounded p-3 md:p-4 mb-6">
+                                    <h4 className="text-blue-100 font-bold mb-2 text-sm md:text-base">ℹ️ A Note on Metal Types</h4>
+                                    <p className="text-blue-200 text-sm mb-2">
+                                        The galvanized disc alone lacks sufficient iron to create a strong magnetic connection. Therefore, it is critical that both the eye and the screw are made of ferrous metal. If you use stainless steel for these parts, the armature plate will not hold.
+                                    </p>
+                                </div>
+
                                 <TutorialImage 
                                     src={armatureEye2Src}
                                     srcSet={armatureEye2SrcSet}
@@ -582,7 +588,6 @@ export const BuildMagLockPage = () => (
                                         className="w-full h-auto rounded-md" 
                                     />
                                 </div>
-
 
                                 <div className="bg-orange-900/20 border border-orange-700/50 rounded p-3 md:p-4 mt-6">
                                     <p className="text-orange-100 text-sm md:text-base">

@@ -15,9 +15,9 @@ export const BetaWarningBanner: React.FC = () => {
     return (
         <div className="bg-[#2b2111] text-[rgba(255,255,255,0.85)] font-bold p-3 text-center sticky top-0 z-40">
             <p>
-                ⚠️ <strong>Beta Version:</strong> This is unfinished software
-                currently in testing and not officially released. Please use
-                with caution.
+                ⚠️ <strong>Beta Version:</strong> This entire project is
+                currently in beta testing and not officially released. Please use
+                with caution.            
             </p>
         </div>
     );

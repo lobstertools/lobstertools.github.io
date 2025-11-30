@@ -108,21 +108,21 @@ export const BuildControllerPage = () => (
                     <div className="grid grid-cols-3 gap-2 md:gap-6 mb-6">
                         <div className="bg-gray-800/50 p-2 md:p-4 rounded-lg text-center flex flex-col justify-center">
                             {/* Adjusted text sizes for mobile fit */}
-                            <div className="text-lg sm:text-2xl md:text-3xl font-bold text-green-400">~€40</div>
+                            <div className="text-lg sm:text-2xl md:text-3xl font-bold text-green-400">~€50</div>
                             <div className="text-gray-400 mt-1 md:mt-2 text-[10px] sm:text-xs md:text-base leading-tight">Total Cost</div>
                         </div>
                         <div className="bg-gray-800/50 p-2 md:p-4 rounded-lg text-center flex flex-col justify-center">
-                            <div className="text-lg sm:text-2xl md:text-3xl font-bold text-yellow-400">~€25</div>
-                            <div className="text-gray-400 mt-1 md:mt-2 text-[10px] sm:text-xs md:text-base leading-tight">Main Board & Connectors</div>
+                            <div className="text-lg sm:text-2xl md:text-3xl font-bold text-yellow-400">~€35</div>
+                            <div className="text-gray-400 mt-1 md:mt-2 text-[10px] sm:text-xs md:text-base leading-tight">Main Board, Connectors & Battery</div>
                         </div>
                         <div className="bg-gray-800/50 p-2 md:p-4 rounded-lg text-center flex flex-col justify-center">
                             <div className="text-lg sm:text-2xl md:text-3xl font-bold text-blue-400">~€15</div>
-                            <div className="text-gray-400 mt-1 md:mt-2 text-[10px] sm:text-xs md:text-base leading-tight">Housing, PSU & Programmer</div>
+                            <div className="text-gray-400 mt-1 md:mt-2 text-[10px] sm:text-xs md:text-base leading-tight">Housing, Programmer and Misc. Parts</div>
                         </div>
                     </div>
 
-                    <p className="text-gray-300 mb-4">The total cost to build the controller is roughly 40 to 50 EUR. The main expense is the DIYMORE 2-Channel board, the secure GX-series connectors and the Abort Switch (foot pedal), which costs about 25 EUR, depending on the supplier. </p>
-                    <p className="text-gray-300">The remaining cost covers the 12V power supply, the USB-to-Serial programmer for flashing, and all the additional hardware. This includes the project box, the status LED, and other miscellaneous wires and components. Prices will vary a bit over time and based on shipping.</p>
+                    <p className="text-gray-300 mb-4">The total cost to build the controller is roughly 40 to 50 EUR. The main expense is the DIYMORE 2-Channel board, the secure GX-series connectors, the Abort Switch (foot pedal), and the 12V battery pack, which costs about 35 EUR, depending on the supplier. </p>
+                    <p className="text-gray-300">The remaining cost covers the USB-to-Serial programmer for flashing and all the additional hardware. This includes the project box, the status LED, and other miscellaneous wires and components. Prices will vary over time and based on shipping.</p>
                 </div>
             </section>
 
@@ -136,7 +136,7 @@ export const BuildControllerPage = () => (
                             <ul className="list-disc list-inside md:list-outside md:pl-5 space-y-2 text-gray-300 text-sm md:text-base">
                                 <li>1 x DIYMORE ESP32 MOS Switch Module</li>
                                 <li>1 x Plastic Project Box (100x68x50mm)</li>
-                                <li>1 x 12V Power Supply (2A+)</li>
+                                <li>1 x 12V 600mAh Ni-Cd Battery Pack (10 cells)</li>
                                 <li>1 x Panel-Mount DC Jack (Female)</li>
                                 <li>3 x GX12 Connector Pairs (Male + Female)</li>
                                 <li>1 x Status LED (with resistor)</li>
@@ -153,6 +153,42 @@ export const BuildControllerPage = () => (
                                 <li>Caliper (recommended)</li>
                             </ul>
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Power Source */}
+             <section className="my-8 md:my-16">
+                <div className="bg-gray-800 p-4 md:p-8 rounded-lg">
+                    <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 md:mb-6 flex items-center">
+                        Power Source
+                    </h2>
+                    
+                    <div className="rounded p-2 md:p-6">
+                        <div className="flex items-center gap-3 mb-4">
+                            <span className="text-2xl">🔋</span>
+                            <h4 className="text-green-100 font-bold text-lg md:text-xl">The Ultimate Fail-Safe</h4>
+                        </div>
+                        
+                        <p className="text-gray-300 mb-4">
+                            The Lobster firmware is engineered with safety in mind, featuring multiple internal watchdogs and hardware protections. However, the most reliable safeguard is to power your controller with a battery pack.
+                        </p>
+                        <p className="text-gray-300 mb-6">
+                            This creates a physical fail-safe: if the software hangs, the device breaks, or the abort switch malfunctions, the battery will eventually drain. Once the power runs out, the magnet automatically releases, ensuring you are never trapped indefinitely.
+                        </p>
+
+                        <div className="bg-blue-900/20 border border-blue-700/50 rounded p-4 mb-6">
+                            <h4 className="text-blue-100 font-bold mb-2 text-sm md:text-base">Recommended: 600mAh Ni-Cd Battery Pack (10 Cells)</h4>
+                            <ul className="list-disc list-inside md:list-outside md:pl-5 text-gray-300 space-y-2 text-sm md:text-base">
+                                <li><strong>Configuration:</strong> 10 Cells × 1.2V = <strong>12.0V Nominal</strong>.</li>
+                                <li><strong>Chemistry:</strong> Ni-Cd (Nickel-Cadmium).</li>
+                                <li><strong>Why Ni-Cd?</strong> Unlike other chemistries, Ni-Cd batteries maintain a very steady voltage (~1.2V per cell) for about 80-90% of their discharge cycle. This is perfect for MagLocks, which require constant voltage to hold securely.</li>
+                            </ul>
+                        </div>
+                                                
+                        <p className="text-gray-300">
+                            With a 600mAh pack, you can expect approximately <strong>~3 Hours of runtime</strong> before the voltage drops and the lock releases automatically.
+                        </p>
                     </div>
                 </div>
             </section>
@@ -268,10 +304,10 @@ export const BuildControllerPage = () => (
                                 </h5>
                                 <ul className="list-disc list-inside md:list-outside md:pl-5 space-y-2 text-red-100 text-sm">
                                     <li>
-                                        <strong>Voltage Conflict:</strong> Never connect the serial programming tool (5V) and the external 12V power supply at the same time. Connecting these together can damage your controller board or destroy your computer's USB port.
+                                        <strong>Voltage Conflict:</strong> Never connect the serial programming tool (5V) and the external 12V battery at the same time. Connecting these together can damage your controller board or destroy your computer's USB port.
                                     </li>
                                     <li>
-                                        <strong>Testing Safety:</strong> When testing the actual electromagnet, you must use the external 12V power supply. Do not attempt to power the magnet via the USB connection; your computer is not designed for this heavy electrical load and could be damaged.
+                                        <strong>Testing Safety:</strong> When testing the actual electromagnet, you must use the external 12V battery. Do not attempt to power the magnet via the USB connection; your computer is not designed for this heavy electrical load and could be damaged.
                                     </li>
                                 </ul>
                             </div>
@@ -311,7 +347,7 @@ export const BuildControllerPage = () => (
                             <h5 className="text-base md:text-lg font-bold text-white mb-3">3b. Power Up & Provisioning</h5>
                             <ol className="list-decimal list-inside md:list-outside md:pl-5 space-y-3 text-gray-300 mb-8 text-sm md:text-base">
                                 <li>
-                                    <strong>Unplug the USB programmer</strong> from your computer. Now, plug in your <strong>12V power adapter</strong>. This reboots the ESP32 and provides sufficient power for the MagLocks.
+                                    <strong>Unplug the USB programmer</strong> from your computer. Now, plug in your <strong>12V battery</strong>. This reboots the ESP32 and provides sufficient power for the MagLocks.
                                 </li>
                                 <li>
                                     Give the device a minute to boot. Since no WiFi is configured, it will enter <strong>Discovery Mode</strong>.
@@ -659,7 +695,7 @@ export const BuildControllerPage = () => (
                         <h4 className="text-lg md:text-xl font-bold text-white mb-4">Step 10: Final Hardware Test</h4>
                         <ol className="list-decimal list-inside md:list-outside md:pl-5 space-y-3 text-gray-300 text-sm md:text-base">
                             <li>
-                                Power up the device using the 12V adapter.
+                                Power up the device using the 12V battery.
                             </li>
                             <li>
                                 <strong>Test again:</strong> Using the Session Manager, re-run the <strong>Hardware Test</strong>.
@@ -676,42 +712,6 @@ export const BuildControllerPage = () => (
                                 Screw the lid shut. You built a MagLock Controller!
                             </p>
                         </div>
-                    </div>
-                </div>
-            </section>
-
-             {/* Usage Recommendation / Battery */}
-             <section className="my-8 md:my-16">
-                <div className="bg-gray-800 p-4 md:p-8 rounded-lg">
-                    <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 md:mb-6 flex items-center">
-                        Session Safety: The Battery Fail-Safe
-                    </h2>
-                    
-                    <div className="rounded p-2 md:p-6">
-                        <div className="flex items-center gap-3 mb-4">
-                            <span className="text-2xl">🔋</span>
-                            <h4 className="text-green-100 font-bold text-lg md:text-xl">The Ultimate Fail-Safe</h4>
-                        </div>
-                        
-                        <p className="text-gray-300 mb-4">
-                            The Lobster firmware has been designed with failure in mind, featuring multiple software watchdogs and hardware protections. Even so, the safest option for a live session is to power your controller with a battery pack. 
-                        </p>
-                        <p className="text-gray-300 mb-6">
-                            This acts as the ultimate fail-safe: should the software hang, the physical device break, or the abort switch fail, the battery will eventually die, cutting power and releasing the lock due to lack of power.
-                        </p>
-
-                        <div className="bg-blue-900/20 border border-blue-700/50 rounded p-4 mb-6">
-                            <h4 className="text-blue-100 font-bold mb-2 text-sm md:text-base">Recommended: 600mAh Ni-Cd Battery Pack (10 Cells)</h4>
-                            <ul className="list-disc list-inside md:list-outside md:pl-5 text-gray-300 space-y-2 text-sm md:text-base">
-                                <li><strong>Configuration:</strong> 10 Cells × 1.2V = <strong>12.0V Nominal</strong>.</li>
-                                <li><strong>Chemistry:</strong> Ni-Cd (Nickel-Cadmium).</li>
-                                <li><strong>Why Ni-Cd?</strong> Unlike other chemistries, Ni-Cd batteries maintain a very steady voltage (~1.2V per cell) for about 80-90% of their discharge cycle. This is perfect for MagLocks, which require constant voltage to hold securely.</li>
-                            </ul>
-                        </div>
-                                                
-                        <p className="text-gray-300">
-                            With a 600mAh pack, you can expect approximately <strong>~3 Hours of runtime</strong> before the voltage drops and the lock releases automatically.
-                        </p>
                     </div>
                 </div>
             </section>

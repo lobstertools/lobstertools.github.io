@@ -401,7 +401,7 @@ export const BuildMagLockPage = () => (
                             
                             <div className="bg-red-900/20 border border-red-700/50 rounded p-3 md:p-4 mb-4">
                                 <p className="text-red-100 mb-2 text-sm md:text-base">In the electromagnet shown in the sourced materials the 12v wiring is as follows: red + yellow connect to the <strong>positive (+)</strong> terminal (this is where the diode's band should be). Black and orange connect to the <strong>negative (-)</strong> terminal. Otherwise, follow the wiring instructions that came with the electromagnet.</p>
-                                <p className="text-red-100 font-bold text-sm md:text-base">⚠️ Test the wiring of your magnet using the 12v power supply *after* installing the diode to ensure it functions correctly.</p>
+                                <p className="text-red-100 font-bold text-sm md:text-base">⚠️ Test the wiring of your magnet using the 12v battery after installing the diode to ensure it functions correctly.</p>
                             </div>
 
                             <div className="my-4 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
@@ -604,7 +604,7 @@ export const BuildMagLockPage = () => (
                         Using Your MagLock
                     </h2>
                     <p className="text-gray-300 mb-4">Congratulations! You have now fully assembled your own custom electromagnet lock, securely encased in a durable PVC housing. You have a solid attachment eye on the magnet body and a matching armature plate, also with its own eye, ready to be integrated into your self-bondage setup.</p> 
-                    <p className="text-gray-300 mb-4">To make it functional, attach an appropriate electrical connector (such as a barrel jack or aviation plug) to the other end of the cable. This will allow you to easily connect it to your 12v power supply and a control system, such as a simple timer, a remote switch, or control software.</p>
+                    <p className="text-gray-300 mb-4">To make it functional, attach an appropriate electrical connector (such as a barrel jack or aviation plug) to the other end of the cable. This will allow you to easily connect it to your 12v battery and a control system, such as a simple timer, a remote switch, or control software.</p>
 
                     <TutorialImage 
                         src={finishedMagLockSrc}
@@ -636,7 +636,7 @@ export const BuildMagLockPage = () => (
                     </div>
 
                     <div className="bg-green-900/30 border border-green-600/50 rounded-lg p-3 md:p-4 mb-6">
-                        <p className="text-green-100 font-semibold text-sm md:text-base">⚠️ Before putting it to its final use, thoroughly test the lock with your power source and control system to ensure it engages and disengages reliably. Play safe and have fun.</p>
+                        <p className="text-green-100 font-semibold text-sm md:text-base">⚠️ Before putting it to its final use, thoroughly test the lock with your battery and control system to ensure it engages and disengages reliably. Play safe and have fun.</p>
                     </div>
                     
                 </div>

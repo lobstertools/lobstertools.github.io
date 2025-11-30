@@ -140,7 +140,7 @@ export const BuildControllerPage = () => (
                                 <li>1 x Panel-Mount DC Jack (Female)</li>
                                 <li>3 x GX12 Connector Pairs (Male + Female)</li>
                                 <li>1 x Status LED (with resistor)</li>
-                                <li>1 x Abort Switch (TFS-1)</li>
+                                <li>1 x Abort Switch (TFS-1) - <strong>Normally Closed Config</strong></li>
                             </ul>
                         </div>
                         <div>
@@ -448,8 +448,19 @@ export const BuildControllerPage = () => (
                     
                     <div className="space-y-6">
                         <div className="md:bg-gray-800/50 md:rounded-lg md:p-6">
-                            <h4 className="text-lg md:text-xl font-bold text-white mb-6">Step 6: Abort Switch Assembly</h4>
+                            <h4 className="text-lg md:text-xl font-bold text-white mb-6">Step 6: Abort Switch Assembly (Fail-Safe Config)</h4>
                             <p className="text-gray-300 mb-4">This connects your momentary switch (or foot pedal) to a Male GX12 plug.</p>
+
+                            <div className="bg-yellow-900/20 border border-yellow-700/50 rounded p-4 mb-6">
+                                <h4 className="text-yellow-100 font-bold mb-2 text-sm md:text-base">Safety First: Why Normally Closed (NC)?</h4>
+                                <div className="text-yellow-200 text-sm space-y-2">
+                                    <p>
+                                        We configure the switch as <strong>Normally Closed</strong> to create a "Fail-Safe" system. In a standard (Normally Open) setup, a broken wire or loose plug would simply stop the button from working—meaning you press the pedal, but the signal never reaches the controller, leaving the lock engaged.
+                                    </p>
+                                    <p>
+                                        With <strong>Normally Closed</strong>, the system requires a constant electrical connection to stay locked. Any interruption—whether it is you pressing the switch, a cable getting cut, or the plug falling out—breaks the circuit and <strong>immediately releases the lock</strong>.
+                                    </p>
+                                </div>                            </div>
 
                             <ol className="list-decimal list-inside md:list-outside md:pl-5 space-y-3 text-gray-300 mb-8 text-sm md:text-base">
                                 <li>Disassemble a male GX12 cable connector. Slide the housing parts onto your switch cable in this order: End Screw &rarr; Rubber Strain Relief &rarr; Housing.</li>
@@ -457,8 +468,9 @@ export const BuildControllerPage = () => (
                                     Strip and tin the ends of the Abort Switch wires.
                                     <div className="bg-blue-900/20 border border-blue-700/50 rounded p-3 mt-3 mb-2">
                                         <p className="text-blue-200 text-sm">
-                                            <strong>Wiring the TFS-1:</strong> This switch typically has three wires: <strong>COM</strong>, <strong>NO</strong>, and <strong>NC</strong>.
-                                            You need to connect <strong>COM (White)</strong> and <strong>NO (Red)</strong> for the switch to work as expected. The third wire (Black/NC) can be cut or ignored.
+                                            <strong>Wiring the TFS-1 (Normally Closed):</strong> This switch typically has three wires: <strong>COM</strong>, <strong>NO</strong>, and <strong>NC</strong>.
+                                            You need to connect <strong>COM (White)</strong> and <strong>NC (Black)</strong> for the fail-safe logic to work. The third wire (Red/NO) can be cut or ignored.
+                                            <br/><em className="text-xs text-blue-300">Note: Always verify the wire colors on your specific switch with a multimeter.</em>
                                         </p>
                                     </div>
                                 </li>

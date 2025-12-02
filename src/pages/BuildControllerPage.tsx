@@ -35,10 +35,12 @@ import prepGxSrc from '@/images/controller/prepared_gx_connectors.webp?w=1200&fo
 import prepGxSrcSet from '@/images/controller/prepared_gx_connectors.webp?w=400;800;1200&format=webp&as=srcset';
 
 // Part 4
-import disassembledGxSrc from '@/images/controller/disassembled_gcx_connector.webp?w=1200&format=webp';
-import disassembledGxSrcSet from '@/images/controller/disassembled_gcx_connector.webp?w=400;800;1200&format=webp&as=srcset';
+import footSwitchWithGxSrc from '@/images/controller/tfs_foot_switch_gx12.webp?w=1200&format=webp';
+import footSwitchWithGxSrcSet from '@/images/controller/tfs_foot_switch_gx12.webp?w=400;800;1200&format=webp&as=srcset';
 import abortSwitchSrc from '@/images/controller/abort_switch.webp?w=1200&format=webp';
 import abortSwitchSrcSet from '@/images/controller/abort_switch.webp?w=400;800;1200&format=webp&as=srcset';
+import tfsDiagramSrc from '@/images/controller/tfs_foot_switch_schematic.webp?w=1200&format=webp';
+import tfsDiagramSrcSet from '@/images/controller/tfs_foot_switch_schematic.webp?w=400;800;1200&format=webp&as=srcset';
 
 // Part 5
 import enclosureHolesSrc from '@/images/controller/enclosure_with_holes.webp?w=1200&format=webp';
@@ -64,7 +66,7 @@ export const BuildControllerPage = () => (
         <div className="py-6 md:py-12">
             <h1 className="text-2xl md:text-4xl font-bold text-white text-center mb-4 md:mb-6">Build the MagLock Controller</h1>
             <p className="text-lg md:text-xl text-center text-gray-400 mb-8 md:mb-12 max-w-3xl mx-auto px-4">
-                The "brains" of your Lobster system. This guide follows a <strong>"First Life" workflow</strong>: we will get the MagLock working with the absolute minimum wiring first to give you a quick win, then add the advanced features.
+                The "brains" of your Lobster system. This guide follows a <strong>"First Life" workflow</strong>: we will wake up the controller and verify the firmware is running before doing the heavy assembly.
             </p>
 
             <TutorialImage 
@@ -242,9 +244,9 @@ export const BuildControllerPage = () => (
             {/* --- PART 2: FIRST LIFE TEST --- */}
             <section className="my-8 md:my-16">
                 <div className="bg-gray-800 p-4 md:p-8 rounded-lg">
-                    <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 md:mb-6">Part 2: The "First Life" Test</h2>
+                    <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 md:mb-6">Part 2: Boot & Provision</h2>
                     <p className="text-gray-300 mb-8">
-                         Before building the full enclosure, we verify the core electronics. In this phase, you will connect basic power, flash the Lobster firmware, and provision the device over WiFi to ensure the "brain" is alive and working.
+                         Before building the full enclosure, we verify the "brain" is alive. In this phase, you will connect power, flash the Lobster firmware, and provision the device over WiFi.
                     </p>
 
                     <div className="space-y-6">
@@ -253,12 +255,12 @@ export const BuildControllerPage = () => (
                         <div className="md:bg-gray-800/50 md:rounded-lg md:p-6">
                             <h4 className="text-lg md:text-xl font-bold text-white mb-4">Step 2: Basic Power Wiring</h4>
                             <p className="text-gray-300 mb-6 text-sm md:text-base">
-                                We are going to skip the LED and Abort Switch wiring for now. Let's just connect power and flash the board to see it come alive.
+                                We need to give the board 12V power to allow it to boot up and connect to WiFi after flashing.
                             </p>
 
                             <ol className="list-decimal list-inside md:list-outside md:pl-5 space-y-3 text-gray-300 mb-6 text-sm md:text-base">
                                 <li>
-                                    <strong>Prepare your wires:</strong> Cut the DC Jack wires to about 10 cm in length and strip about 5mm of insulation from the ends. Also strip about 5mm of insulation from the end of your MagLock wires. Tin them with solder to ensure a clean connection.
+                                    <strong>Prepare your power wires:</strong> Cut the DC Jack wires to about 10 cm in length and strip about 5mm of insulation from the ends. Tin them with solder to ensure a clean connection.
                                 </li>
                                 <li>
                                     Solder the two short wires (Red/Black) to your <strong>Female DC Jack</strong>.
@@ -266,14 +268,15 @@ export const BuildControllerPage = () => (
                                 <li>
                                     Screw the other ends of the DC Jack wires into the green <strong>INPUT</strong> terminals on the board. <span className="text-gray-400 italic">(Check polarity: Red to +, Black to -)</span>.
                                 </li>
-                                <li>
-                                    Take the tinned wires from your <strong>MagLock</strong> and screw them directly into the green <strong>CHANNEL</strong> terminals.
-                                </li>
                             </ol>
                             
-                            <div className="bg-blue-900/20 border border-blue-700/50 rounded p-3 mb-4">
-                                <p className="text-blue-200 text-sm">
-                                    Note: We are ignoring the LED and Abort Switch for now. You can test the core functionality working first, however they are essential for safety in the final build.
+                            <div className="bg-yellow-900/20 border border-yellow-700/50 rounded p-4 mb-4">
+                                <h5 className="text-yellow-100 font-bold mb-2 text-sm md:text-base">Why not wire the magnets yet?</h5>
+                                <p className="text-yellow-200 text-sm">
+                                    The Lobster firmware uses a <strong>Normally Closed (NC)</strong> safety logic. This means the system will not activate the magnets unless it detects the Abort Switch is connected and closed.
+                                </p>
+                                <p className="text-yellow-200 text-sm mt-2">
+                                    If we wired the magnets now, without the button, they wouldn't work because the firmware would think the emergency button is pressed. We will test the mechanics in <strong>Part 6</strong>, once the full safety loop is built.
                                 </p>
                             </div>
 
@@ -295,20 +298,15 @@ export const BuildControllerPage = () => (
 
                         {/* Step 3: Flash & Test */}
                         <div className="md:bg-gray-800/50 md:rounded-lg md:p-6">
-                            <h4 className="text-lg md:text-xl font-bold text-white mb-6">Step 3: Flash, Provision & Test</h4>
+                            <h4 className="text-lg md:text-xl font-bold text-white mb-6">Step 3: Flash & Provision</h4>
                             
                             {/* Critical Warnings */}
                             <div className="bg-red-900/20 border border-red-700/50 rounded p-3 md:p-4 mb-8">
                                 <h5 className="text-red-100 font-bold flex items-center gap-2 mb-2 text-sm md:text-base">
-                                    <span>⚠️</span> CRITICAL POWER WARNINGS
+                                    <span>⚠️</span> CRITICAL POWER WARNING
                                 </h5>
-                                <ul className="list-disc list-inside md:list-outside md:pl-5 space-y-2 text-red-100 text-sm">
-                                    <li>
-                                        <strong>Voltage Conflict:</strong> Never connect the serial programming tool (5V) and the external 12V battery at the same time. Connecting these together can damage your controller board or destroy your computer's USB port.
-                                    </li>
-                                    <li>
-                                        <strong>Testing Safety:</strong> When testing the actual electromagnet, you must use the external 12V battery. Do not attempt to power the magnet via the USB connection; your computer is not designed for this heavy electrical load and could be damaged.
-                                    </li>
+                                <ul className="space-y-2 text-red-100 text-sm">
+                                    <strong>Voltage Conflict:</strong> Never connect the serial programming tool (5V) and the external 12V battery at the same time. Connecting these together can damage your controller board or destroy your computer's USB port.
                                 </ul>
                             </div>
 
@@ -347,7 +345,7 @@ export const BuildControllerPage = () => (
                             <h5 className="text-base md:text-lg font-bold text-white mb-3">3b. Power Up & Provisioning</h5>
                             <ol className="list-decimal list-inside md:list-outside md:pl-5 space-y-3 text-gray-300 mb-8 text-sm md:text-base">
                                 <li>
-                                    <strong>Unplug the USB programmer</strong> from your computer. Now, plug in your <strong>12V battery</strong>. This reboots the ESP32 and provides sufficient power for the MagLocks.
+                                    <strong>Unplug the USB programmer</strong> from your computer. Now, plug in your <strong>12V battery</strong>. This reboots the ESP32 and provides sufficient power.
                                 </li>
                                 <li>
                                     Give the device a minute to boot. Since no WiFi is configured, it will enter <strong>Discovery Mode</strong>.
@@ -363,7 +361,10 @@ export const BuildControllerPage = () => (
                                     </ul>
                                 </li>
                                 <li>
-                                    Once provisioned, the device will move to the first tab: <strong>Ready Devices</strong>. Select it there to close the Manager and return to the main interface.
+                                    Once provisioned, the device will move to the first tab: <strong>Ready Devices</strong>.
+                                </li>
+                                <li>
+                                    <strong>Success!</strong> Your controller "brain" is now active. Unplug the battery and proceed to the assembly.
                                 </li>
                             </ol>
 
@@ -371,31 +372,6 @@ export const BuildControllerPage = () => (
                                 src={provisionSrc}
                                 srcSet={provisionSrcSet}
                                 alt="Session Manager in Devic Provision Mode" 
-                                wrapperClassName="mb-4"
-                                className="w-full h-auto rounded-md"
-                            />
-
-                            {/* 3c. Hardware Test */}
-                            <h5 className="text-base md:text-lg font-bold text-white mb-3">3c. Hardware Test</h5>
-                            <ol className="list-decimal list-inside md:list-outside md:pl-5 space-y-3 text-gray-300 mb-8 text-sm md:text-base">
-                                <li>
-                                    Verify the status tag is green and reads <strong>"Ready"</strong>.
-                                </li>
-                                <li>
-                                    Click on the <strong>Device Name</strong> (top right, next to the settings menu) to expand the device properties panel (IP address, channels, etc).
-                                </li>
-                                <li>
-                                    At the bottom of this menu, select <strong>Test Hardware</strong>.
-                                </li>
-                                <li>
-                                    This starts a short (2-minute) session with the MagLocks activated. This is your "bench test"—verify the magnets hold firmly. You can wait for the timer to end or click <strong>Abort</strong> to test the release mechanism.
-                                </li>
-                            </ol>
-
-                            <TutorialImage 
-                                src={hardwareTestSrc}
-                                srcSet={hardwareTestSrcSet}
-                                alt="Session Manager in Hardware Test Mode" 
                                 wrapperClassName="mb-4"
                                 className="w-full h-auto rounded-md"
                             />
@@ -517,11 +493,17 @@ export const BuildControllerPage = () => (
                                 <li>Screw the GX12 housing back together.</li>
                             </ol>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+                                <ImageOverlay
+                                    src={tfsDiagramSrc}
+                                    srcSet={tfsDiagramSrcSet}
+                                    alt="Back of the TFS-1 showing COM NO NC diagram" 
+                                    className="w-full h-auto rounded-md"
+                                />
                                 <ImageOverlay 
-                                    src={disassembledGxSrc}
-                                    srcSet={disassembledGxSrcSet}
-                                    alt="GX12 Connector Disassembled" 
+                                    src={footSwitchWithGxSrc}
+                                    srcSet={footSwitchWithGxSrcSet}
+                                    alt="GX12 Connector On the Wire" 
                                     className="w-full h-auto rounded-md"
                                 />
                                 <ImageOverlay
@@ -695,10 +677,13 @@ export const BuildControllerPage = () => (
                         <h4 className="text-lg md:text-xl font-bold text-white mb-4">Step 10: Final Hardware Test</h4>
                         <ol className="list-decimal list-inside md:list-outside md:pl-5 space-y-3 text-gray-300 text-sm md:text-base">
                             <li>
+                                Connect the Abort Switch (Foot Pedal) to the front of the box. <strong>The lock will not work without it connected.</strong>
+                            </li>
+                            <li>
                                 Power up the device using the 12V battery.
                             </li>
                             <li>
-                                <strong>Test again:</strong> Using the Session Manager, re-run the <strong>Hardware Test</strong>.
+                                <strong>Test again:</strong> Using the Session Manager, run the <strong>Hardware Test</strong>.
                                 <ul className="list-disc list-inside md:list-outside md:pl-4 mt-2 space-y-1 text-gray-400">
                                     <li>You should see the LED in a "Slow Breath" pattern after booting (indicating the device is READY).</li>
                                     <li>The LED should fade into a "Medium Pulse" during hardware testing.</li>
@@ -706,6 +691,14 @@ export const BuildControllerPage = () => (
                                 </ul>
                             </li>
                         </ol>
+                        
+                        <TutorialImage 
+                            src={hardwareTestSrc}
+                            srcSet={hardwareTestSrcSet}
+                            alt="Session Manager in Hardware Test Mode" 
+                            wrapperClassName="mb-4"
+                            className="w-full h-auto rounded-md"
+                        />
 
                         <div className="mt-8 p-4 bg-green-900/20 border border-green-600/50 rounded-lg text-center">
                             <p className="text-green-100 font-bold text-lg md:text-xl">

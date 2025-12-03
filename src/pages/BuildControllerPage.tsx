@@ -25,8 +25,9 @@ import flasherSrc from '@/images/controller/session_manager_device_flasher.webp?
 import flasherSrcSet from '@/images/controller/session_manager_device_flasher.webp?w=400;800;1200&format=webp&as=srcset';
 import provisionSrc from '@/images/controller/session_manager_device_provision.webp?w=1200&format=webp';
 import provisionSrcSet from '@/images/controller/session_manager_device_provision.webp?w=400;800;1200&format=webp&as=srcset';
-import hardwareTestSrc from '@/images/controller/session_manager_hardware_test.webp?w=1200&format=webp';
-import hardwareTestSrcSet from '@/images/controller/session_manager_hardware_test.webp?w=400;800;1200&format=webp&as=srcset';
+import verifyingSrc from '@/images/controller/session_manager_verifying.webp?w=1200&format=webp';
+import verifyingSet from '@/images/controller/session_manager_verifying.webp?w=400;800;1200&format=webp&as=srcset';
+
 
 // Part 3
 import cutWiresSrc from '@/images/controller/switch_and_led_cut_to_size.webp?w=1200&format=webp';
@@ -59,6 +60,8 @@ import insideBoxSrc from '@/images/controller/controller_inside_the_box.webp?w=1
 import insideBoxSrcSet from '@/images/controller/controller_inside_the_box.webp?w=400;800;1200&format=webp&as=srcset';
 import stickyPadSrc from '@/images/controller/controller_with_sticky_pad.webp?w=1200&format=webp';
 import stickyPadSrcSet from '@/images/controller/controller_with_sticky_pad.webp?w=400;800;1200&format=webp&as=srcset';
+import hardwareTestSrc from '@/images/controller/session_manager_hardware_test.webp?w=1200&format=webp';
+import hardwareTestSrcSet from '@/images/controller/session_manager_hardware_test.webp?w=400;800;1200&format=webp&as=srcset';
 
 
 export const BuildControllerPage = () => (
@@ -368,14 +371,20 @@ export const BuildControllerPage = () => (
                                 </li>
                             </ol>
 
-                            <TutorialImage 
-                                src={provisionSrc}
-                                srcSet={provisionSrcSet}
-                                alt="Session Manager in Devic Provision Mode" 
-                                wrapperClassName="mb-4"
-                                className="w-full h-auto rounded-md"
-                            />
-
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-8">
+                                <ImageOverlay 
+                                    src={provisionSrc}
+                                    srcSet={provisionSrcSet}
+                                    alt="Session Manager in Device Provision Mode" 
+                                    className="w-full h-auto rounded-md"
+                                />
+                                <ImageOverlay
+                                    src={verifyingSrc}
+                                    srcSet={verifyingSet}
+                                    alt="If everything works as expected, the device searches for the Foot Pedal"
+                                    className="w-full h-auto rounded-md"
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>

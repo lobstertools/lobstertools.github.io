@@ -69,7 +69,7 @@ export const BuildControllerPage = () => (
         <div className="py-6 md:py-12">
             <h1 className="text-2xl md:text-4xl font-bold text-white text-center mb-4 md:mb-6">Build the MagLock Controller</h1>
             <p className="text-lg md:text-xl text-center text-gray-400 mb-8 md:mb-12 max-w-3xl mx-auto px-4">
-                The "brains" of your Lobster system. This guide follows a <strong>"First Life" workflow</strong>: we will wake up the controller and verify the firmware is running before doing the heavy assembly.
+                The "brains" of the Lobster system. This guide follows a <strong>"First Life" workflow</strong>: we will wake up the controller and verify the firmware is running before doing the heavy assembly.
             </p>
 
             <TutorialImage 
@@ -96,7 +96,7 @@ export const BuildControllerPage = () => (
                             This board is available in <strong>2-channel</strong> and <strong>4-channel</strong> versions. We recommend the <strong>2-channel</strong> version as it's slightly narrower, making for a better fit in the project box.
                         </p>
                         <p className="text-blue-200 text-sm">
-                            <strong>Good news:</strong> The firmware supports both versions! During provisioning, you can select exactly which channels (1, 2, 3, or 4) to enable. This gives you maximum flexibility to extend or shrink your channel count later, regardless of which board you buy.
+                            <strong>Good news:</strong> The firmware supports both versions! During provisioning, we can select exactly which channels (1, 2, 3, or 4) to enable. This gives us maximum flexibility to extend or shrink the channel count later, regardless of which board we buy.
                         </p>
                     </div>
                 </div>
@@ -109,18 +109,18 @@ export const BuildControllerPage = () => (
                         Controller Cost Breakdown
                     </h2>
                     
-                    {/* Updated Grid: Always 3 columns (grid-cols-3), smaller gap on mobile */}
+                    {/* Updated Grid: Always 3 columns (grid-cols-3), smaller gap on mobile. justify-start for top alignment */}
                     <div className="grid grid-cols-3 gap-2 md:gap-6 mb-6">
-                        <div className="bg-gray-800/50 p-2 md:p-4 rounded-lg text-center flex flex-col justify-center">
+                        <div className="bg-gray-800/50 p-2 md:p-4 rounded-lg text-center flex flex-col justify-start">
                             {/* Adjusted text sizes for mobile fit */}
                             <div className="text-lg sm:text-2xl md:text-3xl font-bold text-green-400">~€50</div>
                             <div className="text-gray-400 mt-1 md:mt-2 text-[10px] sm:text-xs md:text-base leading-tight">Total Cost</div>
                         </div>
-                        <div className="bg-gray-800/50 p-2 md:p-4 rounded-lg text-center flex flex-col justify-center">
+                        <div className="bg-gray-800/50 p-2 md:p-4 rounded-lg text-center flex flex-col justify-start">
                             <div className="text-lg sm:text-2xl md:text-3xl font-bold text-yellow-400">~€35</div>
                             <div className="text-gray-400 mt-1 md:mt-2 text-[10px] sm:text-xs md:text-base leading-tight">Main Board, Connectors & Battery</div>
                         </div>
-                        <div className="bg-gray-800/50 p-2 md:p-4 rounded-lg text-center flex flex-col justify-center">
+                        <div className="bg-gray-800/50 p-2 md:p-4 rounded-lg text-center flex flex-col justify-start">
                             <div className="text-lg sm:text-2xl md:text-3xl font-bold text-blue-400">~€15</div>
                             <div className="text-gray-400 mt-1 md:mt-2 text-[10px] sm:text-xs md:text-base leading-tight">Housing, Programmer and Misc. Parts</div>
                         </div>
@@ -176,10 +176,10 @@ export const BuildControllerPage = () => (
                         </div>
                         
                         <p className="text-gray-300 mb-4">
-                            The Lobster firmware is engineered with safety in mind, featuring multiple internal watchdogs and hardware protections. However, the most reliable safeguard is to power your controller with a battery pack.
+                            The Lobster firmware is engineered with safety in mind, featuring multiple internal watchdogs and hardware protections. However, the most reliable safeguard is to power the controller with a battery pack.
                         </p>
                         <p className="text-gray-300 mb-6">
-                            This creates a physical fail-safe: if the software hangs, the device breaks, or the abort switch malfunctions, the battery will eventually drain. Once the power runs out, the magnet automatically releases, ensuring you are never trapped indefinitely.
+                            This creates a physical fail-safe: if the software hangs, the device breaks, or the abort switch malfunctions, the battery will eventually drain. Once the power runs out, the magnet automatically releases, ensuring we are never trapped indefinitely.
                         </p>
 
                         <div className="bg-blue-900/20 border border-blue-700/50 rounded p-4 mb-6">
@@ -192,7 +192,7 @@ export const BuildControllerPage = () => (
                         </div>
                                                 
                         <p className="text-gray-300">
-                            With a 600mAh pack, you can expect approximately <strong>~3 Hours of runtime</strong> before the voltage drops and the lock releases automatically.
+                            With a 600mAh pack, we can expect approximately <strong>~3 Hours of runtime</strong> before the voltage drops and the lock releases automatically.
                         </p>
                     </div>
                 </div>
@@ -203,7 +203,7 @@ export const BuildControllerPage = () => (
                 <div className="bg-gray-800 p-4 md:p-8 rounded-lg">
                     <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 md:mb-6">Part 1: Solder PCB Headers</h2>
                     <p className="text-gray-300 mb-8">
-                        We start by preparing the ESP32 board itself. You will solder the necessary pin headers to the PCB, enabling us to flash the firmware now and connect our peripherals later.
+                        We start by preparing the ESP32 board itself. We will solder the necessary pin headers to the PCB, enabling us to flash the firmware now and connect our peripherals later.
                     </p>
 
                     <div className="md:bg-gray-800/50 md:rounded-lg md:p-6">
@@ -214,7 +214,8 @@ export const BuildControllerPage = () => (
                                 <strong>Tip:</strong> Solder just one pin first to check alignment. Once straight, solder the rest.
                             </p>
                         </div>
-                        <ul className="list-disc list-inside md:list-outside md:pl-5 space-y-2 text-gray-300 mb-6 text-sm md:text-base">
+
+                         <ul className="list-disc list-inside md:list-outside md:pl-5 space-y-2 text-gray-300 mb-6 text-sm md:text-base">
                             <li><strong>Single Row (6-pin):</strong> Solder to the holes above the ESP32 (Required for Flashing).</li>
                             <li><strong>Double Row (10-pin):</strong> Solder the entire block to the side holes (Required later for LED/Switch wiring).</li>
                         </ul>
@@ -240,6 +241,13 @@ export const BuildControllerPage = () => (
                                 className="w-full h-auto rounded-md"
                             />
                         </div>
+
+                       <div className="bg-blue-900/20 border border-blue-700/50 rounded p-3 mt-8">
+                            <p className="text-blue-200 text-sm">
+                                <strong>Note:</strong> The images above show the 4-channel board, but the 2-channel version fits better in the box.
+                            </p>
+                        </div>
+
                     </div>
                 </div>
             </section>
@@ -249,24 +257,24 @@ export const BuildControllerPage = () => (
                 <div className="bg-gray-800 p-4 md:p-8 rounded-lg">
                     <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 md:mb-6">Part 2: Boot & Provision</h2>
                     <p className="text-gray-300 mb-8">
-                         Before building the full enclosure, we verify the "brain" is alive. In this phase, you will connect power, flash the Lobster firmware, and provision the device over WiFi.
+                         Before building the full enclosure, we verify the "brain" is alive. In this phase, we will connect power, flash the Lobster firmware, and provision the device over WiFi.
                     </p>
 
                     <div className="space-y-6">
                         
-                        {/* Step 2: Basic Power Wiring */}
+                        {/* Step 1: Basic Power Wiring */}
                         <div className="md:bg-gray-800/50 md:rounded-lg md:p-6">
-                            <h4 className="text-lg md:text-xl font-bold text-white mb-4">Step 2: Basic Power Wiring</h4>
+                            <h4 className="text-lg md:text-xl font-bold text-white mb-4">Step 1: Basic Power Wiring</h4>
                             <p className="text-gray-300 mb-6 text-sm md:text-base">
                                 We need to give the board 12V power to allow it to boot up and connect to WiFi after flashing.
                             </p>
 
                             <ol className="list-decimal list-inside md:list-outside md:pl-5 space-y-3 text-gray-300 mb-6 text-sm md:text-base">
                                 <li>
-                                    <strong>Prepare your power wires:</strong> Cut the DC Jack wires to about 10 cm in length and strip about 5mm of insulation from the ends. Tin them with solder to ensure a clean connection.
+                                    <strong>Prepare the power wires:</strong> Cut the DC Jack wires to about 10 cm in length and strip about 5mm of insulation from the ends. Tin them with solder to ensure a clean connection.
                                 </li>
                                 <li>
-                                    Solder the two short wires (Red/Black) to your <strong>Female DC Jack</strong>.
+                                    Solder the two short wires (Red/Black) to the <strong>Female DC Jack</strong>.
                                 </li>
                                 <li>
                                     Screw the other ends of the DC Jack wires into the green <strong>INPUT</strong> terminals on the board. <span className="text-gray-400 italic">(Check polarity: Red to +, Black to -)</span>.
@@ -299,9 +307,9 @@ export const BuildControllerPage = () => (
                         </div>
                         </div>
 
-                        {/* Step 3: Flash & Test */}
+                        {/* Step 2: Flash & Test */}
                         <div className="md:bg-gray-800/50 md:rounded-lg md:p-6">
-                            <h4 className="text-lg md:text-xl font-bold text-white mb-6">Step 3: Flash & Provision</h4>
+                            <h4 className="text-lg md:text-xl font-bold text-white mb-6">Step 2: Flash & Provision</h4>
                             
                             {/* Critical Warnings */}
                             <div className="bg-red-900/20 border border-red-700/50 rounded p-3 md:p-4 mb-8">
@@ -309,27 +317,29 @@ export const BuildControllerPage = () => (
                                     <span>⚠️</span> CRITICAL POWER WARNING
                                 </h5>
                                 <ul className="space-y-2 text-red-100 text-sm">
-                                    <strong>Voltage Conflict:</strong> Never connect the serial programming tool (5V) and the external 12V battery at the same time. Connecting these together can damage your controller board or destroy your computer's USB port.
+                                    <strong>Voltage Conflict:</strong> Never connect the serial programming tool (5V) and the external 12V battery at the same time. Connecting these together can damage the controller board or destroy the computer's USB port.
                                 </ul>
                             </div>
 
-                            {/* 3a. Flashing */}
-                            <h5 className="text-base md:text-lg font-bold text-white mb-3">3a. Flashing the Firmware</h5>
+                            {/* 2a. Flashing */}
+                            <h5 className="text-base md:text-lg font-bold text-white mb-3">2a. Flashing the Firmware</h5>
                             <ol className="list-decimal list-inside md:list-outside md:pl-5 space-y-3 text-gray-300 mb-6 text-sm md:text-base">
                                 <li>
                                     Connect the USB Programmer to the 6-pin header, <strong>making sure to swap RX and TX</strong> (RX on the board goes to TX on the programmer, and vice versa).
                                 </li>
                                 <li>
-                                    With the USB Programmer <strong>disconnected</strong> from your computer (ensure the board is powered off), press and hold the <strong>BOOT</strong> button on the ESP32.
+                                    With the USB Programmer <strong>disconnected</strong> from the computer (ensure the board is powered off), press and hold the <strong>BOOT</strong> button on the ESP32.
                                 </li>
                                 <li>
-                                    While keeping the BOOT button pressed, plug the USB Programmer into your computer to power up the board. Hold the button for another second, then release. The ESP32 is now in <strong>Programmer Mode</strong>.
+                                    While keeping the BOOT button pressed, plug the USB Programmer into the computer to power up the board. Hold the button for another second, then release. The ESP32 is now in <strong>Programmer Mode</strong>.
                                 </li>
                                 <li>
                                     Open the <strong>Session Manager App</strong>. Click the Settings icon (gear, top right) and select <strong>Device Manager</strong>.
                                 </li>
                                 <li>
-                                    Navigate to the third tab: <strong>Device Flasher</strong>. Select your programmer from the list* and select the firmware file downloaded from the website.
+                                    Navigate to the third tab: <strong>Device Flasher</strong>. Select the programmer from the list and select the firmware file downloaded from the website.
+                                    <br/>
+                                    <em className="text-sm text-gray-400">(If the programmer doesn't show up, try again by pressing Shift and clicking on Scan. This will show all available serial devices).</em>
                                 </li>
                                 <li>
                                     Press <strong>"Flash"</strong>. The process should take about 2 minutes; watch the progress bar to confirm completion.
@@ -344,30 +354,31 @@ export const BuildControllerPage = () => (
                                 className="w-full h-auto rounded-md"
                             />
 
-                            {/* 3b. Power & Provisioning */}
-                            <h5 className="text-base md:text-lg font-bold text-white mb-3">3b. Power Up & Provisioning</h5>
+                            {/* 2b. Power & Provisioning */}
+                            <h5 className="text-base md:text-lg font-bold text-white mb-3">2b. Power Up & Provisioning</h5>
                             <ol className="list-decimal list-inside md:list-outside md:pl-5 space-y-3 text-gray-300 mb-8 text-sm md:text-base">
                                 <li>
-                                    <strong>Unplug the USB programmer</strong> from your computer. Now, plug in your <strong>12V battery</strong>. This reboots the ESP32 and provides sufficient power.
+                                    <strong>Unplug the USB programmer</strong> from the computer. Now, plug in the <strong>12V battery</strong>. This reboots the ESP32 and provides sufficient power.
                                 </li>
                                 <li>
                                     Give the device a minute to boot. Since no WiFi is configured, it will enter <strong>Discovery Mode</strong>.
                                 </li>
                                 <li>
-                                    In the Device Manager modal, switch to the second tab: <strong>New / Provisioning</strong>. You should see your newly flashed Controller listed.
+                                    In the Device Manager modal, switch to the second tab: <strong>New / Provisioning</strong>. We should see our newly flashed Controller listed.
                                 </li>
                                 <li>
-                                    Select <strong>"Provision"</strong>. You will be asked to configure the device:
+                                    Select <strong>"Provision"</strong>. We will be asked to configure the device:
                                     <ul className="list-disc list-inside md:list-outside md:pl-4 mt-2 space-y-1 text-gray-400">
-                                        <li><strong>WiFi:</strong> Enter your network credentials.</li>
-                                        <li><strong>Channels:</strong> Select which channels to enable (1, 2, 3, 4). If you are building the standard 2-lock box, enable 1 and 2. If you have the 4-channel board, enable 3 and 4 as these align best with the position of the front panel connectors.</li>
+                                        <li><strong>WiFi:</strong> Enter network credentials.</li>
+                                        <li><strong>Channels:</strong> Select which channels to enable (1, 2, 3, 4). If building the standard 2-lock box, enable 1 and 2. If using the 4-channel board, enable 3 and 4 as these align best with the position of the front panel connectors.</li>
+                                        <li><strong>Deterrent Settings:</strong> During provisioning, the device also requires deterrent settings. These aren't relevant for the first life test and can be changed later with a factory reset of the device.</li>
                                     </ul>
                                 </li>
                                 <li>
                                     Once provisioned, the device will move to the first tab: <strong>Ready Devices</strong>.
                                 </li>
                                 <li>
-                                    <strong>Success!</strong> Your controller "brain" is now active. Unplug the battery and proceed to the assembly.
+                                    <strong>Success!</strong> The controller "brain" is now active. Unplug the battery and proceed to the assembly.
                                 </li>
                             </ol>
 
@@ -395,15 +406,15 @@ export const BuildControllerPage = () => (
                 <div className="bg-gray-800 p-4 md:p-8 rounded-lg">
                     <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 md:mb-6">Part 3: Internal Wiring Preparation</h2>
                     <p className="text-gray-300 mb-8">
-                        Now we prepare the components that will live <em>inside</em> the enclosure. You will cut, tin, and solder wires to the LED and the rear side of the panel-mount connectors, getting everything ready for the final assembly.
+                        Now we prepare the components that will live <em>inside</em> the enclosure. We will cut, tin, and solder wires to the LED and the rear side of the panel-mount connectors, getting everything ready for the final assembly.
                     </p>
 
                     <div className="space-y-6">
                         <div className="md:bg-gray-800/50 md:rounded-lg md:p-6">
-                            <h4 className="text-lg md:text-xl font-bold text-white mb-6">Step 4: Prepare the LED</h4>
+                            <h4 className="text-lg md:text-xl font-bold text-white mb-6">Step 1: Prepare the LED</h4>
 
                             <ul className="list-disc list-inside md:list-outside md:pl-5 space-y-2 text-gray-300 mb-8 text-sm md:text-base">
-                                <li>Cut the LED wires to approximately 10-12cm in length. This gives you enough slack to reach the board when mounted.</li>
+                                <li>Cut the LED wires to approximately 10-12cm in length. This gives enough slack to reach the board when mounted.</li>
                                 <li>Strip about 5mm of insulation from the ends and tin them with solder.</li>
                                 <li><strong>Optional:</strong> Use heat shrink tubing to bundle the wires together for a cleaner look.</li>
                             </ul>
@@ -425,9 +436,9 @@ export const BuildControllerPage = () => (
                         </div>
 
                         <div className="md:bg-gray-800/50 md:rounded-lg md:p-6">
-                            <h4 className="text-lg md:text-xl font-bold text-white mb-6">Step 5: MagLock & Abort Switch Panel Mounts</h4>
+                            <h4 className="text-lg md:text-xl font-bold text-white mb-6">Step 2: MagLock & Abort Switch Panel Mounts</h4>
                             <p className="text-gray-300 mb-4">
-                                You need to prepare 3 panel mount connectors: one for the Abort Switch (Signal) and two for the MagLocks (Power).
+                                We need to prepare 3 panel mount connectors: one for the Abort Switch (Signal) and two for the MagLocks (Power).
                             </p>
                             
                             <div className="bg-blue-900/20 border border-blue-700/50 rounded p-3 mb-4">
@@ -446,7 +457,7 @@ export const BuildControllerPage = () => (
                                 <li>
                                     <strong>MagLock Outputs:</strong> Cut two pairs of wires (Red/Black) to about 8cm. Solder these to the remaining two GX12 connectors.
                                     <ul className="list-disc list-inside md:list-outside md:pl-4 mt-1 text-gray-400 text-sm">
-                                        <li>Ensure you are consistent with polarity (e.g., Pin 1 = Positive, Pin 2 = Negative).</li>
+                                        <li>Ensure to be consistent with polarity (e.g., Pin 1 = Positive, Pin 2 = Negative).</li>
                                     </ul>
                                 </li>
                                 <li>
@@ -464,39 +475,39 @@ export const BuildControllerPage = () => (
                 <div className="bg-gray-800 p-4 md:p-8 rounded-lg">
                     <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 md:mb-6">Part 4: External Cable Assembly</h2>
                     <p className="text-gray-300 mb-8">
-                        With the internal components ready, we turn to the external accessories. Here you will assemble the robust aviation connectors for your MagLock cables and the safety Abort Switch (or foot pedal).
+                        With the internal components ready, we turn to the external accessories. Here we will assemble the robust aviation connectors for the MagLock cables and the safety Abort Switch (or foot pedal).
                     </p>
                     
                     <div className="space-y-6">
                         <div className="md:bg-gray-800/50 md:rounded-lg md:p-6">
-                            <h4 className="text-lg md:text-xl font-bold text-white mb-6">Step 6: Abort Switch Assembly (Fail-Safe Config)</h4>
-                            <p className="text-gray-300 mb-4">This connects your momentary switch (or foot pedal) to a Male GX12 plug.</p>
+                            <h4 className="text-lg md:text-xl font-bold text-white mb-6">Step 1: Abort Switch Assembly (Fail-Safe Config)</h4>
+                            <p className="text-gray-300 mb-4">This connects the momentary switch (or foot pedal) to a Male GX12 plug.</p>
 
                             <div className="bg-yellow-900/20 border border-yellow-700/50 rounded p-4 mb-6">
                                 <h4 className="text-yellow-100 font-bold mb-2 text-sm md:text-base">Safety First: Why Normally Closed (NC)?</h4>
                                 <div className="text-yellow-200 text-sm space-y-2">
                                     <p>
-                                        We configure the switch as <strong>Normally Closed</strong> to create a "Fail-Safe" system. In a standard (Normally Open) setup, a broken wire or loose plug would simply stop the button from working—meaning you press the pedal, but the signal never reaches the controller, leaving the lock engaged.
+                                        We configure the switch as <strong>Normally Closed</strong> to create a "Fail-Safe" system. In a standard (Normally Open) setup, a broken wire or loose plug would simply stop the button from working—meaning we press the pedal, but the signal never reaches the controller, leaving the lock engaged.
                                     </p>
                                     <p>
-                                        With <strong>Normally Closed</strong>, the system requires a constant electrical connection to stay locked. Any interruption—whether it is you pressing the switch, a cable getting cut, or the plug falling out—breaks the circuit and <strong>immediately releases the lock</strong>.
+                                        With <strong>Normally Closed</strong>, the system requires a constant electrical connection to stay locked. Any interruption—whether it is pressing the switch, a cable getting cut, or the plug falling out—breaks the circuit and <strong>immediately releases the lock</strong>.
                                     </p>
                                 </div>                            </div>
 
                             <ol className="list-decimal list-inside md:list-outside md:pl-5 space-y-3 text-gray-300 mb-8 text-sm md:text-base">
-                                <li>Disassemble a male GX12 cable connector. Slide the housing parts onto your switch cable in this order: End Screw &rarr; Rubber Strain Relief &rarr; Housing.</li>
+                                <li>Disassemble a male GX12 cable connector. Slide the housing parts onto the switch cable in this order: End Screw &rarr; Rubber Strain Relief &rarr; Housing.</li>
                                 <li>
                                     Strip and tin the ends of the Abort Switch wires.
                                     <div className="bg-blue-900/20 border border-blue-700/50 rounded p-3 mt-3 mb-2">
                                         <p className="text-blue-200 text-sm">
                                             <strong>Wiring the TFS-1 (Normally Closed):</strong> This switch typically has three wires: <strong>COM</strong>, <strong>NO</strong>, and <strong>NC</strong>.
-                                            You need to connect <strong>COM (White)</strong> and <strong>NC (Black)</strong> for the fail-safe logic to work. The third wire (Red/NO) can be cut or ignored.
-                                            <br/><em className="text-xs text-blue-300">Note: Always verify the wire colors on your specific switch with a multimeter.</em>
+                                            We need to connect <strong>COM (White)</strong> and <strong>NC (Black)</strong> for the fail-safe logic to work. The third wire (Red/NO) can be cut or ignored.
+                                            <br/><em className="text-xs text-blue-300">Note: Always verify the wire colors on the specific switch with a multimeter.</em>
                                         </p>
                                     </div>
                                 </li>
                                 <li>
-                                    <strong>Verification Trick:</strong> Screw this male plug into the female panel mount you prepared in Step 5. This lets you visually trace the wires to ensure Signal connects to Signal and Ground to Ground.
+                                    <strong>Verification Trick:</strong> Screw this male plug into the female panel mount prepared in Part 3. This lets us visually trace the wires to ensure Signal connects to Signal and Ground to Ground.
                                 </li>
                                 <li>Solder the wires to the pins and insulate with heat shrink.</li>
                                 <li>Screw the GX12 housing back together.</li>
@@ -526,13 +537,13 @@ export const BuildControllerPage = () => (
                         </div>
 
                         <div className="md:bg-gray-800/50 md:rounded-lg md:p-6">
-                            <h4 className="text-lg md:text-xl font-bold text-white mb-6">Step 7: MagLock Cable Assembly</h4>
-                            <p className="text-gray-300 mb-4">Now we attach the matching male plugs to your MagLock cables.</p>
+                            <h4 className="text-lg md:text-xl font-bold text-white mb-6">Step 2: MagLock Cable Assembly</h4>
+                            <p className="text-gray-300 mb-4">Now we attach the matching male plugs to the MagLock cables.</p>
                             <ol className="list-decimal list-inside md:list-outside md:pl-5 space-y-3 text-gray-300 text-sm md:text-base">
                                 <li>Disassemble the male GX12 cable connector and slide the housing parts (End Screw &rarr; Rubber &rarr; Housing) onto the MagLock wire.</li>
                                 <li>Strip and tin the ends of the MagLock wires.</li>
                                 <li>
-                                    <strong>Verification Trick:</strong> Again, screw the male plug into the female panel mount from Step 5. Ensure you are soldering Positive to Positive and Negative to Negative.
+                                    <strong>Verification Trick:</strong> Again, screw the male plug into the female panel mount from Part 3. Ensure we are soldering Positive to Positive and Negative to Negative.
                                 </li>
                                 <li>Solder the MagLock wires to the pins, insulate with heat shrink, and reassemble the connector housing.</li>
                             </ol>
@@ -546,15 +557,15 @@ export const BuildControllerPage = () => (
                 <div className="bg-gray-800 p-4 md:p-8 rounded-lg">
                     <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 md:mb-6">Part 5: Enclosure Preparation</h2>
                     <p className="text-gray-300 mb-8">
-                        It is time to prepare the housing. Using the provided template, you will drill precise holes in the project box to accommodate the status LED, power jack, and aviation connectors.
+                        It is time to prepare the housing. Using the provided template, we will drill precise holes in the project box to accommodate the status LED, power jack, and aviation connectors.
                     </p>
                     
                     <div className="md:bg-gray-800/50 md:rounded-lg md:p-6">
-                        <h4 className="text-lg md:text-xl font-bold text-white mb-4">Step 8: Drilling the Enclosure</h4>
+                        <h4 className="text-lg md:text-xl font-bold text-white mb-4">Step 1: Drilling the Enclosure</h4>
                         
                         <div className="mb-6">
                             <p className="text-gray-300 mb-4">
-                                Precision is key for a clean build. Use our printable template to mark your drilling points.
+                                Precision is key for a clean build. Use our printable template to mark the drilling points.
                             </p>
                             <a 
                                 href="/downloads/controller_drill_template.pdf" 
@@ -567,7 +578,7 @@ export const BuildControllerPage = () => (
 
                         <ol className="list-decimal list-inside md:list-outside md:pl-5 space-y-3 text-gray-300 mb-6 text-sm md:text-base">
                             <li>Download and print the template. <strong>Make sure to set the page size to 100%</strong> (Do not scale).</li>
-                            <li>Carefully cut out the front and back templates. Using a piece of transparent tape, stick them onto the respective sides of your enclosure. <strong>Make sure the edges align perfectly</strong> with the box corners.</li>
+                            <li>Carefully cut out the front and back templates. Using a piece of transparent tape, stick them onto the respective sides of the enclosure. <strong>Make sure the edges align perfectly</strong> with the box corners.</li>
                             <li>Using a sharp object (like a center punch) or a pencil, mark the center of each crosshair. Remove the paper template before drilling to avoid it catching and tearing.</li>
                             <li>
                                 Drill the holes using the following sizes:
@@ -581,7 +592,7 @@ export const BuildControllerPage = () => (
 
                         <div className="bg-yellow-900/20 border border-yellow-700/50 rounded p-3 md:p-4 mb-6">
                             <p className="text-yellow-100 text-sm">
-                                <strong>Tip:</strong> Your components may vary slightly in diameter. We highly recommend measuring your specific components using a caliper before drilling to avoid disappointment.
+                                <strong>Tip:</strong> The components may vary slightly in diameter. We highly recommend measuring the specific components using a caliper before drilling to avoid disappointment.
                             </p>
                         </div>
 
@@ -619,7 +630,7 @@ export const BuildControllerPage = () => (
                     </p>
                     
                     <div className="md:bg-gray-800/50 md:rounded-lg md:p-6">
-                        <h4 className="text-lg md:text-xl font-bold text-white mb-4">Step 9: Mounting and Soldering</h4>
+                        <h4 className="text-lg md:text-xl font-bold text-white mb-4">Step 1: Mounting and Soldering</h4>
                         
                         <ul className="list-disc list-inside md:list-outside md:pl-5 space-y-4 text-gray-300 mb-8 text-sm md:text-base">
                             <li>
@@ -628,18 +639,18 @@ export const BuildControllerPage = () => (
                             <li>
                                 <strong>Wire MagLocks:</strong> Attach the MagLock GX12 wires (from the panel mounts) to <strong>Channels 1 and 2</strong> on the screw terminals (labeled CH1 and CH2).
                                 <br />
-                                <span className="text-gray-400 italic text-sm">Note: If you are using the 4-channel board, Channels 3 and 4 are closer to the side of the PCB and may offer a better physical fit.</span>
+                                <span className="text-gray-400 italic text-sm">Note: If using the 4-channel board, Channels 3 and 4 are closer to the side of the PCB and may offer a better physical fit.</span>
                             </li>
                             <li>
                                 <strong>Mount the Board:</strong> Cut a thick piece of double-sided tape and place it on the bottom of the project box. Slide the controller board into place, pressing it firmly against the pad so it doesn't slide.
                                 <br />
-                                <span className="text-gray-400 italic text-sm">Note: You might need to stack a few pieces of tape to overcome the height of the solder joints or stands on the bottom of the board.</span>
+                                <span className="text-gray-400 italic text-sm">Note: We might need to stack a few pieces of tape to overcome the height of the solder joints or stands on the bottom of the board.</span>
                             </li>
                             <li>
                                 <strong>Install Front Components (Part 2):</strong> Now insert the LED and the Abort Switch GX12 panel mount into the front of the box and tighten them.
                             </li>
                             <li>
-                                <strong>Solder Connections:</strong> Locate the 10-pin header you soldered in Part 1. Now we must solder the peripheral wires directly to these header pins. Be careful not to melt the surrounding plastic.
+                                <strong>Solder Connections:</strong> Locate the 10-pin header soldered in Part 1. Now we must solder the peripheral wires directly to these header pins. Be careful not to melt the surrounding plastic.
                                 <ul className="list-circle list-inside md:list-outside md:pl-4 mt-2 space-y-2 text-gray-400">
                                     <li><strong>LED:</strong> Solder the Red wire to pin <strong>IO21</strong> and Black to <strong>GND</strong>.</li>
                                     <li><strong>Abort Switch:</strong> Solder the Red wire (Signal) to pin <strong>IO15</strong> and Black to <strong>GND</strong>.</li>
@@ -683,7 +694,7 @@ export const BuildControllerPage = () => (
                     </div>
 
                     <div className="md:bg-gray-800/50 md:rounded-lg md:p-6 mt-6">
-                        <h4 className="text-lg md:text-xl font-bold text-white mb-4">Step 10: Final Hardware Test</h4>
+                        <h4 className="text-lg md:text-xl font-bold text-white mb-4">Step 2: Final Hardware Test</h4>
                         <ol className="list-decimal list-inside md:list-outside md:pl-5 space-y-3 text-gray-300 text-sm md:text-base">
                             <li>
                                 Connect the Abort Switch (Foot Pedal) to the front of the box. <strong>The lock will not work without it connected.</strong>
@@ -694,9 +705,9 @@ export const BuildControllerPage = () => (
                             <li>
                                 <strong>Test again:</strong> Using the Session Manager, run the <strong>Hardware Test</strong>.
                                 <ul className="list-disc list-inside md:list-outside md:pl-4 mt-2 space-y-1 text-gray-400">
-                                    <li>You should see the LED in a "Slow Breath" pattern after booting (indicating the device is READY).</li>
+                                    <li>We should see the LED in a "Slow Breath" pattern after booting (indicating the device is READY).</li>
                                     <li>The LED should fade into a "Medium Pulse" during hardware testing.</li>
-                                    <li>Pressing the <strong>Abort Switch</strong> should immediately end the test session, allowing you to confirm everything works as intended.</li>
+                                    <li>Pressing the <strong>Abort Switch</strong> should immediately end the test session, allowing us to confirm everything works as intended.</li>
                                 </ul>
                             </li>
                         </ol>
@@ -711,7 +722,7 @@ export const BuildControllerPage = () => (
 
                         <div className="mt-8 p-4 bg-green-900/20 border border-green-600/50 rounded-lg text-center">
                             <p className="text-green-100 font-bold text-lg md:text-xl">
-                                Screw the lid shut. You built a MagLock Controller!
+                                Screw the lid shut. We built a MagLock Controller!
                             </p>
                         </div>
                     </div>

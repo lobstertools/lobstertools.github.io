@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { SafetyWarning } from "../components/SafetyWarning";
 import { ImageOverlay } from "../components/ImageOverlay";
 import { TutorialImage } from "../components/TutorialImage";
@@ -11,12 +12,8 @@ import finishedMagLockSrcSet from '@/images/maglock/finished_maglock.webp?w=400;
 // Prelim
 import disassembledMagnetSrc from '@/images/maglock/disassembled_magnet.webp?w=1200&format=webp';
 import disassembledMagnetSrcSet from '@/images/maglock/disassembled_magnet.webp?w=400;800;1200&format=webp&as=srcset';
-import roughDiscSrc from '@/images/maglock/discs_rough.webp?w=1200&format=webp';
-import roughDiscSrcSet from '@/images/maglock/discs_rough.webp?w=400;800;1200&format=webp&as=srcset';
-import sandedDiscSrc from '@/images/maglock/discs_sanded.webp?w=1200&format=webp';
-import sandedDiscSrcSet from '@/images/maglock/discs_sanded.webp?w=400;800;1200&format=webp&as=srcset';
 
-// Part 1: Housing
+// Housing
 import sleeveNoHoleSrc from '@/images/maglock/sleeve_without_hole.webp?w=1200&format=webp';
 import sleeveNoHoleSrcSet from '@/images/maglock/sleeve_without_hole.webp?w=400;800;1200&format=webp&as=srcset';
 import twoSizesSrc from '@/images/maglock/two_sizes_of_pvc_sleeves.webp?w=1200&format=webp';
@@ -30,7 +27,7 @@ import sleeveHoleSrcSet from '@/images/maglock/sleeve_with_hole.webp?w=400;800;1
 import wireHoleSrc from '@/images/maglock/wire_through_the_hole.webp?w=1200&format=webp';
 import wireHoleSrcSet from '@/images/maglock/wire_through_the_hole.webp?w=400;800;1200&format=webp&as=srcset';
 
-// Part 1: Diode
+// Electronics
 import diodeSchematicSrc from '@/images/maglock/diode_schematic.webp?w=1200&format=webp';
 import diodeSchematicSrcSet from '@/images/maglock/diode_schematic.webp?w=400;800;1200&format=webp&as=srcset';
 import diodesSrc from '@/images/maglock/1N4007_diodes.webp?w=1200&format=webp';
@@ -44,21 +41,15 @@ import magnetInsulationSrcSet from '@/images/maglock/magnet_with_insulation.webp
 import zipTieSrc from '@/images/maglock/zip_tie_strain_relief.webp?w=1200&format=webp';
 import zipTieSrcSet from '@/images/maglock/zip_tie_strain_relief.webp?w=400;800;1200&format=webp&as=srcset';
 
-// Part 2: Armature
-import centerPunchSrc from '@/images/maglock/center_punched.webp?w=1200&format=webp';
-import centerPunchSrcSet from '@/images/maglock/center_punched.webp?w=400;800;1200&format=webp&as=srcset';
-import countersunkSrc from '@/images/maglock/drilled_countersunk_hole.webp?w=1200&format=webp';
-import countersunkSrcSet from '@/images/maglock/drilled_countersunk_hole.webp?w=400;800;1200&format=webp&as=srcset';
-import armatureEye2Src from '@/images/maglock/armature_with_eye_2.webp?w=1200&format=webp';
-import armatureEye2SrcSet from '@/images/maglock/armature_with_eye_2.webp?w=400;800;1200&format=webp&as=srcset';
-import armatureScrewSrc from '@/images/maglock/armature_screw.webp?w=1200&format=webp';
-import armatureScrewSrcSet from '@/images/maglock/armature_screw.webp?w=400;800;1200&format=webp&as=srcset';
-import drilledHoleSrc from '@/images/maglock/drilled_hole.webp?w=1200&format=webp';
-import drilledHoleSrcSet from '@/images/maglock/drilled_hole.webp?w=400;800;1200&format=webp&as=srcset';
-import armatureEye1Src from '@/images/maglock/armature_with_eye_1.webp?w=1200&format=webp';
-import armatureEye1SrcSet from '@/images/maglock/armature_with_eye_1.webp?w=400;800;1200&format=webp&as=srcset';
+// Armature
+import armaturePartsSrc from '@/images/maglock/eclipse_armature_parts.webp?w=1200&format=webp';
+import armaturePartsSrcSet from '@/images/maglock/eclipse_armature_parts.webp?w=400;800;1200&format=webp&as=srcset';
+import armatureThreadedSrc from '@/images/maglock/eclipse_armature_threaded.webp?w=1200&format=webp';
+import armatureThreadedSrcSet from '@/images/maglock/eclipse_armature_threaded.webp?w=400;800;1200&format=webp&as=srcset';
+import armatureAssembledSrc from '@/images/maglock/eclipse_armature_assembled.webp?w=1200&format=webp';
+import armatureAssembledSrcSet from '@/images/maglock/eclipse_armature_assembled.webp?w=400;800;1200&format=webp&as=srcset';
 
-// Part 3: Final
+// Final
 import rearEyeSrc from '@/images/maglock/assembled_rear_eye_bolt.webp?w=1200&format=webp';
 import rearEyeSrcSet from '@/images/maglock/assembled_rear_eye_bolt.webp?w=400;800;1200&format=webp&as=srcset';
 import threadLockSrc from '@/images/maglock/thread_lock_inside_magnet.webp?w=1200&format=webp';
@@ -95,8 +86,8 @@ export const BuildMagLockPage = () => (
                         Overview
                     </h2>
                     <p className="text-gray-300 mb-4">This guide provides step-by-step instructions for assembling an electromagnet lock intended for self-bondage applications.</p>
-                    <p className="text-gray-300 mb-4">The build can be very straightforward, requiring nothing more than basic household tools (like a Philips screwdriver and Allen keys), some tape, and standard parts sold at every major hardware store, as long as we can source all components with the exact sizes specified.</p>
-                    <p className="text-gray-300">However, if we need to use components with different dimensions, these instructions provide alternatives. Be aware that these workarounds do require more specialized tools, such as a drill press and a cross-cut saw. While it's theoretically possible to perform these steps using hand tools (like a saw and a handheld power drill), it will be significantly more difficult to get the perfectly straight holes and flush cuts that are critical for this project.</p>
+                    <p className="text-gray-300 mb-4">The build is designed to be straightforward, requiring nothing more than basic household tools (like a Philips screwdriver and Allen keys), some tape, and standard parts.</p>
+                    <p className="text-gray-300">We utilize an off-the-shelf armature plate to avoid complex drilling or machining. If you cannot source this specific part, we provide a separate guide for building your own from raw materials.</p>
                 </div>
             </section>
 
@@ -106,10 +97,8 @@ export const BuildMagLockPage = () => (
                     <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 md:mb-6 flex items-center">
                         Cost Breakdown
                     </h2>
-                    {/* Updated Grid: Always 3 columns (grid-cols-3), smaller gap on mobile, justify-start for top alignment */}
                     <div className="grid grid-cols-3 gap-2 md:gap-6 mb-6">
                         <div className="bg-gray-800/50 p-2 md:p-4 rounded-lg text-center flex flex-col justify-start">
-                            {/* Adjusted text sizes for mobile fit */}
                             <div className="text-lg sm:text-2xl md:text-3xl font-bold text-green-400">~€50</div>
                             <div className="text-gray-400 mt-1 md:mt-2 text-[10px] sm:text-xs md:text-base leading-tight">Total Cost</div>
                         </div>
@@ -123,7 +112,6 @@ export const BuildMagLockPage = () => (
                         </div>
                     </div>
                     <p className="text-gray-300 mb-4">Building this MagLock costs around €50, a significant saving compared to commercial versions which can easily cost three times as much. The electromagnet is the main expense at about €40, with the remaining €10 covering all the smaller hardware.</p>
-                    <p className="text-gray-300">Keep in mind that small parts like screws and washers are often sold in packs when bought online, which may raise the initial cost (a local hardware store might sell them individually). The upside, however, is we'll have enough extra parts to build a couple of MagLocks, making the setup more versatile.</p>
                 </div>
             </section>
 
@@ -138,18 +126,27 @@ export const BuildMagLockPage = () => (
                         <h3 className="text-xl md:text-2xl font-bold text-white mb-4">Core Materials</h3>
                         <ul className="list-disc list-inside md:list-outside md:pl-5 space-y-2 text-gray-300 text-sm md:text-base">
                             <li>1 x Round Electromagnet (50mm Diameter, 60kg, 12V)</li>
-                            <li>1 x 50mm Galvanized Iron Circular Disc (Armature Plate), 5mm thick</li>
+                            <li>1 x 50mm Eclipse Magnetics Armature Plate (Product Code M52171/50ARM)</li>
+                            <li>1 x M4-to-M8 Thread Adapter (Male)</li>
+                            <li>1 x M8 Eye Nut (Female)</li>
                             <li>1 x 1N4001 Flyback Diode (or similar, e.g., 1N4007)</li>
                             <li>3 x 50mm Washers with an M8 hole</li>
                             <li>1 x M8 Nut</li>
-                            <li>1 x M6 Galvanized Iron Countersunk Screw, length 16mm</li>
-                            <li>1 x Galvanized Iron Eye Bolt, M6 hole</li>
                             <li>1 x Two-Core Electrical Wire (length as needed, typically 4 meters)</li>
                             <li>1 x Cable or Zip Tie</li>
                             <li>Solder (for joining wires)</li>
                             <li>Electrical Tape or Heat Shrink Tubing (for insulating soldered wires)</li>
                             <li>Thread Locker - Recommended to create a strong connection for the nuts and bolts</li>
                         </ul>
+                        
+                        <div className="mt-4 p-4 bg-gray-700/50 rounded-lg border-l-4 border-yellow-500">
+                             <p className="text-gray-300 text-sm">
+                                <strong>Note:</strong> If you cannot order the Eclipse armature plate, you can build your own from a raw disc. 
+                                <Link to="/build-maglock/custom-armature" className="text-yellow-400 hover:text-yellow-300 underline ml-1">
+                                    Click here for the Custom Armature Guide
+                                </Link>.
+                            </p>
+                        </div>
                     </div>
 
                     {/* Housing Parts */}
@@ -182,14 +179,11 @@ export const BuildMagLockPage = () => (
             <section className="my-8 md:my-16">
                 <div className="bg-gray-800 p-4 md:p-8 rounded-lg">
                     <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">Required Tools</h2>
-                    <p className="text-gray-300 mb-8">We will need the following tools to assemble the magnet and drill the armature plate.</p>
+                    <p className="text-gray-300 mb-8">We will need the following tools to assemble the magnet.</p>
 
                     <div className="mb-8">
                         <ul className="list-disc list-inside md:list-outside md:pl-5 space-y-2 text-gray-300 text-sm md:text-base">
-                            <li>Drill Press or Hand Drill with a Vertical Hole Drilling Jig</li>
-                            <li>Drill Bits for Metal (2mm, 4mm, and 6mm to step up the hole size)</li>
-                            <li>Countersink Drill Bit (Metal), sized for the M6 countersunk screw (typically 90°)</li>
-                            <li>Center Finder, Center Punch & Hammer</li>
+                            <li>Flat Screw Driver</li>
                             <li>Soldering Iron</li>
                             <li>Wire Stripper and Cutting pliers</li>
                             <li>Sandpaper or File (for cleaning PVC cuts and smoothing edges)</li>
@@ -213,9 +207,7 @@ export const BuildMagLockPage = () => (
             <section className="my-8 md:my-16">
                 <div className="bg-gray-800 p-4 md:p-8 rounded-lg">
                     <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 md:mb-6">Preliminary Steps</h2>
-                    <p className="text-gray-300 mb-8">Before starting the main build, complete the preliminary steps below.</p>
                     
-                    {/* Step 1 */}
                     <div className="md:bg-gray-800/50 md:rounded-lg md:p-6 mb-6">
                         <h4 className="text-lg md:text-xl font-bold text-white mb-4">
                             Step 1: Disassemble the Magnet
@@ -231,39 +223,104 @@ export const BuildMagLockPage = () => (
                             className="w-full h-auto rounded-md"
                         />
                     </div>
+                </div>
+            </section>
 
-                    {/* Step 2 */}
-                    <div className="md:bg-gray-800/50 md:rounded-lg md:p-6">
-                        <h4 className="text-lg md:text-xl font-bold text-white mb-4">
-                            Step 2: Shape the Armature Disc
-                        </h4>
+             {/* --- PART 1: MECHANICAL ASSEMBLY (MERGED) --- */}
+             <section className="my-8 md:my-16">
+                <div className="bg-gray-800 p-4 md:p-8 rounded-lg">
+                    <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 md:mb-6">Part 1: Mechanical Assembly</h2>
+                    
+                    <div className="space-y-8">
+                        {/* Section A: Armature */}
+                        <div>
+                            <h3 className="text-xl md:text-2xl font-bold text-white mb-4 border-b border-gray-600 pb-2">A. Armature Plate Assembly</h3>
+                            <p className="text-gray-300 mb-6">Using the off-the-shelf armature plate makes this process simple and requires no drilling.</p>
+                            
+                            <TutorialImage 
+                                src={armaturePartsSrc}
+                                srcSet={armaturePartsSrcSet}
+                                alt="Armature plate parts: Plate, screw, adapter, eye nut" 
+                                className="w-full h-auto rounded-md mb-6"
+                            />
 
-                        <p className="text-gray-300 mb-4">The 50mm armature metal discs match the inner diameter of the PVC connector sleeve, creating a very tight fit. This is often compounded by the laser-cutting process, which can leave a sharp, rough edge or small burrs.</p>
-                        <p className="text-gray-300 mb-4">This combination makes it easy for the disc to catch or jam sideways if not inserted perfectly.</p>
-                        <p className="text-gray-300 mb-4">To fix this, use a light piece of sandpaper to smooth the roughness from the laser-cut edge and create a slight lead-in by chamfering or rounding the sides. Test fit the disc in the sleeve to ensure it now enters and exits smoothly.</p>
-                        
-                        <div className="my-4 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-                            <ImageOverlay
-                                src={roughDiscSrc}
-                                srcSet={roughDiscSrcSet}
-                                alt="Laser-cut armature discs with rough edges" 
-                                className="w-full h-auto rounded-md"
-                            />
-                            <ImageOverlay 
-                                src={sandedDiscSrc}
-                                srcSet={sandedDiscSrcSet}
-                                alt="Armature discs after sanding" 
-                                className="w-full h-auto rounded-md"
-                            />
-                        </div>                                
+                            <div className="md:bg-gray-800/50 md:rounded-lg md:p-6 mb-6">
+                                <h4 className="text-lg md:text-xl font-bold text-white mb-4">
+                                    Step 1: Mount the Adapter
+                                </h4>
+                                <p className="text-gray-300 mb-4">
+                                    The armature plate comes with a countersunk M4 screw. Insert this screw through the center hole from the front, ensuring the head sits flush in the recess.
+                                </p>
+                                <p className="text-gray-300 mb-4">
+                                    Apply a drop of thread locker inside the M4-to-M8 adapter. Screw the adapter onto the exposed M4 thread on the back of the plate and tighten it securely using a flat screwdriver.
+                                </p>
+                                
+                                <TutorialImage 
+                                    src={armatureThreadedSrc}
+                                    srcSet={armatureThreadedSrcSet}
+                                    alt="Armature plate with adapter attached" 
+                                    className="w-full h-auto rounded-md"
+                                />
+                            </div>
+
+                            <div className="md:bg-gray-800/50 md:rounded-lg md:p-6">
+                                <h4 className="text-lg md:text-xl font-bold text-white mb-4">
+                                    Step 2: Attach the Eye Nut
+                                </h4>
+                                <p className="text-gray-300 mb-4">
+                                    Apply thread locker to the external threads of the adapter (or inside the eye nut). Screw the M8 Eye Nut onto the adapter.
+                                </p>
+                                <p className="text-gray-300 mb-4">
+                                    Give the assembly a final tightening with the screwdriver to ensure it is rigid. Allow the thread locker to cure for 24 hours before putting the lock into service.
+                                </p>
+
+                                <TutorialImage 
+                                    src={armatureAssembledSrc}
+                                    srcSet={armatureAssembledSrcSet}
+                                    alt="Fully assembled armature plate" 
+                                    className="w-full h-auto rounded-md"
+                                />
+                            </div>
+                        </div>
+
+                        {/* Section B: Magnet Backing */}
+                        <div>
+                            <h3 className="text-xl md:text-2xl font-bold text-white mb-4 border-b border-gray-600 pb-2">B. Magnet Backing Preparation</h3>
+                            
+                            <div className="md:bg-gray-800/50 md:rounded-lg md:p-6 mb-6">
+                                <h4 className="text-lg md:text-xl font-bold text-white mb-4">
+                                    Step 1: Prepare Rear Eye Bolt
+                                </h4>
+                                <p className="text-gray-300 mb-4">Take the <strong>Stainless Steel M8 Eye Bolt</strong> (the long one for the magnet's housing, not the shorter one for the armature plate). Slide the 50mm washers onto the thread so they rest against the flat base of the eye. Depending on the final size of the inset, we may need to use two or three washers to ensure a proper fit.</p>
+                                
+                                {/* Placeholder Image */}
+                                <div className="bg-gray-700 w-full h-64 rounded-md flex items-center justify-center mb-4">
+                                    <span className="text-gray-400 font-medium">IMAGE PLACEHOLDER: Rear Eye Bolt Parts (Bolt, Washers, Nut)</span>
+                                </div>
+                            </div>
+
+                            <div className="md:bg-gray-800/50 md:rounded-lg md:p-6">
+                                <h4 className="text-lg md:text-xl font-bold text-white mb-4">
+                                    Step 2: Secure Washers
+                                </h4>
+                                <p className="text-gray-300 mb-4">Apply a drop of thread lock to the threads and screw on the M8 nut. Ensure the washers are properly aligned and do not skew as we tighten the nut firmly.</p>
+                                
+                                <TutorialImage 
+                                    src={rearEyeSrc}
+                                    srcSet={rearEyeSrcSet}
+                                    alt="Rear eye bolt assembly" 
+                                    className="w-full h-auto rounded-md"
+                                />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            {/* --- PART 1: HOUSING --- */}
+            {/* --- PART 2: HOUSING --- */}
             <section className="my-8 md:my-16">
                 <div className="bg-gray-800 p-4 md:p-8 rounded-lg">
-                    <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 md:mb-6">Part 1: Magnet Housing Assembly</h2>
+                    <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 md:mb-6">Part 2: Magnet Housing Assembly</h2>
                     
                     <div className="space-y-6">
                         {/* Housing Step 1 */}
@@ -336,16 +393,25 @@ export const BuildMagLockPage = () => (
                                 />
                             </div>                                
                         </div>
+                    </div>
+                </div>
+            </section>
 
-                        {/* Housing Step 3 */}
+            {/* --- PART 3: ELECTRONICS ASSEMBLY --- */}
+            <section className="my-8 md:my-16">
+                <div className="bg-gray-800 p-4 md:p-8 rounded-lg">
+                    <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 md:mb-6">Part 3: Electronics Assembly</h2>
+
+                    <div className="space-y-6">
+                        {/* Electronics Step 1 */}
                         <div className="md:bg-gray-800/50 md:rounded-lg md:p-6">
                             <h4 className="text-lg md:text-xl font-bold text-white mb-4">
-                                Step 3: Install Flyback Diode & Solder Wires
+                                Step 1: Install Flyback Diode & Solder Wires
                             </h4>
 
                             <p className="text-gray-300 mb-4">This step is critical for protecting the electronics. We will first install a flyback diode directly onto the magnet's terminals before attaching the main power wires.</p>
 
-                            <h5 className="text-base md:text-lg font-semibold text-white mb-4">Step 3a: Install the Flyback Diode</h5>
+                            <h5 className="text-base md:text-lg font-semibold text-white mb-4">Step 1a: Install the Flyback Diode</h5>
                             <p className="text-gray-300 mb-4">
                                 A diode has polarity. Look for a <strong>silver or white band</strong> on one end of the diode; this is the <strong>cathode (-)</strong>. The other end is the <strong>anode (+)</strong>.
                             </p>
@@ -396,7 +462,7 @@ export const BuildMagLockPage = () => (
                                 </p>
                             </div>
                             
-                            <h5 className="text-base md:text-lg font-semibold text-white mb-4">Step 3b: Solder the Power Wires and Insulate Connections</h5>
+                            <h5 className="text-base md:text-lg font-semibold text-white mb-4">Step 1b: Solder the Power Wires and Insulate Connections</h5>
                             <p className="text-gray-300 mb-4">Strip about 1cm of insulation from the two main power wires. Solder them to the same terminals where we just attached the diode, matching the polarity.</p>
                             
                             <div className="bg-red-900/20 border border-red-700/50 rounded p-3 md:p-4 mb-4">
@@ -418,21 +484,29 @@ export const BuildMagLockPage = () => (
                                     className="w-full h-auto rounded-md"
                                 />
                             </div>
-
                         </div>
 
-                        {/* Housing Step 4 */}
+                        {/* Electronics Step 2 */}
                         <div className="md:bg-gray-800/50 md:rounded-lg md:p-6">
                             <h4 className="text-lg md:text-xl font-bold text-white mb-4">
-                                Step 4: Insulate Connections
+                                Step 2: Insulate Connections
                             </h4>
                             <p className="text-gray-300">Cover all bare connections (the power wire joints <strong>and</strong> the flyback diode's legs) individually with electrical tape or heat shrink tubing to prevent any short circuits.</p>
                         </div>
+                    </div>
+                </div>
+            </section>
 
-                        {/* Housing Step 5 */}
+            {/* --- PART 4: FINAL ASSEMBLY --- */}
+            <section className="my-8 md:my-16">
+                <div className="bg-gray-800 p-4 md:p-8 rounded-lg">
+                    <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 md:mb-6">Part 4: Final Assembly</h2>
+                    
+                    <div className="space-y-6">
+                        {/* Final Step 1 */}
                         <div className="md:bg-gray-800/50 md:rounded-lg md:p-6">
                             <h4 className="text-lg md:text-xl font-bold text-white mb-4">
-                                Step 5: Add Strain Relief
+                                Step 1: Add Strain Relief
                             </h4>
                             <p className="text-gray-300 mb-4">On the inside of the housing, place a cable tie tightly around the main electrical wire. Cut the long end off, leaving the small square tab in place. This tab will act as a "stop," preventing the wire from being pulled directly from the solder joints if the cord is tugged.</p>
                             
@@ -443,142 +517,13 @@ export const BuildMagLockPage = () => (
                                 className="w-full h-auto rounded-md"
                             />
                         </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* --- PART 2: ARMATURE PLATE --- */}
-            <section className="my-8 md:my-16">
-                <div className="bg-gray-800 p-4 md:p-8 rounded-lg">
-                    <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 md:mb-6">Part 2: Armature Plate Assembly</h2>
-                    
-                    <div className="space-y-6">
-                        {/* Armature Step 1 */}
-                        <div className="md:bg-gray-800/50 md:rounded-lg md:p-6">
-                            <h4 className="text-lg md:text-xl font-bold text-white mb-4">
-                                Step 1: Find Center
-                            </h4>
-                            <p className="text-gray-300">Use the center finder to locate the center of the 50mm galvanized iron disc. Mark this spot with the center punch.</p>
-
-                            <TutorialImage 
-                                src={centerPunchSrc}
-                                srcSet={centerPunchSrcSet}
-                                alt="Center punched armature disc" 
-                                className="w-full h-auto rounded-md"
-                            />
-
-                            
-                        </div>
-
-                        {/* Armature Step 2 */}
-                        <div className="md:bg-gray-800/50 md:rounded-lg md:p-6">
-                            <h4 className="text-lg md:text-xl font-bold text-white mb-4">
-                                Step 2: Drill Hole and Countersink
-                            </h4>
-                            <p className="text-gray-300 mb-4">Drill a 6mm hole through the center mark by stepping up the drill bit sizes. Start with a 2mm drill bit, move to a 4mm bit, and finish with the 6mm bit.</p>
-                            <p className="text-gray-300 mb-4">On one side of the disc, use the countersink drill bit to create a recess. Drill deep enough that the head of the screw sits perfectly flush on the surface of the disc.</p>
-                            
-                            <TutorialImage 
-                                src={countersunkSrc}
-                                srcSet={countersunkSrcSet}
-                                alt="Countersunk center hole" 
-                                className="w-full h-auto rounded-md"
-                            />
-                            
-                        </div>
-
-                        {/* Armature Step 3 */}
-                        <div className="md:bg-gray-800/50 md:rounded-lg md:p-6">
-                            <h4 className="text-lg md:text-xl font-bold text-white mb-4">
-                                Step 3: Assemble Plate
-                            </h4>
-                            <p className="text-gray-300 mb-4">Insert the conical screw through the countersunk side of the disc. Apply a drop of thread lock, then screw the eye bolt onto the threads until it is tight against the disc.</p>
-                            <div className="bg-blue-900/20 border border-blue-700/50 rounded p-3 md:p-4 mb-6">
-                                <h4 className="text-blue-100 font-bold mb-2 text-sm md:text-base">ℹ️ A Note on Metal Types</h4>
-                                <p className="text-blue-200 text-sm mb-2">
-                                    The galvanized disc alone lacks sufficient iron to create a strong magnetic connection. Therefore, it is critical that both the eye and the screw are made of ferrous metal. If we use stainless steel for these parts, the armature plate will not hold.
-                                </p>
-                            </div>
-
-                            <TutorialImage 
-                                src={armatureEye2Src}
-                                srcSet={armatureEye2SrcSet}
-                                alt="Assembled Armature" 
-                                className="w-full h-auto rounded-md"
-                            />
-
-                            <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
-                                <ImageOverlay 
-                                    src={armatureScrewSrc}
-                                    srcSet={armatureScrewSrcSet}
-                                    alt="Armature screw" 
-                                    className="w-full h-auto rounded-md" 
-                                />
-                                <ImageOverlay 
-                                    src={drilledHoleSrc}
-                                    srcSet={drilledHoleSrcSet}
-                                    alt="Drilled hole" 
-                                    className="w-full h-auto rounded-md" 
-                                />
-                                <ImageOverlay 
-                                    src={armatureEye1Src}
-                                    srcSet={armatureEye1SrcSet}
-                                    alt="Armature with eye bolt" 
-                                    className="w-full h-auto rounded-md" 
-                                />
-                            </div>
-
-                            <div className="bg-orange-900/20 border border-orange-700/50 rounded p-3 md:p-4 mt-6">
-                                <p className="text-orange-100 text-sm md:text-base">
-                                    <strong>Critical Test: Check for Flatness</strong>
-                                </p>
-                                <p className="text-orange-100 mt-2 text-sm md:text-base">
-                                    After assembly, we must test that the base of the armature plate is perfectly flat. Place it on a level surface (like a table) with the screw head facing down.
-                                </p>
-                                <p className="text-orange-100 mt-2 text-sm md:text-base">
-                                    Try to rock the disc back and forth. If it rocks, it means the countersunk screw isn't set deep enough or the disc is warped. A plate that rocks will not make a secure connection with the magnet; it will only hold on a single point, allowing us to rock ourselves free and defeating the purpose of this project.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* --- PART 3: FINAL ASSEMBLY --- */}
-            <section className="my-8 md:my-16">
-                <div className="bg-gray-800 p-4 md:p-8 rounded-lg">
-                    <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 md:mb-6">Part 3: Magnet Backing and Body Assembly</h2>
-                    
-                    <div className="space-y-6">
-                        {/* Final Step 1 */}
-                        <div className="md:bg-gray-800/50 md:rounded-lg md:p-6">
-                            <h4 className="text-lg md:text-xl font-bold text-white mb-4">
-                                Step 1: Prepare Rear Eye Bolt
-                            </h4>
-                            <p className="text-gray-300">Take the <strong>Stainless Steel M8 Eye Bolt</strong> (the long one for the magnet's housing, not the shorter one for the armature plate). Slide the 50mm washers onto the thread so they rest against the flat base of the eye. Depending on the final size of the inset, we may need to use two or three washers to ensure a proper fit.</p>
-                        </div>
 
                         {/* Final Step 2 */}
                         <div className="md:bg-gray-800/50 md:rounded-lg md:p-6">
                             <h4 className="text-lg md:text-xl font-bold text-white mb-4">
-                                Step 2: Secure Washers
+                                Step 2: Assemble Housing
                             </h4>
-                            <p className="text-gray-300 mb-4">Apply a drop of thread lock to the threads and screw on the M8 nut. Ensure the washers are properly aligned and do not skew as we tighten the nut firmly.</p>
-                            
-                            <TutorialImage 
-                                src={rearEyeSrc}
-                                srcSet={rearEyeSrcSet}
-                                alt="Rear eye bolt assembly" 
-                                className="w-full h-auto rounded-md"
-                            />
-                        </div>
-
-                        {/* Final Step 3 */}
-                        <div className="md:bg-gray-800/50 md:rounded-lg md:p-6">
-                            <h4 className="text-lg md:text-xl font-bold text-white mb-4">
-                                Step 3: Final Assembly
-                            </h4>
-                            <p className="text-gray-300 mb-4">Apply a few drops of thread lock inside the threaded hole on the back of the electromagnet. This prevents the liquid from being pushed out as we tighten the bolt. Firmly screw the rear eye bolt assembly into the back of the magnet, which is now seated inside its PVC housing. Cover the central hole on the magnet's face with a small piece of electrical tape to catch any excess thread lock.</p>
+                            <p className="text-gray-300 mb-4">Apply a few drops of thread lock inside the threaded hole on the back of the electromagnet. This prevents the liquid from being pushed out as we tighten the bolt. Firmly screw the rear eye bolt assembly (prepared in Part 1) into the back of the magnet, which is now seated inside its PVC housing. Cover the central hole on the magnet's face with a small piece of electrical tape to catch any excess thread lock.</p>
                             
                             <TutorialImage 
                                 src={threadLockSrc}
@@ -659,8 +604,8 @@ export const BuildMagLockPage = () => (
                         
                         <div className="bg-gray-700/50 rounded-lg p-4">
                             <h3 className="text-lg font-semibold text-white mb-4">Armature Plate</h3>
-                            <p className="text-gray-300 text-sm mb-4"><strong>Search Term:</strong> Galvanized Iron Circular Disc Q235/A3 Metal Iron Circular Plate</p>
-                            <p className="text-gray-300 text-sm"><strong>Details:</strong> From the listing, be sure to select <strong>50mm Diameter</strong> and <strong>5mm Thickness</strong>.</p>
+                            <p className="text-gray-300 text-sm mb-4"><strong>Eclipse Magnetics (Code M52171/50ARM)</strong>.</p>
+                            <p className="text-gray-300 text-sm">If building custom: Galvanized Iron Circular Disc Q235/A3 Metal Iron Circular Plate (50mm Diameter, 5mm Thickness).</p>
                         </div>
                         
                         <div className="bg-gray-700/50 rounded-lg p-4">
@@ -671,11 +616,6 @@ export const BuildMagLockPage = () => (
                         <div className="bg-gray-700/50 rounded-lg p-4">
                             <h3 className="text-lg font-semibold text-white mb-4">PVC Sleeve</h3>
                             <p className="text-gray-300 text-sm">PVC fitting adhesive sleeve 50 mm</p>
-                        </div>
-                        
-                        <div className="bg-gray-700/50 rounded-lg p-4">
-                            <h3 className="text-lg font-semibold text-white mb-4">Other Hardware</h3>
-                            <p className="text-gray-300 text-sm">Eye bolt flat, conical screw counter sunken, eye bolt screw hole nut</p>
                         </div>
                     </div>
                 </div>

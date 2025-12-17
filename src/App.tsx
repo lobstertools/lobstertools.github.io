@@ -9,6 +9,7 @@ import {
 
 import { SafetyWarning } from './components/SafetyWarning';
 import { BuildMagLockPage } from './pages/BuildMagLockPage';
+import { CustomArmaturePage } from './pages/CustomArmaturePage';
 import { DownloadsPage } from './pages/DownloadPage';
 import { FeaturesSection } from './components/Features';
 import { FaqSection } from './components/FAQ';
@@ -202,6 +203,14 @@ export default function App() {
                         element={
                             <PageTitle title="Lobster - Build MagLock">
                                 <BuildMagLockPage />
+                            </PageTitle>
+                        } 
+                    />
+                     <Route 
+                        path="/build-maglock/custom-armature" 
+                        element={
+                            <PageTitle title="Lobster - Build Custom Armature">
+                                <CustomArmaturePage />
                             </PageTitle>
                         } 
                     />

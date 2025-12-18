@@ -50,16 +50,19 @@ import armatureAssembledSrc from '@/images/maglock/eclipse_armature_assembled.we
 import armatureAssembledSrcSet from '@/images/maglock/eclipse_armature_assembled.webp?w=400;800;1200&format=webp&as=srcset';
 
 // Final
-import rearEyeSrc from '@/images/maglock/assembled_rear_eye_bolt.webp?w=1200&format=webp';
-import rearEyeSrcSet from '@/images/maglock/assembled_rear_eye_bolt.webp?w=400;800;1200&format=webp&as=srcset';
+import backPlatePartsSrc from '@/images/maglock/back_plate_parts.webp?w=1200&format=webp';
+import backPlatePartsSrcSet from '@/images/maglock/back_plate_parts.webp?w=400;800;1200&format=webp&as=srcset';
+import backPlatePartiallyAssembledSrc from '@/images/maglock/back_plate_partly_assembled.webp?w=1200&format=webp';
+import backPlatepartiallyAssembledSrcSet from '@/images/maglock/back_plate_partly_assembled.webp?w=400;800;1200&format=webp&as=srcset';
+import backPlateAssembledEyeSrc from '@/images/maglock/back_plate_assembled.webp?w=1200&format=webp';
+import backPlateAssembledSrcSet from '@/images/maglock/back_plate_assembled.webp?w=400;800;1200&format=webp&as=srcset';
+
 import threadLockSrc from '@/images/maglock/thread_lock_inside_magnet.webp?w=1200&format=webp';
 import threadLockSrcSet from '@/images/maglock/thread_lock_inside_magnet.webp?w=400;800;1200&format=webp&as=srcset';
-import finalTopSrc from '@/images/maglock/final_assembly_top.webp?w=1200&format=webp';
-import finalTopSrcSet from '@/images/maglock/final_assembly_top.webp?w=400;800;1200&format=webp&as=srcset';
 import finalSingleSrc from '@/images/maglock/final_assembly_single.webp?w=1200&format=webp';
 import finalSingleSrcSet from '@/images/maglock/final_assembly_single.webp?w=400;800;1200&format=webp&as=srcset';
-import finalPlaceSrc from '@/images/maglock/final_assembly_with_place.webp?w=1200&format=webp';
-import finalPlaceSrcSet from '@/images/maglock/final_assembly_with_place.webp?w=400;800;1200&format=webp&as=srcset';
+import finalPlaceSrc from '@/images/maglock/final_assembly_with_plate.webp?w=1200&format=webp';
+import finalPlaceSrcSet from '@/images/maglock/final_assembly_with_plate.webp?w=400;800;1200&format=webp&as=srcset';
 
 export const BuildMagLockPage = () => (
     <>
@@ -292,11 +295,22 @@ export const BuildMagLockPage = () => (
                                     Step 1: Prepare Rear Eye Bolt
                                 </h4>
                                 <p className="text-gray-300 mb-4">Take the <strong>Stainless Steel M8 Eye Bolt</strong> (the long one for the magnet's housing, not the shorter one for the armature plate). Slide the 50mm washers onto the thread so they rest against the flat base of the eye. Depending on the final size of the inset, we may need to use two or three washers to ensure a proper fit.</p>
-                                
-                                {/* Placeholder Image */}
-                                <div className="bg-gray-700 w-full h-64 rounded-md flex items-center justify-center mb-4">
-                                    <span className="text-gray-400 font-medium">IMAGE PLACEHOLDER: Rear Eye Bolt Parts (Bolt, Washers, Nut)</span>
-                                </div>
+
+                            <div className="my-4 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                                <ImageOverlay
+                                    src={backPlatePartsSrc}
+                                    srcSet={backPlatePartsSrcSet}
+                                    alt="Back plate parts" 
+                                    className="w-full h-auto rounded-md"
+                                />
+                                <ImageOverlay 
+                                    src={backPlatePartiallyAssembledSrc}
+                                    srcSet={backPlatepartiallyAssembledSrcSet}
+                                    alt="Back plate partially assembed" 
+                                    className="w-full h-auto rounded-md"
+                                />
+                            </div>                                
+
                             </div>
 
                             <div className="md:bg-gray-800/50 md:rounded-lg md:p-6">
@@ -306,9 +320,9 @@ export const BuildMagLockPage = () => (
                                 <p className="text-gray-300 mb-4">Apply a drop of thread lock to the threads and screw on the M8 nut. Ensure the washers are properly aligned and do not skew as we tighten the nut firmly.</p>
                                 
                                 <TutorialImage 
-                                    src={rearEyeSrc}
-                                    srcSet={rearEyeSrcSet}
-                                    alt="Rear eye bolt assembly" 
+                                    src={backPlateAssembledEyeSrc}
+                                    srcSet={backPlateAssembledSrcSet}
+                                    alt="Back plate fully assembed" 
                                     className="w-full h-auto rounded-md"
                                 />
                             </div>
@@ -470,20 +484,13 @@ export const BuildMagLockPage = () => (
                                 <p className="text-red-100 font-bold text-sm md:text-base">⚠️ Test the wiring of the magnet using the 12v battery after installing the diode to ensure it functions correctly.</p>
                             </div>
 
-                            <div className="my-4 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-                                <ImageOverlay 
-                                    src={magnetWiresSrc}
-                                    srcSet={magnetWiresSrcSet}
-                                    alt="Soldering wires to magnet terminals" 
-                                    className="w-full h-auto rounded-md"
-                                />
-                                <ImageOverlay
-                                    src={magnetInsulationSrc}
-                                    srcSet={magnetInsulationSrcSet}
-                                    alt="Magnet terminals with diode and wires insulated" 
-                                    className="w-full h-auto rounded-md"
-                                />
-                            </div>
+                            <TutorialImage
+                                src={magnetWiresSrc}
+                                srcSet={magnetWiresSrcSet}
+                                alt="Soldering wires to magnet terminals" 
+                                className="w-full h-auto rounded-md"
+                            />
+
                         </div>
 
                         {/* Electronics Step 2 */}
@@ -491,7 +498,13 @@ export const BuildMagLockPage = () => (
                             <h4 className="text-lg md:text-xl font-bold text-white mb-4">
                                 Step 2: Insulate Connections
                             </h4>
-                            <p className="text-gray-300">Cover all bare connections (the power wire joints <strong>and</strong> the flyback diode's legs) individually with electrical tape or heat shrink tubing to prevent any short circuits.</p>
+                            <p className="text-gray-300 mb-4">Cover all bare connections (the power wire joints <strong>and</strong> the flyback diode's legs) individually with electrical tape or heat shrink tubing to prevent any short circuits.</p>
+                            <TutorialImage
+                                src={magnetInsulationSrc}
+                                srcSet={magnetInsulationSrcSet}
+                                alt="Magnet terminals with diode and wires insulated" 
+                                className="w-full h-auto rounded-md"
+                            />
                         </div>
                     </div>
                 </div>
@@ -537,6 +550,20 @@ export const BuildMagLockPage = () => (
                                 <p className="text-orange-100 text-sm md:text-base"><strong>Important:</strong> Tightening the rear eye bolt is critical to lock the electromagnet and prevent wires from twisting. However, do not over tighten as this can warp the PVD sleeve and jam the armature plate. As we tighten, test-fit the armature plate a few times. Find the balance where the magnet is secure, and the armature still slides smoothly.</p>
                             </div>
 
+                            <div className="my-4 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                                <ImageOverlay 
+                                    src={finalSingleSrc}
+                                    srcSet={finalSingleSrcSet}
+                                    alt="Final assembly single view" 
+                                    className="w-full h-auto rounded-md" 
+                                />
+                                <ImageOverlay 
+                                    src={finalPlaceSrc}
+                                    srcSet={finalPlaceSrcSet}
+                                    alt="Final assembly with armature plate" 
+                                    className="w-full h-auto rounded-md" 
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -558,27 +585,6 @@ export const BuildMagLockPage = () => (
                         wrapperClassName="mb-4"
                         className="w-full h-auto rounded-md"
                     />
-
-                    <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-                        <ImageOverlay 
-                            src={finalTopSrc}
-                            srcSet={finalTopSrcSet}
-                            alt="Final assembly top view" 
-                            className="w-full h-auto rounded-md" 
-                        />
-                        <ImageOverlay 
-                            src={finalSingleSrc}
-                            srcSet={finalSingleSrcSet}
-                            alt="Final assembly single view" 
-                            className="w-full h-auto rounded-md" 
-                        />
-                        <ImageOverlay 
-                            src={finalPlaceSrc}
-                            srcSet={finalPlaceSrcSet}
-                            alt="Final assembly with armature plate" 
-                            className="w-full h-auto rounded-md" 
-                        />
-                    </div>
 
                     <div className="bg-green-900/30 border border-green-600/50 rounded-lg p-3 md:p-4 mb-6">
                         <p className="text-green-100 font-semibold text-sm md:text-base">⚠️ Before putting it to its final use, thoroughly test the lock with the battery and control system to ensure it engages and disengages reliably. Play safe and have fun.</p>

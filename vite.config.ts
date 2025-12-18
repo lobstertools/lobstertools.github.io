@@ -2,8 +2,8 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import checker from 'vite-plugin-checker';
 import tailwindcss from '@tailwindcss/vite';
-import { imagetools } from 'vite-imagetools'
-import tsconfigPaths from 'vite-tsconfig-paths'
+import { imagetools } from 'vite-imagetools';
+import tsconfigPaths from 'vite-tsconfig-paths';
 import path from 'path';
 import fs from 'fs';
 
@@ -13,9 +13,9 @@ export default defineConfig({
         react(),
         checker({ typescript: true }),
         tailwindcss(),
-        imagetools(),        
+        imagetools(),
         tsconfigPaths({
-            root: '../'
+            root: '../',
         }),
         {
             name: 'github-404-hack',
@@ -28,24 +28,24 @@ export default defineConfig({
                     fs.copyFileSync(index, fourOhFour);
                     console.log('✅ Generated 404.html for GitHub Pages');
                 } else {
-                    console.error('☠️ Could not copy index.html for GitHub Pages')
+                    console.error('☠️ Could not copy index.html for GitHub Pages');
                     process.exit(-1);
                 }
-            }
-        }        
+            },
+        },
     ],
 
-    root: 'src/', 
+    root: 'src/',
     publicDir: '../public',
-    
+
     resolve: {
         alias: {
-            '@/images': path.resolve(__dirname, './src/images')
-        }
-    },    
+            '@/images': path.resolve(__dirname, './src/images'),
+        },
+    },
 
     build: {
-        outDir: '../dist/', 
+        outDir: '../dist/',
         emptyOutDir: true,
     },
     base: '/',

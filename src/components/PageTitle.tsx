@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
 
 // --- Page Title Helper Component ---
 interface PageTitleProps {

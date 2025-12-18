@@ -1,11 +1,5 @@
 import React, { useState } from 'react';
-import {
-    Routes,
-    Route,
-    Link,
-    NavLink,
-    useNavigate,
-} from 'react-router-dom';
+import { Routes, Route, Link, NavLink, useNavigate } from 'react-router-dom';
 
 import { SafetyWarning } from './components/SafetyWarning';
 import { BuildMagLockPage } from './pages/BuildMagLockPage';
@@ -25,11 +19,10 @@ import { GitHubIcon, CloseIcon, MenuIcon } from './icons';
 import { Footer } from './components/Footer';
 import { BetaWarningBanner } from './components/BetaWarningBanner';
 
-
 // --- Navbar ---
 const Navbar: React.FC = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-    
+
     const navItems = [
         { name: 'Home', path: '/' },
         { name: 'Downloads', path: '/downloads' },
@@ -37,43 +30,35 @@ const Navbar: React.FC = () => {
         { name: 'Build Controller', path: '/build-controller' },
         { name: 'Safety Features', path: '/safety-features' },
     ];
-    
+
     return (
         <header className="sticky top-0 z-50 bg-gray-900/90 backdrop-blur-md border-b border-gray-700/50">
             <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16">
                     <Link to="/" className="flex-shrink-0 flex items-center" onClick={() => setMobileMenuOpen(false)}>
-                       <img 
-                            src={logoSrc} 
-                            srcSet={logoSrcSet}
-                            sizes="48px" 
-                            alt="Lobster Logo" 
-                            className="h-12 w-auto" 
-                       />
-                       <span className="ml-2 text-xl font-bold text-white">Lobster</span>
+                        <img src={logoSrc} srcSet={logoSrcSet} sizes="48px" alt="Lobster Logo" className="h-12 w-auto" />
+                        <span className="ml-2 text-xl font-bold text-white">Lobster</span>
                     </Link>
                     <div className="hidden md:block">
-                        <div className="ml-10 flex items-center space-x-4"> 
+                        <div className="ml-10 flex items-center space-x-4">
                             {navItems.map((item) => (
                                 <NavLink
                                     key={item.name}
                                     to={item.path}
                                     className={({ isActive }) =>
                                         `px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                                            isActive
-                                                ? 'bg-gray-700 text-white'
-                                                : 'text-gray-300 hover:text-white hover:bg-gray-700'
+                                            isActive ? 'bg-gray-700 text-white' : 'text-gray-300 hover:text-white hover:bg-gray-700'
                                         }`
                                     }
                                 >
                                     {item.name}
                                 </NavLink>
                             ))}
-                            
+
                             {/* GitHub Icon Link - Desktop Only */}
-                            <a 
-                                href="https://github.com/lobstertools" 
-                                target="_blank" 
+                            <a
+                                href="https://github.com/lobstertools"
+                                target="_blank"
                                 rel="noreferrer"
                                 className="text-gray-400 hover:text-white transition-colors ml-4"
                                 aria-label="GitHub Repository"
@@ -83,8 +68,8 @@ const Navbar: React.FC = () => {
                         </div>
                     </div>
                     <div className="-mr-2 flex md:hidden">
-                        <button 
-                            type="button" 
+                        <button
+                            type="button"
                             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                             className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700"
                         >
@@ -93,7 +78,7 @@ const Navbar: React.FC = () => {
                         </button>
                     </div>
                 </div>
-                
+
                 {/* Mobile menu */}
                 {mobileMenuOpen && (
                     <div className="md:hidden pb-3 pt-2">
@@ -102,12 +87,10 @@ const Navbar: React.FC = () => {
                                 <NavLink
                                     key={item.name}
                                     to={item.path}
-                                    onClick={() => setMobileMenuOpen(false)} 
+                                    onClick={() => setMobileMenuOpen(false)}
                                     className={({ isActive }) =>
                                         `block px-3 py-2 rounded-md text-base font-medium transition-colors text-left ${
-                                            isActive
-                                                ? 'bg-gray-700 text-white'
-                                                : 'text-gray-300 hover:text-white hover:bg-gray-700'
+                                            isActive ? 'bg-gray-700 text-white' : 'text-gray-300 hover:text-white hover:bg-gray-700'
                                         }`
                                     }
                                 >
@@ -134,11 +117,9 @@ const HomePage: React.FC = () => {
                     Lobster: The DIY Self-Bondage Toolkit
                 </h1>
                 <p className="mt-6 max-w-2xl mx-auto text-lg sm:text-xl text-gray-400">
-                    An open-source, low-cost, and accessible framework for self-bondage.
-                    Built by you, controlled by you.
+                    An open-source, low-cost, and accessible framework for self-bondage. Built by you, controlled by you.
                 </p>
                 <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-
                     <button
                         onClick={() => navigate('/build-maglock')}
                         className="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-lg text-lg transition-colors"
@@ -159,79 +140,78 @@ const HomePage: React.FC = () => {
             <FaqSection />
             <Community />
         </>
-    )
+    );
 };
 
 // --- MAIN APP COMPONENT ---
 
 export default function App() {
-
     return (
         <div className="bg-gray-900 text-gray-300 font-sans min-h-screen">
             <Navbar />
-            
+
             <BetaWarningBanner />
-            
+
             <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <Routes>
-                    <Route 
-                        path="/" 
+                    <Route
+                        path="/"
                         element={
                             <PageTitle title="Lobster - DIY Self-Bondage Toolkit">
                                 <HomePage />
                             </PageTitle>
-                        } 
+                        }
                     />
-                    <Route 
-                        path="/safety-features" 
+                    <Route
+                        path="/safety-features"
                         element={
                             <PageTitle title="Lobster - Safety Features">
                                 <SafetyPage />
                             </PageTitle>
-                        } 
+                        }
                     />
-                    <Route 
-                        path="/downloads" 
+                    <Route
+                        path="/downloads"
                         element={
                             <PageTitle title="Lobster - Downloads">
                                 <DownloadsPage />
                             </PageTitle>
-                        } 
+                        }
                     />
-                    <Route 
-                        path="/build-maglock" 
+                    <Route
+                        path="/build-maglock"
                         element={
                             <PageTitle title="Lobster - Build MagLock">
                                 <BuildMagLockPage />
                             </PageTitle>
-                        } 
+                        }
                     />
-                     <Route 
-                        path="/build-maglock/custom-armature" 
+                    <Route
+                        path="/build-maglock/custom-armature"
                         element={
                             <PageTitle title="Lobster - Build Custom Armature">
                                 <CustomArmaturePage />
                             </PageTitle>
-                        } 
+                        }
                     />
-                    <Route 
-                        path="/build-controller" 
+                    <Route
+                        path="/build-controller"
                         element={
                             <PageTitle title="Lobster - Build Controller">
                                 <BuildControllerPage />
                             </PageTitle>
-                        } 
+                        }
                     />
-                    
+
                     {/* A "catch-all" route that redirects to home if no match is found */}
-                    <Route 
-                        path="*" 
+                    <Route
+                        path="*"
                         element={
                             <PageTitle title="Lobster - DIY Self-Bondage Toolkit">
                                 <HomePage />
                             </PageTitle>
-                        } 
-                    /> 
+                        }
+                    />
                 </Routes>
             </main>
 

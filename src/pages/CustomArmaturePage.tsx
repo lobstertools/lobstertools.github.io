@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import { ImageOverlay } from "../components/ImageOverlay";
-import { TutorialImage } from "../components/TutorialImage";
+import { ImageOverlay } from '../components/ImageOverlay';
+import { TutorialImage } from '../components/TutorialImage';
 
 // --- IMAGES ---
 // Prelim (Sanding)
@@ -28,7 +28,7 @@ export const CustomArmaturePage = () => (
         <Link to="/build-maglock" className="text-indigo-400 hover:text-indigo-300 mb-6 inline-block font-medium">
             &larr; Back to MagLock Guide
         </Link>
-        
+
         <h1 className="text-2xl md:text-4xl font-bold text-white text-center mb-4 md:mb-6">Custom Armature Plate</h1>
         <p className="text-lg md:text-xl text-center text-gray-400 mb-8 md:mb-12 max-w-3xl mx-auto px-4">
             Instructions for creating a custom armature from a raw metal disc.
@@ -66,24 +66,32 @@ export const CustomArmaturePage = () => (
             <div className="bg-gray-800 p-4 md:p-8 rounded-lg">
                 <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 md:mb-6">Step 1: Shape the Armature Disc</h2>
 
-                <p className="text-gray-300 mb-4">The 50mm armature metal discs match the inner diameter of the PVC connector sleeve, creating a very tight fit. This is often compounded by the laser-cutting process, which can leave a sharp, rough edge or small burrs.</p>
-                <p className="text-gray-300 mb-4">This combination makes it easy for the disc to catch or jam sideways if not inserted perfectly.</p>
-                <p className="text-gray-300 mb-4">To fix this, use a light piece of sandpaper to smooth the roughness from the laser-cut edge and create a slight lead-in by chamfering or rounding the sides. Test fit the disc in the sleeve to ensure it now enters and exits smoothly.</p>
-                
+                <p className="text-gray-300 mb-4">
+                    The 50mm armature metal discs match the inner diameter of the PVC connector sleeve, creating a very tight fit. This is
+                    often compounded by the laser-cutting process, which can leave a sharp, rough edge or small burrs.
+                </p>
+                <p className="text-gray-300 mb-4">
+                    This combination makes it easy for the disc to catch or jam sideways if not inserted perfectly.
+                </p>
+                <p className="text-gray-300 mb-4">
+                    To fix this, use a light piece of sandpaper to smooth the roughness from the laser-cut edge and create a slight lead-in
+                    by chamfering or rounding the sides. Test fit the disc in the sleeve to ensure it now enters and exits smoothly.
+                </p>
+
                 <div className="my-4 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                     <ImageOverlay
                         src={roughDiscSrc}
                         srcSet={roughDiscSrcSet}
-                        alt="Laser-cut armature discs with rough edges" 
+                        alt="Laser-cut armature discs with rough edges"
                         className="w-full h-auto rounded-md"
                     />
-                    <ImageOverlay 
+                    <ImageOverlay
                         src={sandedDiscSrc}
                         srcSet={sandedDiscSrcSet}
-                        alt="Armature discs after sanding" 
+                        alt="Armature discs after sanding"
                         className="w-full h-auto rounded-md"
                     />
-                </div>                                
+                </div>
             </div>
         </section>
 
@@ -91,77 +99,85 @@ export const CustomArmaturePage = () => (
         <section className="my-8 md:my-16">
             <div className="bg-gray-800 p-4 md:p-8 rounded-lg">
                 <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 md:mb-6">Step 2: Armature Plate Assembly</h2>
-                
+
                 <div className="space-y-6">
                     {/* Armature Step 1 */}
                     <div className="md:bg-gray-800/50 md:rounded-lg md:p-6">
-                        <h4 className="text-lg md:text-xl font-bold text-white mb-4">
-                            Find Center
-                        </h4>
-                        <p className="text-gray-300">Use the center finder to locate the center of the 50mm galvanized iron disc. Mark this spot with the center punch.</p>
+                        <h4 className="text-lg md:text-xl font-bold text-white mb-4">Find Center</h4>
+                        <p className="text-gray-300">
+                            Use the center finder to locate the center of the 50mm galvanized iron disc. Mark this spot with the center
+                            punch.
+                        </p>
 
-                        <TutorialImage 
+                        <TutorialImage
                             src={centerPunchSrc}
                             srcSet={centerPunchSrcSet}
-                            alt="Center punched armature disc" 
+                            alt="Center punched armature disc"
                             className="w-full h-auto rounded-md"
                         />
                     </div>
 
                     {/* Armature Step 2 */}
                     <div className="md:bg-gray-800/50 md:rounded-lg md:p-6">
-                        <h4 className="text-lg md:text-xl font-bold text-white mb-4">
-                            Drill Hole and Countersink
-                        </h4>
-                        <p className="text-gray-300 mb-4">Drill a 6mm hole through the center mark by stepping up the drill bit sizes. Start with a 2mm drill bit, move to a 4mm bit, and finish with the 6mm bit.</p>
-                        <p className="text-gray-300 mb-4">On one side of the disc, use the countersink drill bit to create a recess. Drill deep enough that the head of the screw sits perfectly flush on the surface of the disc.</p>
-                        
-                        <TutorialImage 
+                        <h4 className="text-lg md:text-xl font-bold text-white mb-4">Drill Hole and Countersink</h4>
+                        <p className="text-gray-300 mb-4">
+                            Drill a 6mm hole through the center mark by stepping up the drill bit sizes. Start with a 2mm drill bit, move to
+                            a 4mm bit, and finish with the 6mm bit.
+                        </p>
+                        <p className="text-gray-300 mb-4">
+                            On one side of the disc, use the countersink drill bit to create a recess. Drill deep enough that the head of
+                            the screw sits perfectly flush on the surface of the disc.
+                        </p>
+
+                        <TutorialImage
                             src={countersunkSrc}
                             srcSet={countersunkSrcSet}
-                            alt="Countersunk center hole" 
+                            alt="Countersunk center hole"
                             className="w-full h-auto rounded-md"
                         />
                     </div>
 
                     {/* Armature Step 3 */}
                     <div className="md:bg-gray-800/50 md:rounded-lg md:p-6">
-                        <h4 className="text-lg md:text-xl font-bold text-white mb-4">
-                            Assemble Plate
-                        </h4>
-                        <p className="text-gray-300 mb-4">Insert the conical screw through the countersunk side of the disc. Apply a drop of thread lock, then screw the eye bolt onto the threads until it is tight against the disc.</p>
+                        <h4 className="text-lg md:text-xl font-bold text-white mb-4">Assemble Plate</h4>
+                        <p className="text-gray-300 mb-4">
+                            Insert the conical screw through the countersunk side of the disc. Apply a drop of thread lock, then screw the
+                            eye bolt onto the threads until it is tight against the disc.
+                        </p>
                         <div className="bg-blue-900/20 border border-blue-700/50 rounded p-3 md:p-4 mb-6">
                             <h4 className="text-blue-100 font-bold mb-2 text-sm md:text-base">ℹ️ A Note on Metal Types</h4>
                             <p className="text-blue-200 text-sm mb-2">
-                                The galvanized disc alone lacks sufficient iron to create a strong magnetic connection. Therefore, it is critical that both the eye and the screw are made of ferrous metal. If we use stainless steel for these parts, the armature plate will not hold.
+                                The galvanized disc alone lacks sufficient iron to create a strong magnetic connection. Therefore, it is
+                                critical that both the eye and the screw are made of ferrous metal. If we use stainless steel for these
+                                parts, the armature plate will not hold.
                             </p>
                         </div>
 
-                        <TutorialImage 
+                        <TutorialImage
                             src={armatureEye2Src}
                             srcSet={armatureEye2SrcSet}
-                            alt="Assembled Armature" 
+                            alt="Assembled Armature"
                             className="w-full h-auto rounded-md"
                         />
 
                         <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <ImageOverlay 
+                            <ImageOverlay
                                 src={armatureScrewSrc}
                                 srcSet={armatureScrewSrcSet}
-                                alt="Armature screw" 
-                                className="w-full h-auto rounded-md" 
+                                alt="Armature screw"
+                                className="w-full h-auto rounded-md"
                             />
-                            <ImageOverlay 
+                            <ImageOverlay
                                 src={drilledHoleSrc}
                                 srcSet={drilledHoleSrcSet}
-                                alt="Drilled hole" 
-                                className="w-full h-auto rounded-md" 
+                                alt="Drilled hole"
+                                className="w-full h-auto rounded-md"
                             />
-                            <ImageOverlay 
+                            <ImageOverlay
                                 src={armatureEye1Src}
                                 srcSet={armatureEye1SrcSet}
-                                alt="Armature with eye bolt" 
-                                className="w-full h-auto rounded-md" 
+                                alt="Armature with eye bolt"
+                                className="w-full h-auto rounded-md"
                             />
                         </div>
 
@@ -170,10 +186,13 @@ export const CustomArmaturePage = () => (
                                 <strong>Critical Test: Check for Flatness</strong>
                             </p>
                             <p className="text-orange-100 mt-2 text-sm md:text-base">
-                                After assembly, we must test that the base of the armature plate is perfectly flat. Place it on a level surface (like a table) with the screw head facing down.
+                                After assembly, we must test that the base of the armature plate is perfectly flat. Place it on a level
+                                surface (like a table) with the screw head facing down.
                             </p>
                             <p className="text-orange-100 mt-2 text-sm md:text-base">
-                                Try to rock the disc back and forth. If it rocks, it means the countersunk screw isn't set deep enough or the disc is warped. A plate that rocks will not make a secure connection with the magnet; it will only hold on a single point, allowing us to rock ourselves free and defeating the purpose of this project.
+                                Try to rock the disc back and forth. If it rocks, it means the countersunk screw isn't set deep enough or
+                                the disc is warped. A plate that rocks will not make a secure connection with the magnet; it will only hold
+                                on a single point, allowing us to rock ourselves free and defeating the purpose of this project.
                             </p>
                         </div>
                     </div>

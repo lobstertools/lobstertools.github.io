@@ -14,11 +14,11 @@ The site is built as a modern static-generated site (SSG) using Vite and React, 
 
 This project is intended for educational and novelty purposes by responsible adults. Self-bondage carries inherent and serious risks, including nerve damage, circulation loss, and asphyxiation.
 
-* You are building this toolkit at your **own risk**.
-* Thoroughly test all components, especially release mechanisms, before any use.
-* Always have a failsafe plan and emergency tools (like shears or cutters) within reach.
-* Never use this system in a way that restricts breathing or in any situation you cannot safely escape from.
-* The creators of this project assume **no liability** for any harm, damage, or legal consequences.
+- You are building this toolkit at your **own risk**.
+- Thoroughly test all components, especially release mechanisms, before any use.
+- Always have a failsafe plan and emergency tools (like shears or cutters) within reach.
+- Never use this system in a way that restricts breathing or in any situation you cannot safely escape from.
+- The creators of this project assume **no liability** for any harm, damage, or legal consequences.
 
 ## License
 
@@ -26,17 +26,18 @@ Distributed under the Apache License 2.0. See `LICENSE` for more information.
 
 ## Technical Stack
 
-* **Framework:** [React](https://react.dev/)
-* **Build Tool:** [Vite](https://vitejs.dev/)
-* **Language:** [TypeScript](https://www.typescriptlang.org/)
-* **Styling:** [Tailwind CSS](https://tailwindcss.com/)
-* **Routing:** [React Router](https://reactrouter.com/)
+- **Framework:** [React](https://react.dev/)
+- **Build Tool:** [Vite](https://vitejs.dev/)
+- **Language:** [TypeScript](https://www.typescriptlang.org/)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+- **Routing:** [React Router](https://reactrouter.com/)
 
 ## Development
 
 **Prerequisites:**
-* Node.js (v18+)
-* Yarn
+
+- Node.js (v18+)
+- Yarn
 
 ### Installation
 
@@ -44,7 +45,7 @@ Clone the repository and install the dependencies:
 
 ```bash
 yarn install
-````
+```
 
 ### Running the Development Server
 

@@ -1,6 +1,6 @@
 import React from 'react';
-import { SafetyWarning } from "../components/SafetyWarning";
-import { ImageOverlay } from "../components/ImageOverlay";
+import { SafetyWarning } from '../components/SafetyWarning';
+import { ImageOverlay } from '../components/ImageOverlay';
 
 // --- IMAGE IMPORTS ---
 import sessionScreenSrc from '@/images/session-manager/main-screen.webp?w=1200&format=webp';
@@ -19,22 +19,25 @@ interface DownloadButtonProps {
 }
 
 const DownloadButton: React.FC<DownloadButtonProps> = ({ url, label, Icon, version, date, primary = false }) => {
-    const isAvailable = url && url !== "not-found" && url.trim() !== "";
-    
+    const isAvailable = url && url !== 'not-found' && url.trim() !== '';
+
     if (!isAvailable) {
         return (
-            <div className={`block ${primary ? 'bg-indigo-900/50 text-indigo-200' : 'bg-gray-800 text-gray-500'} font-bold py-4 px-6 rounded-lg text-center cursor-not-allowed border border-dashed border-gray-700 h-full`}>
-                <div className="opacity-50"><Icon /></div>
+            <div
+                className={`block ${primary ? 'bg-indigo-900/50 text-indigo-200' : 'bg-gray-800 text-gray-500'} font-bold py-4 px-6 rounded-lg text-center cursor-not-allowed border border-dashed border-gray-700 h-full`}
+            >
+                <div className="opacity-50">
+                    <Icon />
+                </div>
                 <div>{label}</div>
                 <div className="text-sm mt-1 uppercase tracking-wider font-semibold">Coming Soon</div>
             </div>
         );
     }
 
-    const baseClasses = "block font-bold py-4 px-6 rounded-lg text-center transition-colors h-full flex flex-col justify-center items-center";
-    const colorClasses = primary 
-        ? "bg-indigo-600 hover:bg-indigo-700 text-white" 
-        : "bg-gray-700 hover:bg-gray-600 text-white";
+    const baseClasses =
+        'block font-bold py-4 px-6 rounded-lg text-center transition-colors h-full flex flex-col justify-center items-center';
+    const colorClasses = primary ? 'bg-indigo-600 hover:bg-indigo-700 text-white' : 'bg-gray-700 hover:bg-gray-600 text-white';
 
     return (
         <a href={url} className={`${baseClasses} ${colorClasses}`}>
@@ -48,10 +51,15 @@ const DownloadButton: React.FC<DownloadButtonProps> = ({ url, label, Icon, versi
 };
 
 // --- DATA FROM ENV ---
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const appVersion = (import.meta as any).env?.VITE_APP_VERSION || 'latest';
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const appDate = (import.meta as any).env?.VITE_APP_DATE || '';
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const firmwareVersion = (import.meta as any).env?.VITE_FIRMWARE_VERSION || 'latest';
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const firmwareDate = (import.meta as any).env?.VITE_FIRMWARE_DATE || '';
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const firmwareZipUrl = (import.meta as any).env?.VITE_FIRMWARE_ZIP_URL;
 
 export const DownloadsPage = () => (
@@ -59,15 +67,16 @@ export const DownloadsPage = () => (
         <div className="py-12">
             <h1 className="text-4xl font-bold text-white text-center mb-6">Downloads</h1>
             <p className="text-xl text-center text-gray-400 mb-12 max-w-3xl mx-auto">
-                Get everything you need to set up your Lobster system. Download the Session Manager application for your device and the latest firmware for your controller.
+                Get everything you need to set up your Lobster system. Download the Session Manager application for your device and the
+                latest firmware for your controller.
             </p>
 
             {/* Application Screenshot */}
             <section className="my-16">
                 <h2 className="text-3xl font-bold text-white text-center mb-8">See the Session Manager in Action</h2>
                 <div className="p-4 rounded-lg shadow-lg max-w-5xl mx-auto">
-                    <ImageOverlay 
-                        src={sessionScreenSrc} 
+                    <ImageOverlay
+                        src={sessionScreenSrc}
                         srcSet={sessionScreenSrcSet}
                         alt="Screenshot of the Session Manager Application"
                         className="w-full h-auto rounded-md"
@@ -82,25 +91,29 @@ export const DownloadsPage = () => (
                 <h2 className="text-3xl font-bold text-white mb-6">Session Manager Application</h2>
                 <div className="bg-gray-800 p-8 rounded-lg">
                     <p className="text-gray-400 mb-6">
-                        The Session Manager is your control center. Use it to configure timers, manage locks, and monitor your sessions. Available for multiple platforms.
+                        The Session Manager is your control center. Use it to configure timers, manage locks, and monitor your sessions.
+                        Available for multiple platforms.
                     </p>
                     <div className="grid md:grid-cols-3 gap-4">
-                        <DownloadButton 
+                        <DownloadButton
                             label="Windows"
+                            // eslint-disable-next-line @typescript-eslint/no-explicit-any
                             url={(import.meta as any).env?.VITE_WIN_DOWNLOAD_URL}
                             Icon={WindowsIcon}
                             version={appVersion}
                             date={appDate}
                         />
-                        <DownloadButton 
+                        <DownloadButton
                             label="macOS"
+                            // eslint-disable-next-line @typescript-eslint/no-explicit-any
                             url={(import.meta as any).env?.VITE_MAC_DOWNLOAD_URL}
                             Icon={AppleIcon}
                             version={appVersion}
                             date={appDate}
                         />
-                        <DownloadButton 
+                        <DownloadButton
                             label="Linux"
+                            // eslint-disable-next-line @typescript-eslint/no-explicit-any
                             url={(import.meta as any).env?.VITE_LINUX_DOWNLOAD_URL}
                             Icon={LinuxIcon}
                             version={appVersion}
@@ -114,12 +127,10 @@ export const DownloadsPage = () => (
             <section className="my-16">
                 <h2 className="text-3xl font-bold text-white mb-6">Controller Firmware</h2>
                 <div className="bg-gray-800 p-8 rounded-lg">
-                    <p className="text-gray-400 mb-6">
-                        Flash this firmware onto your ESP32 controller. 
-                    </p>
-                   
-                    <div className="max-w-md mx-auto"> 
-                        <DownloadButton 
+                    <p className="text-gray-400 mb-6">Flash this firmware onto your ESP32 controller.</p>
+
+                    <div className="max-w-md mx-auto">
+                        <DownloadButton
                             label="Download Firmware Bundle (ZIP)"
                             url={firmwareZipUrl}
                             Icon={ChipIcon}
@@ -135,7 +146,10 @@ export const DownloadsPage = () => (
                 <h2 className="text-3xl font-bold text-white mb-6">Resources</h2>
                 <div className="bg-gray-800 p-8 rounded-lg">
                     <div className="space-y-4">
-                        <a href="/downloads/controller_drill_template.pdf" className="block p-4 bg-gray-700 hover:bg-gray-600 rounded transition-colors">
+                        <a
+                            href="/downloads/controller_drill_template.pdf"
+                            className="block p-4 bg-gray-700 hover:bg-gray-600 rounded transition-colors"
+                        >
                             <div className="font-semibold text-white">Drill Template (PDF)</div>
                             <div className="text-sm text-gray-400">Drill template for the Plastic Project Box</div>
                         </a>

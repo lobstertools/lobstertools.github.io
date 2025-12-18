@@ -24,16 +24,10 @@
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
         "paths": {
-             "@/images/*": ["./src/images/*"]
+            "@/images/*": ["./src/images/*"]
         }
     },
-    "include": [
-        "src",
-        "vite-env.d.ts"
-    ],
-    "exclude": [
-        "vite.config.ts",
-        "node_modules"
-    ],
+    "include": ["src", "vite-env.d.ts"],
+    "exclude": ["vite.config.ts", "node_modules"],
     "references": [{ "path": "./tsconfig.node.json" }]
 }

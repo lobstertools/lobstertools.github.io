@@ -1,12 +1,13 @@
 export const BetaWarningBanner: React.FC = () => {
     // Read the env variable. Vite embeds this at build time.
     // We must compare against the string 'true'
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const isBeta = (import.meta as any).env?.VITE_IS_BETA === 'true';
 
     if (!isBeta) {
-        return null; 
+        return null;
     }
-    
+
     // Colors sampled from the Ant Design 'ant-alert-warning' theme:
     // Background: #2b2111
     // Border: #ffe58f
@@ -15,9 +16,8 @@ export const BetaWarningBanner: React.FC = () => {
     return (
         <div className="bg-[#2b2111] text-[rgba(255,255,255,0.85)] font-bold p-3 text-center sticky top-0 z-40">
             <p>
-                ⚠️ <strong>Beta Version:</strong> This entire project is
-                currently in beta testing and not officially released. Please use
-                with caution.            
+                ⚠️ <strong>Beta Version:</strong> This entire project is currently in beta testing and not officially released. Please use
+                with caution.
             </p>
         </div>
     );
